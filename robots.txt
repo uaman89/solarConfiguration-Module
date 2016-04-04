@@ -1,0 +1,17 @@
+# robots.txt for http://ussolar.com.ua
+User-agent: *
+Disallow:  /cgi-bin/
+Disallow:  /admin/
+Disallow:  /import/
+Disallow:  /include/
+Disallow:  /modules/
+Disallow:  /sys/
+Disallow:  /order/
+Disallow:  /comparison/
+Disallow:  /registration/
+Disallow:  /feedback_ajax/
+Disallow:  /ua/feedback_ajax/
+Disallow:  /en/feedback_ajax/
+Disallow:  /ru/feedback_ajax/
+Host: ussolar.com.ua
+Sitemap: http://ussolar.com.ua/sitemap.xml

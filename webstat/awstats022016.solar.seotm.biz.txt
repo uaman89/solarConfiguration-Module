@@ -1,0 +1,361 @@
+AWSTATS DATA FILE 7.3 (build 20140126)
+# If you remove this file, all statistics for date 201602 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.solar.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2008                
+POS_TIME 2667                
+POS_VISITOR 8054                
+POS_DAY 9272                
+POS_DOMAIN 3335                
+POS_LOGIN 3567                
+POS_ROBOT 3760                
+POS_WORMS 3964                
+POS_EMAILSENDER 4095                
+POS_EMAILRECEIVER 4238                
+POS_SESSION 9638                
+POS_SIDER 9801                
+POS_FILETYPES 4373                
+POS_DOWNLOADS 4590                
+POS_OS 5372                
+POS_BROWSER 5575                
+POS_SCREENSIZE 6035                
+POS_UNKNOWNREFERER 6109                
+POS_UNKNOWNREFERERBROWSER 6299                
+POS_ORIGIN 6381                
+POS_SEREFERRALS 6519                
+POS_PAGEREFS 6674                
+POS_SEARCHWORDS 7209                
+POS_KEYWORDS 7361                
+POS_MISC 2330                
+POS_ERRORS 7420                
+POS_CLUSTER 3423                
+POS_SIDER_404 7544                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20160301074339 1 0 9732123551953
+FirstTime 0
+LastTime 20160225082031
+LastUpdate 20160302000115 1 0 0 0 0
+TotalVisits 6                   
+TotalUnique 2                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 42                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+JavascriptDisabled 0 0 0
+FlashSupport 0 0 0
+DirectorSupport 0 0 0
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+AddToFavourites 0 19 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+TotalMisc 0 0 0
+RealPlayerSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 4 24 1052126 3 4 952
+1 0 0 0 0 1 0
+2 0 2 300005 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 1 2 580
+5 0 1 33059 0 0 0
+6 0 0 0 1 2 580
+7 0 2 300005 2 2 580
+8 8 39 7386927 2 14 3864
+9 0 10 2223679 1 1 290
+10 0 7 3688273 85 85 18180
+11 0 2 300005 0 0 0
+12 0 2 300005 2 3 870
+13 0 10 3941500 1 2 580
+14 43 197 11645797 9 15 3767
+15 46 196 6010104 3 11 2894
+16 45 187 3505248 127 132 28376
+17 35 181 4822593 1 5 1672693
+18 54 436 5729852 3 8 2613065
+19 0 2 300005 0 1 223407
+20 0 0 0 0 0 0
+21 0 5 3648813 0 1 401
+22 0 2 300005 1 1 290
+23 8 42 5259666 4 7 1834
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 243 1347 60374815
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 243 1244 37988948 20160225082043
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 2
+googlebot\-image 4 4506746 20160203195014 0
+yandex 2 0 20160206183821 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 8
+html 97 164668 0 0
+css 6 11547 0 0
+jpg 162 22938740 0 0
+doc 14 4546915 0 0
+js 432 1144194 0 0
+png 479 29001629 0 0
+pdf 11 2295309 0 0
+php 146 271813 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 18
+/test/document_1456322023.pdf 2 2 1118556
+/test/document_1456321810.pdf 2 0 559726
+/test/document_1456318713.doc 1 0 689773
+/test/document_1456317256.doc 1 0 471711
+/test/document_1456381231.doc 1 0 367958
+/test/document_1456316805.doc 1 0 230
+/test/document_1456316954.doc 1 0 29422
+/test/document_1456319344.doc 1 0 2345
+/test/document_1456317148.doc 1 0 471711
+/test/document_1456319814.doc 1 0 193983
+/test/document_1456381179.pdf 1 0 243493
+/test/document_1456317076.doc 1 0 137852
+/test/document_1456319498.doc 1 0 473987
+/test/document_1456317779.doc 1 0 513235
+/test/document_1456319562.doc 1 0 425307
+/test/document_1456318007.doc 1 0 137819
+/test/document_1456322090.pdf 1 0 373534
+/test/document_1456318593.doc 1 0 631582
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 11
+winxp 9 0
+linux 1125 213
+win8.1 1 0
+linuxandroid 40 8
+ios_ipad 6 0
+win8 6 0
+winlong 2 0
+win7 146 22
+ios_iphone 4 0
+winnt 8 0
+Unknown 2 0
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 20
+chrome38.0.2125.122 2 0
+opera12.17 2 0
+chrome48.0.2564.95 40 8
+chrome48.0.2564.97 8 0
+opera12.16 2 0
+chrome38.0.2125.102 2 0
+chrome48.0.2564.103 2 0
+firefox41.0 2 0
+opera35.0.2066.82 1 0
+chrome42.0.2311.135 2 0
+firefox44.0 339 36
+opera32.0.1948.25 4 0
+chrome48.0.2564.109 644 137
+firefox43.0 2 0
+safari8.0 4 0
+safari9.0 6 0
+chrome48.0.2564.116 281 62
+opera34.0.2036.50 1 0
+msie10.0 2 0
+chrome46.0.2490.86 3 0
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 1
+Opera/9.80_(Android;_Opera_Mini/10.0.1884/37.7751;_U;_ru)_Presto/2.12.423_Version/12.16 20160201212344
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 88 96
+From1 0 0
+From2 0 4
+From3 0 66
+From4 155 1183
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 1
+google 0 4
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 6
+http://ussolar.com.ua/o-nas/deyatelnost/ 0 16
+http://ussolar.com.ua/o-nas/novosti/company-news/novie-naznacheniya-v-apeu.html 0 1
+http://ussolar.com.ua/kachestvo/nadezhnost/ 0 40
+http://www.ussolar.com.ua/kachestvo/nadezhnost/ 0 6
+http://ussolar.com.ua/o-nas/novosti/company-news/uspeshno-zavershen-montazh-sistem-krepleniya-fem.html 0 1
+http://www.ussolar.com.ua/o-nas/deyatelnost/ 0 2
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 4
+404 13 2404
+401 50 15055
+403 2 356
+301 207 44019
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 3
+/favicon.ico/ 11 http://solar.seotm.biz/test/webgl.html
+/test/screenshot.js/ 1 http://solar.seotm.biz/test/index.html
+/images/design/favicon.ico/ 1 http://solar.seotm.biz/test/document_1456319408.doc/
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 42
+178.216.16.18 124 124 130342 20160222181807
+213.108.46.227 119 146 7148363 20160225082031
+193.19.243.186 0 2 661832 
+46.133.196.151 0 1 33059 
+194.6.232.206 0 2 300005 
+62.176.14.200 0 2 300005 
+91.90.16.154 0 4 961837 
+46.133.138.36 0 2 661832 
+82.207.71.158 0 2 300005 
+109.251.72.98 0 2 300005 
+37.140.189.244 0 1 422355 
+80.64.85.96 0 1 185486 
+192.168.1.80 0 34 6592995 
+39.7.58.57 0 2 300005 
+128.73.167.136 0 2 2379653 
+194.153.128.101 0 2 300005 
+176.38.240.212 0 2 300005 
+141.0.14.209 0 2 661832 
+77.122.102.85 0 2 300005 
+213.160.136.62 0 4 961837 
+192.168.1.82 0 892 11983467 
+91.214.31.216 0 2 661832 
+193.93.219.198 0 2 300005 
+37.140.189.230 0 1 239477 
+80.249.234.235 0 2 300005 
+193.219.124.35 0 2 300005 
+46.211.143.129 0 2 661832 
+192.173.146.219 0 2 300005 
+109.87.140.229 0 1 2686976 
+37.115.83.229 0 78 12290906 
+217.76.194.158 0 2 300005 
+5.140.39.76 0 1 698697 
+212.252.125.140 0 2 300005 
+37.57.151.1 0 2 300005 
+188.163.1.56 0 2 300005 
+213.241.95.130 0 2 300005 
+94.244.142.8 0 2 300005 
+95.67.27.5 0 2 300005 
+31.170.130.189 0 3 2726436 
+195.62.14.118 0 2 661832 
+195.248.181.169 0 2 300005 
+217.20.181.1 0 4 961837 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 13
+20160201 0 8 1923674 0
+20160202 0 14 6491595 0
+20160203 0 4 961837 0
+20160204 0 6 1261842 0
+20160205 0 6 900015 0
+20160206 0 1 698697 0
+20160222 132 787 14512634 2
+20160223 14 71 3110816 2
+20160224 89 387 16032232 1
+20160225 8 43 8348764 1
+20160226 0 10 2585506 0
+20160227 0 4 3020040 0
+20160229 0 6 900015 0
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 3
+30s-2mn 1
+2mn-5mn 3
+1h+ 2
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 10
+/test/screenshot_list.php 93 19098 0 4
+/test/canvas.html 57 103108 2 0
+/test/save_file.php 31 252165 0 2
+/test/webgl.html 29 43704 2 0
+/test/imgsave.php 22 550 1 0
+/imgsave.php/ 3 8217 0 0
+/test/document_1456319408.doc/ 3 8217 0 0
+/screenshots_list.php/ 2 264 0 0
+/screenshot_list.php/ 2 264 0 0
+/test/ 1 894 1 0
+END_SIDER

@@ -1,0 +1,1 @@
+idc=113111&ids=3&sensor&stat=0&azim=90&tilt=45&long=45.1237&lat=33.5&temp=25&wind=5|0&snow=0&irrd=500&time=010215|1705&inst=010215&num=500&

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+                <rss version="2.0">
+                <channel>
+                <image>
+                <url>http://seocms.seotm.biz/images/design/logo_rss.gif</url>
+                <title>News</title>
+                <link>http://seocms.seotm.biz/</link>
+                </image>
+                <title>News</title>
+                <link>http://seocms.seotm.biz/</link>
+                <description>News</description>
+                </channel></rss>

@@ -1,0 +1,470 @@
+AWSTATS DATA FILE 7.3 (build 20140126)
+# If you remove this file, all statistics for date 201508 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.solar.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2008                
+POS_TIME 2667                
+POS_VISITOR 9072                
+POS_DAY 10906               
+POS_DOMAIN 3464                
+POS_LOGIN 3699                
+POS_ROBOT 3895                
+POS_WORMS 4144                
+POS_EMAILSENDER 4275                
+POS_EMAILRECEIVER 4418                
+POS_SESSION 11601               
+POS_SIDER 11807               
+POS_FILETYPES 4553                
+POS_DOWNLOADS 4802                
+POS_OS 4913                
+POS_BROWSER 5152                
+POS_SCREENSIZE 5782                
+POS_UNKNOWNREFERER 5856                
+POS_UNKNOWNREFERERBROWSER 5943                
+POS_ORIGIN 6025                
+POS_SEREFERRALS 6168                
+POS_PAGEREFS 6323                
+POS_SEARCHWORDS 7171                
+POS_KEYWORDS 7323                
+POS_MISC 2330                
+POS_ERRORS 7382                
+POS_CLUSTER 3555                
+POS_SIDER_404 7527                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150901035308 1 0 9551285112661
+FirstTime 0
+LastTime 20150827170748
+LastUpdate 20150902000245 1 0 0 0 0
+TotalVisits 26                  
+TotalUnique 1                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 66                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+FlashSupport 0 0 0
+AddToFavourites 0 55 0
+JavaEnabled 0 0 0
+RealPlayerSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+JavascriptDisabled 0 0 0
+DirectorSupport 0 0 0
+TotalMisc 0 0 0
+PDFSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 1 114519 0 2 2426721
+1 0 3 949704 0 0 0
+2 0 1 114519 0 7 5390828
+3 0 0 0 0 0 0
+4 0 0 0 0 4 2767826
+5 0 3 587877 0 1 0
+6 0 2 300005 0 2 2611917
+7 0 0 0 0 3 4853152
+8 0 2 300005 0 5 2612608
+9 203 888 10011689 50 65 223838
+10 376 1515 30868614 44 58 5080807
+11 234 3311 8049930 81 92 4301240
+12 246 3189 14929958 33 44 224356
+13 272 3175 41128839 25 33 25166504
+14 356 4056 17428321 30 33 35780
+15 299 3609 13952926 18 24 194074
+16 322 2934 15378626 17 26 10590
+17 448 2201 30989428 19 26 497617
+18 84 462 1867385 6 17 7176594
+19 56 234 5299181 23 32 2636856
+20 71 662 1753749 7 12 375905
+21 9 21 2747242 6 11 5040456
+22 0 9 1676366 2 4 1271
+23 0 7 2236278 0 7 2983870
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 2976 26285 192321654
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 2976 26084 159314609 20150827170748
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 3
+googlebot\-image 45 74259404 20150831060018 0
+no_user_agent 5 2419 20150811184525 0
+yandex 5 114519 20150830155649 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 9
+jpg 6520 41007741 0 0
+gif 48 107873 0 0
+html 1582 6417147 0 0
+pdf 1 16727014 0 0
+png 4277 901525 0 0
+php 1132 115950212 0 0
+js 8245 6249068 0 0
+woff 262 284872 0 0
+css 4218 4676202 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 1
+/uploads/files/pages/14/solar-system-a4-2013.pdf 1 44 16727014
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 13
+win8 2 0
+win8.1 8 0
+ios_iphone 4 0
+winlong 2 0
+ios_ipad 4 0
+linuxubuntu 24703 2632
+linux 145 42
+winnt 2 0
+win7 1418 302
+macosx6 2 0
+macosx7 2 0
+winxp 25 0
+linuxandroid 12 0
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 28
+chrome31.0.1650.63 2 0
+opera12.17 3 0
+chrome44.0.2403.130 123 55
+chrome44.0.2403.133 4 0
+chrome43.0.2357.134 2 0
+opera30.0.1835.125 3 0
+opera31.0.1889.174 2 0
+firefox37.0 143 40
+safari8.0 8 0
+chrome42.0.2311.90 1 0
+chrome43.0.2357.130 24703 2632
+android 2 0
+chrome44.0.2403.157 14 0
+firefox39.0 1185 240
+chrome43.0.2357.93 4 0
+opera31.0.1889.99 4 0
+msie11.0 2 0
+chrome44.0.2403.155 6 0
+chrome44.0.2403.107 14 0
+chrome42.0.2311.152 3 0
+chrome44.0.2403.125 79 7
+chrome43.0.2357.124 3 0
+firefox40.0 7 0
+msie8.0 1 0
+safari5.1.9 2 0
+firefox38.0 4 2
+msie9.0 3 0
+chrome40.0.2214.89 2 0
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 720 737
+From1 0 0
+From2 0 1
+From3 2 114
+From4 2254 25477
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 1
+google 0 1
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 10
+http://vk.com/away.php 2 2
+http://ussolar.com.ua/o-nas/novosti/company-news/novie-naznacheniya-v-apeu.html 0 2
+http://ussolar.com.ua/o-nas/novosti/company-news/uspeshno-zavershen-montazh-sistem-krepleniya-fem.html 0 2
+http://www.ussolar.com.ua/kachestvo/nadezhnost/ 0 26
+http://www.ussolar.com.ua/o-nas/deyatelnost/ 0 4
+http://ussolar.com.ua/o-nas/novosti/company-news/v-kieve-proshel-ocherednoy-forum-ref-2012.html 0 4
+http://yhungarcy.ucoz.ru 0 1
+http://ussolar.com.ua/kachestvo/nadezhnost/ 0 50
+http://ussolar.com.ua/o-nas/novosti/company-news/prisoedinyaytes-k-delegatam-iz-bolee-25-stran-na-vtoroy-mezhdunarodnoy-konferentsii-sisolar-2013.html 0 1
+http://ussolar.com.ua/o-nas/deyatelnost/ 0 22
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 6
+301 58 13036
+404 180 96263
+500 53 14540
+401 86 26161
+302 20 0
+206 1 1
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 24
+/images/design/mapmarkerred.png/ 4 http://solar.seotm.biz/map/4/
+/images/gall-peters_1_0_1.png/ 4 http://solar.seotm.biz/map/
+/map/images/red.png/ 1 http://solar.seotm.biz/map/
+/treker.php/ 3 -
+/images/mapmarker.png/ 1 http://solar.seotm.biz/map/
+/stantion.php/ 1 -
+/map/images/gall-peters_1_1_0.png/ 2 http://solar.seotm.biz/map/
+/images/gall-peters_1_0_0.png/ 13 http://solar.seotm.biz/map/
+/images/mod_blog/4/ 11 http://solar.seotm.biz/admin/index.php
+/images/design/favicon.ico/ 41 -
+/http:/ussolar.com.uastansion.php/ 1 -
+/images/design/11.png%22/ 2 http://solar.seotm.biz/map/
+/images/gall-peters_1_1_1.png/ 4 http://solar.seotm.biz/map/
+/images/gall-peters_1_1_0.png/ 11 http://solar.seotm.biz/map/
+/tpl_treker.html 1 -
+/images/mod_blog/5/ 2 http://solar.seotm.biz/admin/index.php
+/map/images/gall-peters_1_0_0.png/ 2 http://solar.seotm.biz/map/
+/data/ 3 http://solar.seotm.biz/myaccount/message/
+/map/images/beachflag.png/ 1 http://solar.seotm.biz/map/
+/images/design/greenformap.png%22/ 2 http://solar.seotm.biz/map/
+/images/mod_blog// 2 http://solar.seotm.biz/admin/index.php
+/map/images/gall-peters_0_0_0.png/ 31 http://solar.seotm.biz/map/
+/favicon.ico/ 35 -
+/images/desin/greenformap.png%22/ 2 http://solar.seotm.biz/map/
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 66
+178.216.16.18 2976 3090 139564270 20150827170748
+46.98.239.254 0 2 661832 
+46.37.217.45 0 1 698697 
+81.162.228.192 0 4 961837 
+188.162.64.10 0 1 422355 
+176.215.57.156 0 1 287872 
+37.115.213.26 0 4 961837 
+93.158.136.161 0 1 287872 
+81.23.24.134 0 1 114519 
+213.227.206.226 0 2 300005 
+46.98.62.206 0 2 661832 
+95.179.13.153 0 1 287872 
+176.36.186.41 0 2 300005 
+194.8.128.121 0 1 287872 
+5.141.192.140 0 1 114519 
+46.98.68.31 0 2 661832 
+92.113.19.100 0 2 300005 
+93.180.252.228 0 2 300005 
+82.145.208.197 0 1 287872 
+92.244.110.11 0 2 300005 
+195.184.68.33 0 2 300005 
+194.44.167.119 0 2 300005 
+111.140.37.102 0 2 300005 
+178.92.48.100 0 1 287872 
+194.9.36.198 0 2 300005 
+91.230.26.130 0 2 2482962 
+109.105.91.204 0 1 287872 
+36.229.37.124 0 2 300005 
+94.178.219.95 0 2 300005 
+213.221.54.2 0 1 185486 
+94.76.82.58 0 4 961837 
+91.206.186.43 0 2 2379653 
+188.163.81.168 0 1 287872 
+176.85.233.3 0 2 300005 
+37.73.217.54 0 4 300005 
+37.115.112.129 0 2 300005 
+194.67.32.164 0 2 300005 
+82.116.51.30 0 1 114519 
+91.124.171.77 0 1 287872 
+81.23.24.136 0 1 185486 
+192.168.1.127 0 22069 14517128 
+94.248.14.181 0 1 287872 
+195.214.196.175 0 2 661832 
+37.143.20.154 0 1 185486 
+178.159.228.208 0 4 961837 
+176.37.232.58 0 2 300005 
+174.118.244.6 0 1 1671422 
+192.168.1.90 0 90 865881 
+93.183.226.193 0 2 300005 
+194.37.248.11 0 1 287872 
+109.162.80.143 0 2 300005 
+46.211.17.92 0 952 4554609 
+178.137.149.132 0 2 661832 
+89.19.109.31 0 2 661832 
+217.76.194.158 0 8 600010 
+193.84.22.228 0 2 300005 
+128.74.2.211 0 1 114519 
+95.111.166.51 0 2 238376 
+84.162.26.180 0 1 2426431 
+212.111.209.65 0 2 661832 
+91.198.4.243 0 12 2038442 
+83.170.202.106 0 2 300005 
+31.40.111.42 0 2 300005 
+194.9.36.238 0 2 300005 
+195.77.155.164 0 2 300005 
+193.108.249.166 0 2 300005 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 26
+20150801 0 1 287872 0
+20150802 0 4 300005 0
+20150803 0 5 714529 0
+20150804 492 3073 39155300 3
+20150805 499 5044 55639257 3
+20150806 642 6226 25123993 2
+20150807 221 1845 17001769 2
+20150808 0 2 575744 0
+20150809 0 3 414524 0
+20150810 20 68 2062432 2
+20150811 134 297 2141183 3
+20150812 0 13 2498124 0
+20150813 141 150 9235485 1
+20150814 0 2 575744 0
+20150816 0 2 661832 0
+20150817 0 3 2726436 0
+20150818 0 10 2585506 0
+20150819 0 5 2967530 0
+20150820 0 1 114519 0
+20150821 0 3 485491 0
+20150823 0 2 300005 0
+20150824 0 1 698697 0
+20150825 372 4245 14233057 3
+20150826 379 4959 12939893 3
+20150827 76 315 5984392 4
+20150831 0 6 1261842 0
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 12
+5mn-15mn 2
+30mn-1h 4
+0s-30s 2
+30s-2mn 2
+2mn-5mn 1
+15mn-30mn 3
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 57
+/data/ 363 3057027 2 4
+/treker.php/ 330 72584 5 7
+/include/fonts/ArianAMURegular/ArianAMURegular.woff 238 166128 0 3
+/map/ 184 778471 0 0
+/myadmin/index.php 179 2128446 0 0
+/myadmin/navigation.php 162 11440058 0 2
+/map/4/ 135 603362 0 1
+/myadmin/js/get_scripts.js.php 107 59959354 0 0
+/stansion.php/ 97 11334 0 1
+/ 92 352530 13 3
+/myadmin/tbl_row_action.php 8 124914 0 0
+/include/fonts/ArianAMUBold/ArianAMUBold.woff 19 54504 0 0
+/myadmin/sql.php 90 2545144 0 1
+/myaccount/edit/save/ 30 111313 0 0
+/myadmin/tbl_structure.php 24 2795526 0 0
+/myadmin/js/messages.php 33 1123029 0 1
+/map/34/ 74 335525 0 1
+/myadmin/tbl_replace.php 22 213350 0 0
+/myadmin/db_structure.php 36 25892689 0 0
+/myadmin/db_sql_autocomplete.php 9 241309 0 0
+/include/fonts/ArianAMUItalic/ArianAMUItalic.woff 4 32244 0 0
+/trek.php/ 44 2011 1 0
+/stansion.php 34 7038 1 1
+/map/3/ 6 26196 1 0
+/myadmin/db_sql.php 1 9581 0 0
+/login.php 43 119551 0 0
+/o-nas/ 2 8050 0 0
+/contact/ 3 14301 0 0
+/admin/ 19 51156 0 1
+/tracker.php/ 1 2789 1 0
+/treker.php 84 5440 1 0
+/modal_page_auth.php 81 31870 0 0
+/myadmin/ 24 430376 0 0
+/modules/mod_user/user.backend.php 1 94 0 0
+/test.php 14 819 0 0
+/myadmin/js/get_image.js.php 22 146146 0 0
+/myadmin/tbl_addfield.php 2 92312 0 0
+/trecker.php/ 1 2789 0 0
+/myaccount/edit/ 47 157068 0 0
+/kachestvo/nadezhnost/ 1 4471 0 0
+/myaccount/message/ 37 120488 0 0
+/myaccount/message/send/ 3 8835 0 0
+/myadmin/tbl_sql.php 13 111340 0 0
+/myadmin/js/whitelist.php 33 72105 0 0
+/include/fonts/ArianAMUBoldItalic/ArianAMUBoldItalic.woff 1 31996 0 0
+/logout.html 10 28677 1 0
+/myadmin/tbl_indexes.php 3 29264 0 0
+/myadmin/phpmyadmin.css.php 37 4060713 0 0
+/sys/js/tinymce/plugins/imagemanager/language/index.php 9 1386 0 0
+/sys/js/tinymce/plugins/filemanager/language/index.php 9 963 0 0
+/admin/index.php 32 120409 0 0
+/myadmin/tbl_create.php 10 4458070 0 0
+/myaccount/ 77 232316 0 0
+/include/css/fonts/ArianAMUBoldItalic/ArianAMUBoldItalic.woff/ 1 2739 0 0
+/include/css/fonts/ArianAMUBoldItalic/ArianAMUBoldItalic.ttf/ 1 2739 0 0
+/myadmin/import.php 16 218594 0 0
+/myadmin/version_check.php 18 698 0 0
+END_SIDER

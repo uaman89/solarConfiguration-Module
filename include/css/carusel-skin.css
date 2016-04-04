@@ -1,0 +1,87 @@
+.jcarousel-skin-tango .jcarousel-container {
+
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width: 220px;
+    padding: 20px 40px;
+}
+
+.jcarousel-skin-tango .jcarousel-container-vertical {
+    width: 220px;
+    height: 580px;
+    padding: 40px 0 40px 40px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  220px;
+    height: 580px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-vertical {
+    width:  220px;
+    height: 580px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: 220px;
+    height: 135px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+    margin-right: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-tango .jcarousel-item-vertical {
+    margin-bottom: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Vertical Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-vertical {
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+    width: 220px;
+    height: 30px;
+    cursor: pointer;
+    background: #f2f2f2 url('/images/design/btn-carusel.png') 100px 6px no-repeat;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    width: 220px;
+    height: 30px;
+    cursor: pointer;
+    background: #f2f2f2 url('/images/design/top-carusel.png') 100px 6px no-repeat;
+}
+.jcarousel-skin-tango{
+    width: 255px;
+    float: left;
+}
+.jcarousel-item a{
+    display: block;
+    text-align: center;
+}

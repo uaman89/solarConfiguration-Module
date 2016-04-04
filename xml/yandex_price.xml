@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2013-03-11 08:20">
+<shop>
+	<name>Название магазина</name>
+	<company>Название компании</company>
+	<url>адрес сайта</url>
+	<currencies>
+		<currency id="UAH" rate="1" />
+		<currency id="USD" rate="8" />
+	</currencies>
+	<categories>
+		<category id="25">Крупная бытовая техника</category>
+		<category id="26">Мелкая бытовая техника</category>
+		<category id="1">Телефония</category>
+		<category id="208">Встраиваемая техника</category>
+		<category id="210">Климатическая техника</category>
+		<category id="2">Ноутбуки и оргтехника</category>
+		<category id="13">Телевизоры</category>
+		<category id="207">Аудио-видео техника</category>
+		<category id="211">Посуда для кухни</category>
+		<category id="3">Фототехника</category>
+		<category id="200">Аппаратура Hi-Fi</category>
+		<category id="212">Для ванной</category>
+		<category id="236">Красота и здоровье</category>
+		<category id="213">Мойки BLANCO</category>
+		<category id="387">23423</category>
+		<category id="11" parentId="1">GPS-навигаторы</category>
+		<category id="12" parentId="1">Модемы 3G, GSM, CDMA</category>
+		<category id="99" parentId="1">Проводные телефоны</category>
+		<category id="122" parentId="1">Flash-карты</category>
+		<category id="7" parentId="1">Мобильные телефоны</category>
+		<category id="8" parentId="1">Коммуникаторы</category>
+		<category id="101" parentId="1">Bluetooth-гарнитуры</category>
+		<category id="9" parentId="1">Радиотелефоны</category>
+		<category id="254" parentId="1">Ретро телефоны</category>
+		<category id="10" parentId="2">Факсы</category>
+		<category id="70" parentId="2">МФУ</category>
+		<category id="4" parentId="2">Ноутбуки</category>
+		<category id="71" parentId="2">Плоттеры (принтеры широкоформатные)</category>
+		<category id="72" parentId="2">Дополнительное оборудование для принтеров</category>
+		<category id="5" parentId="2">КПК и электронные книги</category>
+		<category id="119" parentId="2">Копиры</category>
+		<category id="17" parentId="2">Мониторы</category>
+		<category id="67" parentId="2">Принтеры</category>
+		<category id="164" parentId="2">Аксессуары</category>
+		<category id="21" parentId="2">Сканеры</category>
+		<category id="120" parentId="2">Сумки для ноутбуков</category>
+		<category id="321" parentId="3">Фотоаппараты</category>
+		<category id="116" parentId="3">Вспышки</category>
+		<category id="105" parentId="3">Объективы</category>
+		<category id="107" parentId="3">Штативы</category>
+		<category id="108" parentId="3">Сумки для фото/видео</category>
+		<category id="109" parentId="3">Аккумуляторы и ЗУ к фото/видео</category>
+		<category id="32" parentId="3">Цифровые фоторамки</category>
+		<category id="102" parentId="3">Модули памяти</category>
+		<category id="35" parentId="13">Плазменные телевизоры</category>
+		<category id="323" parentId="13">3D-очки</category>
+		<category id="348" parentId="13">Аксессуары</category>
+		<category id="115" parentId="13">ЭЛТ телевизоры</category>
+		<category id="197" parentId="13">Подставки и крепления для ТВ</category>
+		<category id="14" parentId="13">LCD телевизоры</category>
+		<category id="216" parentId="13">Универсальные пульты ДУ</category>
+		<category id="217" parentId="13">LED телевизоры</category>
+		<category id="326" parentId="25">Холодильники для вина</category>
+		<category id="377" parentId="25">siemens</category>
+		<category id="196" parentId="25">Посудомоечные машины</category>
+		<category id="192" parentId="25">Холодильники</category>
+		<category id="191" parentId="25">Плиты</category>
+		<category id="372" parentId="25">Стирально-сушильный автомат 3</category>
+		<category id="190" parentId="25">Стиральные машины</category>
+		<category id="325" parentId="25">Морозильные камеры</category>
+		<category id="327" parentId="25">Сушильные машины</category>
+		<category id="86" parentId="26">Хлебопечки</category>
+		<category id="94" parentId="26">Мясорубки</category>
+		<category id="239" parentId="26">Электрические печи</category>
+		<category id="194" parentId="26">Микроволновые печи</category>
+		<category id="87" parentId="26">Утюги</category>
+		<category id="231" parentId="26">Весы кухонные</category>
+		<category id="95" parentId="26">Пароварки и мультиварки</category>
+		<category id="240" parentId="26">Оверлоки</category>
+		<category id="232" parentId="26">Йогуртницы и мороженицы</category>
+		<category id="96" parentId="26">Бутербродницы</category>
+		<category id="89" parentId="26">Соковыжималки</category>
+		<category id="335" parentId="26">Сушки для овощей и фруктов</category>
+		<category id="233" parentId="26">Кофемолки</category>
+		<category id="90" parentId="26">Электрочайники</category>
+		<category id="234" parentId="26">Ломтерезки</category>
+		<category id="332" parentId="26">Аэрогриль 1</category>
+		<category id="91" parentId="26">Кухонные комбайны</category>
+		<category id="83" parentId="26">Пылесосы</category>
+		<category id="92" parentId="26">Блендеры 2</category>
+		<category id="237" parentId="26">Тостеры</category>
+		<category id="209" parentId="26">Швейные машины</category>
+		<category id="93" parentId="26">Миксеры</category>
+		<category id="238" parentId="26">Фритюрницы</category>
+		<category id="85" parentId="26">Кофеварки</category>
+		<category id="378" parentId="190">bosh</category>
+		<category id="379" parentId="190">лазер</category>
+		<category id="206" parentId="200">Проигрыватели</category>
+		<category id="333" parentId="200">Сабвуфер</category>
+		<category id="40" parentId="200">Ресиверы</category>
+		<category id="329" parentId="200">Наушники</category>
+		<category id="202" parentId="200">Усилители</category>
+		<category id="199" parentId="200">Акустические системы HI-FI</category>
+		<category id="204" parentId="200">Стойки, кронштейны и пр. оборудование для аудиоаппаратуры</category>
+		<category id="341" parentId="207">Автоакустика</category>
+		<category id="45" parentId="207">Игровые приставки</category>
+		<category id="221" parentId="207">Магнитолы CD</category>
+		<category id="37" parentId="207">DVD-плееры и рекордеры</category>
+		<category id="46" parentId="207">Микрофоны</category>
+		<category id="38" parentId="207">Домашние кинотеатры</category>
+		<category id="47" parentId="207">Web-камеры</category>
+		<category id="39" parentId="207">Blu-ray плееры</category>
+		<category id="48" parentId="207">Наушники</category>
+		<category id="49" parentId="207">Медиацентры</category>
+		<category id="324" parentId="207">Портативные DVD</category>
+		<category id="31" parentId="207">Видеокамеры</category>
+		<category id="42" parentId="207">MP3- и медиаплееры</category>
+		<category id="43" parentId="207">Мультимедийная акустика</category>
+		<category id="340" parentId="207">Автомагнитола</category>
+		<category id="195" parentId="207">Музыкальные центры</category>
+		<category id="230" parentId="208">Вытяжки</category>
+		<category id="331" parentId="208">Кофеварки</category>
+		<category id="224" parentId="208">Варочные поверхности</category>
+		<category id="225" parentId="208">Духовые шкафы</category>
+		<category id="226" parentId="208">Микроволновые печи</category>
+		<category id="227" parentId="208">Посудомоечные машины</category>
+		<category id="228" parentId="208">Стиральные машины</category>
+		<category id="229" parentId="208">Холодильники</category>
+		<category id="193" parentId="210">Водонагреватели</category>
+		<category id="249" parentId="210">Вентиляторы</category>
+		<category id="250" parentId="210">Газовые колонки</category>
+		<category id="251" parentId="210">Кондиционеры</category>
+		<category id="373" parentId="210">Увлажнитель воздуха 1</category>
+		<category id="252" parentId="210">Обогреватели</category>
+		<category id="255" parentId="211">Столовые наборы</category>
+		<category id="256" parentId="211">Кастрюли</category>
+		<category id="257" parentId="211">Наборы посуды</category>
+		<category id="258" parentId="211">Сковороды</category>
+		<category id="259" parentId="211">Кухонные наборы</category>
+		<category id="260" parentId="211">Термосы</category>
+		<category id="339" parentId="211">Сотейник</category>
+		<category id="261" parentId="211">Чайники</category>
+		<category id="262" parentId="211">Наборы ножей</category>
+		<category id="263" parentId="212">Душевые кабины</category>
+		<category id="264" parentId="212">Гидромассажные боксы</category>
+		<category id="265" parentId="212">Ванны</category>
+		<category id="266" parentId="212">Душевые поддоны</category>
+		<category id="267" parentId="213">Мойки</category>
+		<category id="268" parentId="213">Смесители</category>
+		<category id="269" parentId="213">Аксессуары</category>
+		<category id="270" parentId="213">Системы сортировки отходов</category>
+		<category id="247" parentId="236">Электробритвы для мужчин</category>
+		<category id="248" parentId="236">Эпиляторы и женские электробритвы</category>
+		<category id="88" parentId="236">Фены</category>
+		<category id="241" parentId="236">Ванночки для ног</category>
+		<category id="242" parentId="236">Маникюрные наборы</category>
+		<category id="243" parentId="236">Весы напольные</category>
+		<category id="244" parentId="236">Для укладки волос</category>
+		<category id="245" parentId="236">Массажеры</category>
+		<category id="246" parentId="236">Машинки для стрижки</category>
+		<category id="383" parentId="381">bbbbbbbbbbbbbbbb</category>
+		<category id="384" parentId="381">xxxxxxxxxxxxx</category>
+	</categories>
+	<offers>
+		<offer id="24258" available="false">
+			<url>адрес сайта/tsifri-pazli.html</url>
+			<price>34</price>
+			<currencyId>USD</currencyId>
+			<categoryId>326</categoryId>
+			<picture>адрес сайта/images/mod_catalog_prod/24258/135875384300.jpg</picture>
+			<name>цифры-пазлы</name>
+		</offer>
+	</offers>
+</shop>
+</yml_catalog>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body style="overflow-x: hidden">
+<script src="node_modules/three/three.min.js"></script>
+<script src="node_modules/three/examples/js/renderers/CanvasRenderer.js"></script>
+<script src="node_modules/three/examples/js/renderers/SVGRenderer.js"></script>
+<script src="node_modules/three/examples/js/renderers/Projector.js"></script>
+
+
+<script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+
+<script src="screenshot.js"></script>
+<script>
+    var canvasHeight = window.innerHeight - 200;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/canvasHeight, 0.5, 1000 );
+
+    var renderer = new THREE.WebGLRenderer();
+//    var renderer = new THREE.SVGRenderer();
+//    var renderer = new THREE.CanvasRenderer();
+
+    renderer.setSize( window.innerWidth, canvasHeight );
+    document.body.appendChild( renderer.domElement );
+
+
+    // load a texture, set wrap mode to repeat
+    var texture = new THREE.TextureLoader().load( "textures/2.jpg" );
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set( 1, 1 );
+
+
+    var geometry = new THREE.BoxGeometry( 2, 0.1, 5 );
+    var material = new THREE.MeshBasicMaterial( { map: texture, color: 0x0088FF, overdraw: true } );
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
+
+    camera.position.z = 5;
+
+
+    //camera.lookAt(cube.position); //not working
+    var controls;
+    controls = new THREE.OrbitControls( camera );
+    controls.addEventListener( 'change', render );
+//    controls.autoRotate = true;
+
+    var render = function () {
+        requestAnimationFrame( render );
+        renderer.render(scene, camera);
+
+//        cube.rotation.x += 0.01;
+//        cube.rotation.y += 0.01;
+
+            //controls.update();
+
+    };
+
+    render();
+
+</script>
+
+<button onclick="convertCanvasToImage(document.getElementsByTagName('canvas')[0])">Make screenshot</button>
+<button onclick="convertSVGToImage()">Make screenshot from SVG</button>
+<img id="screenShot" src="" alt="screenshot">
+
+</body>
+</html>

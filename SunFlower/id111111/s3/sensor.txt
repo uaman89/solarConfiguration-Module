@@ -1,0 +1,14 @@
+
+25.08.2015  10:25:56 idc=111111&ids=3&sensor=&stat=3&azim=180&tilt=5&long=45.1237&lat=-33.5&temp=25&wind=12|0&snow=1&irrd=105&time=010215|1705&inst=010215&num=105&cs=68
+25.08.2015  12:10:32 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:11:33 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:13:18 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:13:25 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:14:45 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:15:16 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:27:46 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:28:01 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:29:04 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:29:21 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:33:02 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49
+25.08.2015  12:33:17 idc=111111&ids=3&sensor=&stat=4&azim=-45&tilt=70&long=45.1237&lat=-33.5&temp=-25&wind=13|1&snow=1&irrd=378&time=010215|1705&inst=010215&num=378&cs=49

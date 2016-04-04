@@ -1,0 +1,419 @@
+AWSTATS DATA FILE 7.3 (build 20140126)
+# If you remove this file, all statistics for date 201304 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.solar.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2008                
+POS_TIME 2682                
+POS_VISITOR 10577               
+POS_DAY 11178               
+POS_DOMAIN 3540                
+POS_LOGIN 3775                
+POS_ROBOT 3971                
+POS_WORMS 4103                
+POS_EMAILSENDER 4234                
+POS_EMAILRECEIVER 4377                
+POS_SESSION 11522               
+POS_SIDER 11716               
+POS_FILETYPES 4512                
+POS_DOWNLOADS 4797                
+POS_OS 4909                
+POS_BROWSER 4986                
+POS_SCREENSIZE 5337                
+POS_UNKNOWNREFERER 5411                
+POS_UNKNOWNREFERERBROWSER 5498                
+POS_ORIGIN 5580                
+POS_SEREFERRALS 5721                
+POS_PAGEREFS 5865                
+POS_SEARCHWORDS 6013                
+POS_KEYWORDS 6165                
+POS_MISC 2344                
+POS_ERRORS 6224                
+POS_CLUSTER 3631                
+POS_SIDER_404 6354                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150604101549 1 0 12701326937583
+FirstTime 20130401180258
+LastTime 20130411213059
+LastUpdate 20150605000241 1 0 0 0 0
+TotalVisits 34                  
+TotalUnique 3                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 17                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+PDFSupport 0 0 0
+JavaEnabled 0 0 0
+AddToFavourites 0 136 0
+WindowsMediaPlayerSupport 0 0 0
+RealPlayerSupport 0 0 0
+QuickTimeSupport 0 0 0
+FlashSupport 0 0 0
+JavascriptDisabled 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 394 3774 16093441 467 492 113331
+1 408 4307 17546162 539 557 108350
+2 222 3151 39079288 489 519 100461
+3 79 1716 716546 192 214 41640
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 4 0 0 0 0
+8 0 0 0 0 0 0
+9 27 182 2279508 72 72 15958
+10 61 587 2313260 149 164 35100
+11 197 1778 23348438 361 376 74277
+12 557 2845 132155756 618 636 141697
+13 742 4836 89743451 974 1010 195892
+14 275 3340 16131720 493 502 98865
+15 416 6221 17289775 650 672 139859
+16 359 9740 19044903 503 521 102821
+17 228 10729 10311051 366 378 83757
+18 133 2416 20199039 271 312 70411
+19 561 2055 8536471 358 363 67942
+20 1101 2340 68919658 716 716 135981
+21 424 1951 8301596 680 702 163277
+22 356 2151 6776713 549 553 110486
+23 942 3537 47351623 592 604 111634
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 7482 67660 526130044
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 7482 67306 520504512 20130411213101
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 11
+gif 632 964933 0 0
+pdf 54 70189397 0 0
+html 3080 11492211 0 0
+swf 3 7318 0 0
+php 4384 15133366 0 0
+jpg 37735 387547320 0 0
+css 7132 7151914 0 0
+png 1729 1459535 0 0
+xml 3 16686 0 0
+js 12896 32153533 0 0
+htm 12 13831 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 1
+/uploads/files/pages/14/solar-system-a4-2013.pdf 6 126 70189397
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 1
+win7 8958 0
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 15
+safari6.0 131 8
+chrome26.0.1410.64 495 137
+opera9.80 57 1
+msie8.0 49 10
+msie10.0 181 11
+chrome25.0.1364.172 35 1
+msie9.0 53 12
+firefox18.0 37 1
+chrome26.0.1410.43 54805 3025
+firefox19.0 1292 409
+firefox11.0 98 16
+chrome21.0.1180.83 9068 3473
+chrome24.0.1312.57 37 1
+msie7.0 7 6
+firefox15.0.1 1441 27
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 578 886
+From1 0 0
+From2 0 0
+From3 0 0
+From4 6904 66900
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 4
+301 234 50405
+404 8863 1805355
+302 41 820
+401 88 25631
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 49
+/kachestvo/ 3 http://solar.seotm.biz/kachestvo/nadezhnost/
+/images/design/no-image.gif/ 80 http://solar.seotm.biz/o-nas/novosti/
+/kachestvo/proekti/ussolar2012/ 1 http://solar.seotm.biz/kachestvo/proekti/
+/1/ 1 http://solar.seotm.biz/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html
+/images/mod_pages/3/ex-size-140news.jpg%3e%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3c/div%3e%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3cdiv%20class=/ 1 http://solar.seotm.biz/kachestvo/proekti/
+/images/design/facebook.jpg/ 5 http://solar.seotm.biz/
+/include/css/browsers/ie.css/ 23 http://solar.seotm.biz/kachestvo/proekti/
+/video/video-report/kirovogradskaya-obl-s-ivanovka.html 1 http://solar.seotm.biz/video/
+/images/design/top-carusel.png/ 3 -
+/images/design/comments-arrow.jpg/ 2 http://solar.seotm.biz/o-nas/
+/news/company-news/sfesrwe.html 2 http://solar.seotm.biz/o-nas/novosti/
+/contacts/ 1 http://solar.seotm.biz/
+/catalog/%3cbr%20/%3e%3cfont%20size='1'%3e%3ctable%20class='xdebug-error%20xe-notice'%20dir='ltr'%20border='1'%20cellspacing='0'%20cellpadding='1'%3e%3ctr%3e%3cth%20align='left'%20bgcolor='/ 6 http://solar.seotm.biz/catalog/
+/kachestvo/nadezhnost/ 4 http://solar.seotm.biz/o-nas/
+/images/design/btn-carusel.png/ 1 http://solar.seotm.biz/
+/images/design/youtube.jpg/ 5 http://solar.seotm.biz/
+/catalog/uploads/files/pages/14/solar-system-a4-2013.pdf/ 4 http://solar.seotm.biz/catalog/
+/images/design/favicon.ico/ 5788 -
+/%3cbr%20/%3e%3cfont%20size='1'%3e%3ctable%20class='xdebug-error%20xe-notice'%20dir='ltr'%20border='1'%20cellspacing='0'%20cellpadding='1'%3e%3ctr%3e%3cth%20align='left'%20bgcolor='/ 2 http://solar.seotm.biz/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html
+/kachestvo/nadezhnost/-/ 1 -
+/images/design/zakaz.png/ 35 http://solar.seotm.biz/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html
+/include/css/next-vertical.png/ 9 http://solar.seotm.biz/
+/contact/uploads/files/pages/14/no-image.jpg/ 2 http://solar.seotm.biz/contact/
+/images/design/ajax-loader.gif/ 45 http://solar.seotm.biz/contact/
+/include/css/prev-vertical.png/ 9 http://solar.seotm.biz/
+/kachestvo/nadezhnost/www.metalvis.ua/ 1 http://solar.seotm.biz/kachestvo/nadezhnost/
+/kachestvo/uploads/files/pages/14/solar-system-a4-2013.pdf/ 1 http://solar.seotm.biz/kachestvo/
+/nadezhnost/nadezhnost/ 2 http://solar.seotm.biz/nadezhnost/nadezhnost/
+/images/design/main-slide-1.jpg/ 11 http://solar.seotm.biz/
+/images/mod_pages/news.jpg/ 1 http://solar.seotm.biz/kachestvo/proekti/
+/admin/images/icons/add_params_f2.png/ 5 http://solar.seotm.biz/admin/index.php
+/images/mod_pages/3/ex-size-140%3e%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3c/div%3e%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3cdiv%20class=/ 1 http://solar.seotm.biz/kachestvo/proekti/
+/favicon.ico/ 2729 -
+/images/design/search_key.png/ 16 http://solar.seotm.biz/
+/images/design/oblako.png/ 1 http://solar.seotm.biz/video/films/v-zhitomire-asfalt-kladut-pryamo-na-boloto.html
+/images/design/btns.png/ 1 http://solar.seotm.biz/dictionary/
+/images/image/photo.png/ 1 -
+/kachestvo/proekti/ 1 http://solar.seotm.biz/kachestvo/nadezhnost/
+/admin/images/icons/video.png/ 17 http://solar.seotm.biz/admin/index.php
+/images/design/twit.jpg/ 5 http://solar.seotm.biz/
+/images/mod_pages/3/ex-size-140/ 3 http://solar.seotm.biz/kachestvo/proekti/
+/images/design/no-image-big.jpg/ 1 http://solar.seotm.biz/department/
+/o-nas/uploads/files/pages/14/solar-system-a4-2013.pdf/ 3 http://solar.seotm.biz/o-nas/
+/include/css/browsers/ie7.css/ 5 http://solar.seotm.biz/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html
+/images/design/icoLeftMenu.png/ 3 http://solar.seotm.biz/video/
+/a/ 1 -
+/images/design/no-photo3.gif/ 16 http://solar.seotm.biz/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html
+/images/mod_user/1/ 3 http://solar.seotm.biz/o-nas/
+/images/image/photo1.png/ 1 -
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 17
+178.216.19.6 7479 7659 96845491 20130411213059
+213.108.40.34 2 5468 93755530 20130408202929
+46.219.1.171 1 24234 89561958 20130409134058
+192.168.1.45 0 10191 7892875 
+109.237.85.6 0 119 4357616 
+37.53.228.116 0 7556 83363501 
+217.76.194.158 0 962 93151099 
+37.52.22.126 0 49 779932 
+178.92.251.181 0 5465 20133147 
+37.55.58.250 0 4743 1071990 
+37.55.56.15 0 22 179301 
+37.53.225.232 0 67 137775 
+37.55.58.212 0 71 1723722 
+37.53.228.163 0 205 32786950 
+37.55.56.247 0 12 199190 
+46.201.174.35 0 959 189967 
+85.158.90.200 0 4 0 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 10
+20130401 22 55 509317 1
+20130402 322 8903 5231472 2
+20130404 509 4649 5671066 3
+20130405 1804 25978 63078004 4
+20130406 1700 8784 119769280 5
+20130407 262 4312 40323901 4
+20130408 1549 9113 137583488 4
+20130409 737 2305 140657218 5
+20130410 482 3136 29612030 2
+20130411 95 425 3702623 4
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 6
+0s-30s 7
+5mn-15mn 2
+1h+ 17
+30mn-1h 5
+2mn-5mn 1
+30s-2mn 2
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 86
+/admin/index.php 1510 9000657 3 2
+/sys/js/tinymce/plugins/imagemanager/stream/index.php 1388 2868620 0 0
+/sys/js/tinymce/plugins/imagemanager/language/index.php 505 260124 0 0
+/sys/js/tinymce/plugins/filemanager/language/index.php 432 46224 0 1
+/ 393 1318493 18 7
+/catalog/ 377 1340901 0 3
+/sys/js/tinymce/plugins/imagemanager/rpc/index.php 262 125420 0 0
+/o-nas/ 244 909092 4 1
+/dinamicheskaya-avtomaticheskaya-odnoosnaya-sistema.html 213 786287 0 2
+/o-nas/novosti/ 194 791897 0 1
+/sys/js/tinymce/themes/advanced/color_picker.htm 2 1093 0 0
+/nazemnie/statisticheskie-dvuhopornie/ 17 60833 0 0
+/dictionary/letter1/ 1 5236 0 0
+/kachestvo/ 152 468564 1 1
+/gallery/ 1 4842 0 0
+/sss-5-2.html 24 95529 0 0
+/video/ 60 218037 0 1
+/dinamicheskaya-as-sunflower.html 34 137647 0 1
+/sys/js/tinymce/plugins/imagemanager/pages/im/upload.html 3 2944 0 0
+/video/films/v-zhitomire-asfalt-kladut-pryamo-na-boloto.html 1 6762 0 0
+/o-nas/deyatelnost/ 58 199813 0 0
+/sys/js/tinymce/plugins/imagemanager/pages/im/js/jquery/jquery.multiupload.flash.swf 3 7318 3 3
+/comments/add_comment/ 2 292 0 0
+/modules/mod_catalog/catalogcontent.backend.php 7 273 0 0
+/sys/js/tinymce/plugins/advimage/image.htm 4 7470 0 0
+/nazemnie/staticheskaya-odnoopornie/ 53 179236 1 1
+/sys/js/fckeditor/editor/dialog/fck_paste.html 2 8290 0 0
+/sistema-sss-4-2.html 7 28758 0 0
+/admin/modules/sys_user/sys_user.php 2 168 0 0
+/o-nas/novosti/company-news/uspeshno-zavershen-montazh-sistem-krepleniya-fem.html 6 21345 0 0
+/sys/js/tinymce/plugins/imagemanager/js/index.php 146 2277362 0 0
+/nadezhnost/nadezhnost/ 2 7932 0 0
+/sys/js/fckeditor/fckstyles.xml 2 6900 0 0
+/sitemap.xml 1 9786 0 0
+/kachestvo/proekti/ 165 638208 0 0
+/index.php 6 14966 0 0
+/sys/classes/upload/upload.php 16 2184 0 0
+/dictionary/letter2/ 1 5027 0 0
+/include/kcaptcha/index.php 24 59738 0 1
+/dictionary/letter3/ 1 5535 0 0
+/contact/ 124 561079 1 4
+/krovelnie.html 71 283624 0 0
+/o-nas/novosti/company-news/sfesrwe.html 1 2890 0 0
+/department/ 1 6294 0 0
+/articles/ 1 7193 0 0
+/o-nas/novosti/company-news/ooo-ukrainskie-sistemi-solar-chlen-apeu.html 15 52735 0 0
+/nadezhnost/ 3 9516 0 0
+/video/video-report/video.html 1 3236 0 0
+/nazemnie/tovari/ 2 6426 0 0
+/sys/js/tinymce/plugins/imagemanager/pages/im/ 4 4359 0 0
+/o-nas/novosti/company-news/zavershena-vistavka-sisolar-2012.html 9 32779 0 0
+/modules/mod_pages/pages.backend.php 3 5658 0 0
+/kachestvo/nadezhnost/ 118 482243 0 0
+/contacts/ 61 265590 0 1
+/video/video-report/kirovogradskaya-obl-s-ivanovka.html 1 3190 0 0
+/o-nas/novosti/company-news/priglashaem-prinyat-uchastie-v-vistavke-sisolar-2012.html 14 39639 0 0
+/kachestvo/proizvodstvo/ 55 253069 1 0
+/comments/get_form/ 3 2094 0 0
+/o-nas/novosti/company-news/okonchanie-montazhnih-rabot-v-s-ivanovka-kirovogradskoy-oblasti.html 7 24590 0 0
+/sistema-sss-5-2.html 8 31849 0 0
+/sys/js/tinymce/plugins/advlink/link.htm 1 2716 0 0
+/sys/js/tinymce/themes/advanced/source_editor.htm 5 2552 0 0
+/sss-4-2.html 14 57000 0 0
+/admin/modules/sys_spr/sys_spr.php 2 5236 0 0
+/nazemnie/ 120 417689 0 1
+/o-nas/proekti/ 14 52351 0 0
+/o-nas/novosti/company-news/v-kieve-proshel-ocherednoy-forum-ref-2012.html 7 25925 0 0
+/o-nas/novosti/company-news/podryadchiku-sdana-dvuhryadnaya-dvuhopornaya-sistema-s-vertikalnim-raspolozheniem-fem.html 10 35022 0 0
+/o-nas/novosti/company-news/sdfsdfsdf.html 13 46165 0 0
+/contact/send/ 10 5968 0 0
+/sys/js/fckeditor/editor/fckeditor.html 2 8496 0 0
+/sss-2.html 21 85256 0 0
+/admin/ 119 540288 1 0
+/modules/mod_sitemap/sitemap.backend.php 1 953 0 0
+/thumb.php 7 88373 0 0
+/kachestvo/standarti-kachestva/ 71 242095 0 0
+/seymostoykie.html 49 197723 0 1
+/sss-3.html 17 68810 0 0
+/dictionary/ 1 5033 0 0
+/o-nas/novosti/company-news/novie-naznacheniya-v-apeu.html 7 26876 0 0
+/sys/js/fckeditor/editor/fckdialog.html 2 13770 0 0
+/o-nas/novosti/company-news/prisoedinyaytes-k-delegatam-iz-bolee-25-stran-na-vtoroy-mezhdunarodnoy-konferentsii-sisolar-2013.html 8 30937 0 0
+/o-nas/novosti/company-news/snezhnaya-zima-ne-pomeha-uspeshno-zavershen-ocherednoy-masshtabniy-proekt.html 9 32002 0 1
+/sss-1.html 64 245902 1 1
+/o-nas/novosti/page2/ 12 41008 0 0
+/sys/js/tinymce/plugins/imagemanager/css/index.php 73 377410 0 0
+END_SIDER

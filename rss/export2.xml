@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+                <rss version="2.0">
+                <channel>
+                <image>
+                <url>http://seocms.seotm.biz/images/design/logo_rss.gif</url>
+                <title>Новини</title>
+                <link>http://seocms.seotm.biz/</link>
+                </image>
+                <title>Новини</title>
+                <link>http://seocms.seotm.biz/</link>
+                <description>Новини</description>
+                
+                    <item>
+                    <title>ds</title>
+                    <link>http://seocms.seotm.biz/news/company-news/sdfgdfgsdf.html</link>
+                    <description></description>
+                    <author>http://seocms.seotm.biz</author>
+                    <category>Акції</category>
+                    <enclosure url="http://seocms.seotm.biz//images/mod_news134/sayt.jpg" type="image/jpeg"></enclosure>
+                    <pubDate>Wed, 11 Jul 2012 09:56:00 +0300</pubDate>
+                    <fulltext></fulltext>
+                    </item>
+                    </channel></rss>

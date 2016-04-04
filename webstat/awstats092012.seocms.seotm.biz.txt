@@ -1,0 +1,413 @@
+AWSTATS DATA FILE 7.0 (build 1.971)
+# If you remove this file, all statistics for date 201209 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.seocms.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2006                
+POS_TIME 2666                
+POS_VISITOR 8688                
+POS_DAY 9368                
+POS_DOMAIN 3406                
+POS_LOGIN 3639                
+POS_ROBOT 3833                
+POS_WORMS 3965                
+POS_EMAILSENDER 4096                
+POS_EMAILRECEIVER 4239                
+POS_SESSION 9915                
+POS_SIDER 10121               
+POS_FILETYPES 4374                
+POS_DOWNLOADS 4629                
+POS_OS 4677                
+POS_BROWSER 4747                
+POS_SCREENSIZE 4953                
+POS_UNKNOWNREFERER 5027                
+POS_UNKNOWNREFERERBROWSER 5114                
+POS_ORIGIN 5196                
+POS_SEREFERRALS 5336                
+POS_PAGEREFS 5480                
+POS_SEARCHWORDS 5694                
+POS_KEYWORDS 5846                
+POS_MISC 2328                
+POS_ERRORS 5905                
+POS_CLUSTER 3495                
+POS_SIDER_404 6047                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20121001114531 1 0 9446169194144
+FirstTime 0
+LastTime 20120928103050
+LastUpdate 20121002000132 1 0 0 0 0
+TotalVisits 35                  
+TotalUnique 1                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 22                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 162 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 16 18 5220
+1 0 0 0 15 16 4751
+2 0 0 0 17 19 5621
+3 0 0 0 15 16 4751
+4 0 0 0 11 12 3702
+5 0 0 0 6 8 2431
+6 0 0 0 3 5 1561
+7 0 0 0 4 9 2943
+8 0 0 0 1 3 1092
+9 50 203 1086559 97 103 18510
+10 91 381 2783014 117 137 43293
+11 30 164 1551591 138 149 71326
+12 119 379 1711909 352 370 69777
+13 205 1085 2652001 318 345 65769
+14 119 762 3751330 347 412 80161
+15 117 229 751928 65 74 15882
+16 136 415 2875698 270 352 105370
+17 43 182 866100 175 211 42895
+18 176 874 3663809 398 448 106563
+19 60 830 607473 424 436 83960
+20 72 75 322517 85 97 21827
+21 0 0 0 16 17 4930
+22 8 95 1038001 36 44 15877
+23 0 0 0 18 19 6065
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 1226 5674 23661930
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 1226 5066 21269982 20120928103050
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 10
+css 662 1856418 0 0
+png 1625 832035 0 0
+htm 1 2490 0 0
+php 688 3456385 0 0
+cur 22 5868 0 0
+html 498 2691923 0 0
+xml 17 104662 0 0
+js 1313 12981154 0 0
+jpg 226 1301959 0 0
+gif 622 429036 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS 3
+winxp 113
+linux 1355
+win7 4206
+END_OS
+
+# Browser ID - Hits
+BEGIN_BROWSER 8
+chrome21.0.1180.83 1364
+chrome22.0.1229.79 63
+firefox15.0 174
+chrome20.0.1132.57 69
+firefox14.0.1 217
+firefox15.0.1 613
+opera9.80 1
+chrome21.0.1180.89 3173
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 103 130
+From1 0 0
+From2 0 0
+From3 0 1
+From4 1123 5543
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 1
+http://test1.seotm.biz/sys/js/fckeditor/editor/fckeditor.html 0 1
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 5
+401 409 124604
+302 6 120
+206 4 41237
+404 2559 546269
+301 180 37531
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 27
+/modules/mod_shop/shop_priceXML.php/ 5 -
+/admin/images/icons/delete_f2.png/ 2 http://seocms.seotm.biz/admin/
+/uploads/images/pages/58/1.JPG/ 3 http://seocms.seotm.biz/o-nas/
+/include/css/screen.css/ 1 http://seocms.seotm.biz/admin/index.php
+/priceXML/nadavi/ 1 http://seocms.seotm.biz/admin/index.php
+/admin/images/icons/add_params_f2.png/ 21 http://seocms.seotm.biz/admin/index.php
+/include/js/a.js/ 128 http://seocms.seotm.biz/
+/images/image/photo.png/ 13 http://seocms.seotm.biz/news/industry-news/ooo-invent-elektro-predstavilo-svoe-oborudovanie-na-xxvii-mezhdunarodnoy-spetsializirovannoy-vistavke-energetika-(g-samara).html
+/images/design/catalogCaption.gif/ 2 http://seocms.seotm.biz/include/css/main.css
+/images/design/favicon.ico/ 160 -
+/sys/js/tinymce/plugins/imagemanager/pages/im/img/bg.gif/ 1 http://seocms.seotm.biz/sys/js/tinymce/plugins/imagemanager/pages/im/edit.html
+/images/design/no-photo3.gif/ 5 http://seocms.seotm.biz/catalog/krupnaya-bitovaya-tehnika/holodilniki/produkt-n4.html
+/images/mod_comments/bannersize_1322214279./ 4 http://seocms.seotm.biz/comments/
+/images/design/zakaz.png/ 5 http://seocms.seotm.biz/catalog/krupnaya-bitovaya-tehnika/holodilniki/produkt-n4.html
+/images/mod_blog// 2 http://seocms.seotm.biz/admin/index.php
+/images/design/icoLeftMenu.png/ 86 http://seocms.seotm.biz/
+/images/design/no-image.gif/ 6 http://seocms.seotm.biz/news/
+/images/design/btns.png/ 7 http://seocms.seotm.biz/include/css/main.css
+/images/mod_blog/12/ 2 http://seocms.seotm.biz/admin/index.php
+/images/design/no-image-big.jpg/ 4 http://seocms.seotm.biz/department/
+/sys/js/tinymce/plugins/imagemanager/pages/im/img/menu_icons.gif/ 1 http://seocms.seotm.biz/sys/js/tinymce/plugins/imagemanager/pages/im/index.html
+/images/image/photo1.png/ 13 http://seocms.seotm.biz/news/industry-news/ooo-invent-elektro-predstavilo-svoe-oborudovanie-na-xxvii-mezhdunarodnoy-spetsializirovannoy-vistavke-energetika-(g-samara).html
+/images/design/oblako.png/ 9 http://seocms.seotm.biz/news/industry-news/ooo-invent-elektro-predstavilo-svoe-oborudovanie-na-xxvii-mezhdunarodnoy-spetsializirovannoy-vistavke-energetika-(g-samara).html
+/images/logo.gif/ 1 http://seocms.seotm.biz/admin/
+/crossdomain.xml 1 http://seocms.seotm.biz/admin/
+/favicon.ico/ 2074 -
+/include/js/tinymce/tiny_mce.js/ 2 http://seocms.seotm.biz/registration/
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 22
+178.216.19.6 1226 1226 6261328 20120928103050
+192.168.1.80 0 2592 1691871 
+188.56.215.85 0 86 885092 
+192.168.1.45 0 113 1040354 
+95.132.30.140 0 1 3788 
+192.168.1.233 0 29 399383 
+95.111.223.126 0 1 3788 
+91.142.161.34 0 343 3043792 
+192.168.1.100 0 44 584120 
+95.111.227.6 0 31 437956 
+188.163.56.235 0 1 3788 
+192.168.1.39 0 394 3352146 
+46.119.28.144 0 1 3788 
+188.231.149.218 0 72 852750 
+46.119.26.229 0 113 992930 
+188.163.57.127 0 15 164660 
+193.107.73.42 0 15 164625 
+95.132.61.64 0 1 3788 
+37.54.20.206 0 1 3788 
+192.168.1.50 0 426 2227166 
+188.163.38.195 0 50 466783 
+192.168.1.33 0 119 1074246 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 20
+20120902 2 17 172877 1
+20120904 116 1394 1901403 1
+20120905 55 233 2047948 3
+20120906 80 205 1573461 3
+20120909 6 57 512044 1
+20120910 34 208 2009589 3
+20120911 32 130 933950 1
+20120912 11 26 43967 3
+20120913 129 537 4665031 4
+20120914 5 52 21816 1
+20120916 0 1 3788 0
+20120918 4 4 18344 1
+20120919 53 185 1604983 1
+20120920 13 14 54034 1
+20120921 454 1830 3557536 1
+20120924 33 137 1078821 2
+20120925 9 70 668124 1
+20120926 152 394 1981619 3
+20120927 8 63 28861 3
+20120928 30 117 783734 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 4
+5mn-15mn 3
+30s-2mn 6
+15mn-30mn 5
+2mn-5mn 4
+0s-30s 11
+30mn-1h 2
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 91
+/admin/index.php 522 3048004 6 13
+/admin/ 198 1135296 18 6
+/sys/js/fckeditor/editor/fckeditor.html 128 539496 0 2
+/modules/mod_catalog/catalogcontent.backend.php 45 158029 0 1
+/admin/modules/sys_spr/sys_spr.php 37 99750 1 1
+/ 33 256345 10 1
+/modules/mod_shop_export/shop.backend.php 28 4054 0 0
+/include/js/highslide/graphics/zoomout.cur 19 4890 0 2
+/catalog/ 15 123701 0 0
+/priceXML/nadavi/ 10 24182 0 0
+/xml/iua_price.xml 1 11313 0 0
+/comments/ 4 22987 0 0
+/sys/js/tinymce/plugins/imagemanager/pages/im/edit.html 1 1358 0 0
+/catalog/krupnaya-bitovaya-tehnika/posudomoechnie-mashini/ 1 5793 0 0
+/priceXML/e0katalog/ 1 108 0 0
+/sys/js/fckeditor/editor/fckdialog.html 1 6885 0 0
+/include/js/highslide/graphics/zoomin.cur 3 978 0 0
+/sys/js/tinymce/plugins/imagemanager/language/index.php 9 6382 0 1
+/registration/ 1 8359 0 0
+/sys/js/fckeditor/editor/dialog/fck_template.html 1 2296 0 0
+/modules/mod_user/user.backend.php 1 94 0 0
+/o-nas/mi-v-litsah/otdel-veb-razrayuotki/ 1 7084 0 0
+/sys/js/tinymce/plugins/imagemanager/stream/index.php 1 3378 0 0
+/catalog/apparatura-hi-fi/ 1 5873 0 0
+/sys/js/tinymce/plugins/filemanager/pages/fm/ 1 1749 0 0
+/sys/js/fckeditor/fckstyles.xml 10 34500 0 0
+/catalog/moyki-blanco/ 1 5744 0 0
+/sys/js/fckeditor/fcktemplates.xml 1 2959 0 1
+/add_comments.php 7 4956 0 0
+/o-nas/mi-v-litsah/otdel-veb-razrayuotki/veb-programmisti/ 1 7096 0 0
+/o-nas/mi-v-litsah/otdel-veb-razrayuotki/veb-programmisti/s-boshim-opitom/james-bond/ 1 7036 0 0
+/priceXML/bigmir/ 4 9635 0 0
+/dictionary/ 1 5462 0 0
+/logout.html 1 4948 0 0
+/ask/ 2 17468 0 0
+/sys/js/tinymce/plugins/filemanager/js/index.php 2 33065 0 0
+/include/kcaptcha/index.php 3 7253 0 1
+/news/company-news/tehnicheskie-rukovoditeli-operatsionnih-kompaniy-oao-holding-mrsk-posetili-invent-elektro.html 2 15171 0 0
+/news/industry-news/ooo-invent-elektro-predstavilo-svoe-oborudovanie-na-xxvii-mezhdunarodnoy-spetsializirovannoy-vistavke-energetika-(g-samara).html 5 37420 0 1
+/sys/js/tinymce/plugins/filemanager/language/index.php 8 3271 0 0
+/catalog/televizori/ 2 11668 0 0
+/xml/meta_price.xml 3 33342 0 0
+//catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/holodilnik-siemens-rt-555.html 1 7720 0 0
+/ask/chay/ 1 5831 0 0
+/sys/js/tinymce/plugins/filemanager/css/index.php 2 6037 0 0
+/sys/js/tinymce/plugins/imagemanager/js/index.php 4 58402 0 0
+/priceXML/hotprice/ 2 4841 0 0
+/priceXML/meta/ 3 7369 0 0
+/priceXML/payua/ 1 108 0 0
+/ask/show_form/ 3 15545 0 1
+/priceXML/price_ua/ 2 4741 0 0
+/gallery/ 2 9845 0 0
+/priceXML/e0-katalog/ 1 108 0 0
+/o-nas/ 5 34799 0 1
+/priceXML/pay_ua/ 2 4841 0 0
+/xml/nadavi_price.xml 2 22548 0 0
+/articles/ 1 7674 0 0
+/priceXML/e-katalog/ 4 7825 0 0
+/sys/js/tinymce/plugins/imagemanager/css/index.php 2 7857 0 0
+/sys/js/tinymce/plugins/advimage/image.htm 1 2490 0 0
+/modules/mod_order/print_bill.php 2 3061 0 1
+/priceXML/priceua/ 1 108 0 0
+/catalog/melkaya-bitovaya-tehnika/aerogril/ 1 6156 0 0
+/ask/kofe/ 4 23708 0 0
+/contacts/ 3 23747 0 0
+/sys/js/tinymce/plugins/imagemanager/rpc/index.php 9 2520 0 0
+/modules/mod_pages/pages.backend.php 1 2648 0 0
+/priceXML/yandex/ 1 2650 0 0
+/priceXML/hotline/ 5 12610 0 0
+/catalog/moyki-blanco/sistemi-sortirovki-othodov/ 1 5693 0 0
+/catalog/krupnaya-bitovaya-tehnika/holodilniki/produkt-n4.html 2 15159 0 1
+/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/ 4 23620 0 0
+/o-nas/mi-v-litsah/otdel-veb-razrayuotki/veb-programmisti/s-boshim-opitom/ 1 7083 0 0
+/video/ 2 11987 0 0
+/department/ 3 22578 0 0
+/comments/seo/elena.html 1 6211 0 0
+/catalog/krupnaya-bitovaya-tehnika/ 4 23221 0 0
+/catalog/krupnaya-bitovaya-tehnika/holodilniki/ 3 19641 0 0
+/comments/seo/iats-publicity.html 1 7691 0 0
+/sys/js/tinymce/plugins/imagemanager/pages/im/ 1 1453 0 0
+/catalog/audio-video-tehnika/ 2 11914 0 0
+/articles/smi-o-nas/premer-ministr-tatarstana-rustam-minnihanov.html 1 7577 0 0
+/catalog/krasota-i-zdorove/massazheri/ 1 5859 0 0
+/catalog/vstraivaemaya-tehnika/ 1 5858 0 0
+/modules/mod_catalog/catalog_ImpExp.php 2 329 0 0
+/catalog/krupnaya-bitovaya-tehnika/holodilniki/produkt-n7-24179.html 1 7699 0 0
+/modules/mod_catalog/report_download.php 1 6147 0 0
+/comments/seo/Unior.html 1 7271 0 0
+/news/ 7 51577 0 0
+/news/company-news/sdfgdfgsdf.html 1 6445 0 0
+/sys/js/tinymce/plugins/filemanager/rpc/index.php 2 1148 0 1
+END_SIDER

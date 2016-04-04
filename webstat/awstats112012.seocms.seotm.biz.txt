@@ -1,0 +1,370 @@
+AWSTATS DATA FILE 7.0 (build 1.971)
+# If you remove this file, all statistics for date 201211 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.seocms.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2006                
+POS_TIME 2679                
+POS_VISITOR 7134                
+POS_DAY 8120                
+POS_DOMAIN 3416                
+POS_LOGIN 3648                
+POS_ROBOT 3841                
+POS_WORMS 4007                
+POS_EMAILSENDER 4138                
+POS_EMAILRECEIVER 4281                
+POS_SESSION 8744                
+POS_SIDER 8950                
+POS_FILETYPES 4416                
+POS_DOWNLOADS 4638                
+POS_OS 4686                
+POS_BROWSER 4793                
+POS_SCREENSIZE 4968                
+POS_UNKNOWNREFERER 5042                
+POS_UNKNOWNREFERERBROWSER 5129                
+POS_ORIGIN 5211                
+POS_SEREFERRALS 5349                
+POS_PAGEREFS 5493                
+POS_SEARCHWORDS 5812                
+POS_KEYWORDS 5964                
+POS_MISC 2341                
+POS_ERRORS 6023                
+POS_CLUSTER 3504                
+POS_SIDER_404 6142                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20121201003645 1 0 9299740442711
+FirstTime 20121101095030
+LastTime 20121130191823
+LastUpdate 20121202000120 1 0 0 0 0
+TotalVisits 38                  
+TotalUnique 1                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 35                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 186 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 2 22 201335 9 14 3428
+1 5 30 258152 19 25 6494
+2 0 0 0 3 5 10979
+3 9 91 961524 25 30 6835
+4 0 0 0 4 9 3054
+5 0 0 0 8 11 3634
+6 0 0 0 152 160 46511
+7 0 0 0 7 10 3011
+8 0 0 0 11 20 6244
+9 22 113 766919 87 123 26918
+10 22 32 99540 31 39 8275
+11 7 81 708088 29 41 10587
+12 27 118 865660 47 66 15096
+13 99 1208 2199066 217 240 46771
+14 32 160 10046977 63 80 17577
+15 122 495 2973010 250 313 67425
+16 88 519 2651765 129 153 32007
+17 25 342 14617217 46 60 17896
+18 138 614 1044427 285 354 80491
+19 10 102 176026 48 57 17356
+20 1 21 195065 12 15 4023
+21 2 37 201335 11 19 5738
+22 0 0 0 6 9 2721
+23 0 1 3788 3 5 1561
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 611 3986 37969894
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 611 3795 36149070 20121130191826
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 1
+googlebot 1 9819 20121110024839 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 8
+php 365 10837378 0 0
+css 606 1761214 0 0
+png 1056 795901 0 0
+html 243 1213315 0 0
+xml 3 10350 0 0
+jpg 47 11846112 0 0
+js 1316 11237089 0 0
+gif 350 268535 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS 6
+winxp 5
+winlong 220
+linuxubuntu 1
+linux 1062
+winvista 151
+win7 2547
+END_OS
+
+# Browser ID - Hits
+BEGIN_BROWSER 6
+firefox17.0 115
+chrome23.0.1271.64 2439
+chrome23.0.1271.91 447
+chrome23.0.1271.95 137
+firefox16.0 638
+chrome22.0.1229.94 210
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 61 89
+From1 0 0
+From2 0 0
+From3 0 56
+From4 550 3841
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 5
+http://redmine.seotm.biz/projects/qwerty 0 4
+http://molot/admin/ 0 6
+http://redmine.seotm.biz 0 11
+http://redmine.seotm.biz/projects 0 34
+http://molot/admin/index.php 0 1
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 3
+401 520 159458
+301 85 17914
+404 1066 217213
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 11
+/images/design/icoLeftMenu.png/ 54 http://seocms.seotm.biz/contacts/
+/televizori/page2/page2/ 2 http://seocms.seotm.biz/televizori/page2/
+/dostavka-i-oplata/sposobi-dstavki/sposobi-dstavki/ 1 http://seocms.seotm.biz/dostavka-i-oplata/sposobi-dstavki/
+/images/image/photo1.png/ 16 http://seocms.seotm.biz/ua/o-nas/
+/images/image/photo.png/ 16 http://seocms.seotm.biz/ua/o-nas/
+/images/design/catalogCaption.gif/ 4 http://seocms.seotm.biz/krupnaya-bitovaya-tehnika/holodilniki/
+/admi/ 1 -
+/images/design/favicon.ico/ 238 -
+/images/design/no-photo3.gif/ 2 http://seocms.seotm.biz/produkt-n4.html
+/favicon.ico/ 721 -
+/images/design/zakaz.png/ 11 http://seocms.seotm.biz/produkt-n4.html
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 35
+178.216.19.6 611 611 12061043 20121130191823
+192.168.1.233 0 111 822436 
+188.163.63.36 0 1 3788 
+46.119.9.76 0 1 3788 
+46.119.21.122 0 1 3788 
+192.168.1.100 0 46 463163 
+46.119.28.201 0 1 3788 
+91.234.210.180 0 4 15152 
+188.163.58.253 0 1 3788 
+95.132.76.12 0 1 3788 
+95.132.24.152 0 21 41405 
+37.19.228.246 0 28 9873 
+93.180.240.74 0 20 188795 
+192.168.1.37 0 158 1065721 
+95.132.54.164 0 7 0 
+95.132.192.45 0 291 122434 
+192.168.1.50 0 530 4149798 
+213.108.44.130 0 45 170460 
+188.163.15.240 0 1 3788 
+192.168.1.158 0 55 377590 
+46.119.16.36 0 1 3788 
+37.55.227.214 0 82 929122 
+192.168.1.80 0 1350 4269105 
+192.168.1.45 0 26 41717 
+46.119.10.26 0 1 3788 
+95.132.238.119 0 1 3788 
+192.168.1.10 0 149 9342787 
+192.168.1.226 0 187 1457846 
+188.231.149.218 0 127 1368819 
+130.185.7.79 0 22 0 
+95.132.2.47 0 21 0 
+188.163.8.80 0 58 786799 
+188.163.59.197 0 3 11364 
+95.132.45.48 0 1 3788 
+37.52.16.224 0 23 232797 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 24
+20121101 14 56 242242 2
+20121102 12 170 887014 1
+20121105 55 215 1256631 4
+20121106 0 3 11364 0
+20121107 9 70 233110 2
+20121108 0 1 3788 0
+20121109 5 12 23917 1
+20121110 17 45 112356 1
+20121112 3 30 12954 2
+20121113 0 2 7576 0
+20121114 22 100 1080686 2
+20121115 0 1 3788 0
+20121116 75 1195 1650025 3
+20121117 0 1 3788 0
+20121118 24 151 1474654 1
+20121119 14 106 71027 1
+20121120 88 324 694071 2
+20121121 40 377 3508388 7
+20121124 0 1 3788 0
+20121126 40 171 10046961 3
+20121127 102 371 14285664 3
+20121128 0 1 3788 0
+20121129 23 100 459565 1
+20121130 68 483 1892749 2
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 3
+5mn-15mn 3
+15mn-30mn 4
+2mn-5mn 2
+0s-30s 14
+30s-2mn 6
+30mn-1h 6
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 45
+/admin/index.php 273 10797391 13 11
+/admin/ 77 334736 13 3
+/sys/js/tinymce/plugins/filemanager/language/index.php 39 4173 0 3
+/sys/js/tinymce/plugins/imagemanager/language/index.php 39 6006 0 3
+/ 23 145532 10 5
+/sys/js/fckeditor/editor/fckeditor.html 21 89208 0 1
+/televizori/page2/ 11 61217 0 0
+/comments/get_form/ 10 7000 0 1
+/dostavka-i-oplata/sposobi-dstavki/ 8 41112 0 0
+/111111111111111111.html 7 43824 0 1
+/televizori/plazmennie-televizori/ 3 17639 0 0
+/catalog/ 6 49728 1 0
+/krupnaya-bitovaya-tehnika/stiralnie-mashini/ 5 27453 0 0
+/dostavka-i-oplata/ 3 15474 0 0
+/admin/modules/sys_spr/sys_spr.php 4 11490 0 1
+/o-nas/ 2 11466 0 0
+/televizori/page2/page2/ 1 5411 0 0
+/en/ 1 4863 0 0
+/krupnaya-bitovaya-tehnika/ 3 16228 0 0
+/ua/news/actions/sdfgdfgsdf.html 1 4689 0 1
+/ua/ 5 26014 0 0
+/catalog/televizori/page2/page3/ 1 5848 0 0
+/contacts/ 4 25588 0 0
+/modules/mod_pages/pages.backend.php 2 242 0 0
+/televizori/plazmennie-televizori/page4/ 1 5945 0 0
+/krupnaya-bitovaya-tehnika/stiralnie-mashini/lazer/ 3 16156 0 0
+/sys/js/fckeditor/fckstyles.xml 3 10350 0 0
+/produkt-n5-24175.html 1 6337 0 1
+/ua/o-nas/ 5 32695 0 1
+/krupnaya-bitovaya-tehnika/stiralnie-mashini/bosh/ 3 16200 0 0
+/krupnaya-bitovaya-tehnika/holodilniki/ 3 18092 0 0
+/ru/news/ 6 28524 0 0
+/catalog/televizori/page2/ 3 16168 0 0
+/include/kcaptcha/index.php 7 17850 0 1
+/contacts/send/ 5 30991 1 1
+/televizori/ 4 21590 0 0
+/catalog/televizori/ 1 5361 0 0
+/search/result/ 3 14544 0 2
+/ua/news/ 1 4402 0 0
+/news/ 5 24077 0 1
+/produkt-n4.html 2 12428 0 0
+/modules/mod_catalog/catalogcontent.backend.php 1 226 0 0
+/ua/catalog/ 1 4661 0 0
+/catalog/televizori/page2/page2/ 2 11722 0 0
+/news/company-news/sdfgdfgsdf.html 2 10392 0 1
+END_SIDER

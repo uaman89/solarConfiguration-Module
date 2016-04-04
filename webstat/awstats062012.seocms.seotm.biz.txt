@@ -1,0 +1,362 @@
+AWSTATS DATA FILE 7.0 (build 1.971)
+# If you remove this file, all statistics for date 201206 will be lost/reset.
+# Last config file used to build this data file was /usr/local/etc/awstats/awstats.seocms.seotm.biz.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2006                
+POS_TIME 2679                
+POS_VISITOR 8290                
+POS_DAY 8812                
+POS_DOMAIN 3414                
+POS_LOGIN 3648                
+POS_ROBOT 3843                
+POS_WORMS 3975                
+POS_EMAILSENDER 4106                
+POS_EMAILRECEIVER 4249                
+POS_SESSION 9375                
+POS_SIDER 9571                
+POS_FILETYPES 4384                
+POS_DOWNLOADS 4621                
+POS_OS 4669                
+POS_BROWSER 4738                
+POS_SCREENSIZE 4949                
+POS_UNKNOWNREFERER 5023                
+POS_UNKNOWNREFERERBROWSER 5110                
+POS_ORIGIN 5192                
+POS_SEREFERRALS 5332                
+POS_PAGEREFS 5476                
+POS_SEARCHWORDS 5703                
+POS_KEYWORDS 5855                
+POS_MISC 2341                
+POS_ERRORS 5914                
+POS_CLUSTER 3504                
+POS_SIDER_404 6043                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20120702033749 1 0 7035522863300
+FirstTime 20120601104509
+LastTime 20120627161028
+LastUpdate 20120703000129 1 0 0 0 0
+TotalVisits 38                  
+TotalUnique 1                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 16                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 169 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 3 5 1450
+1 0 0 0 3 5 1672
+2 0 0 0 7 8 2320
+3 0 0 0 6 6 1740
+4 0 0 0 5 7 2030
+5 0 0 0 0 0 0
+6 2 17 173986 11 19 4518
+7 0 0 0 6 11 3190
+8 0 0 0 5 8 2653
+9 35 233 327650 130 154 30682
+10 40 229 1112523 66 77 15476
+11 36 334 1523180 69 82 17720
+12 109 1199 5539746 108 156 32250
+13 95 1989 1184723 43 50 9647
+14 69 282 1810074 247 284 64919
+15 46 506 257267 82 99 26490
+16 18 93 526315 17 26 5954
+17 161 1475 4387969 320 509 112686
+18 185 1885 1214762 370 485 94666
+19 223 2361 1529309 379 416 79153
+20 20 207 101952 173 176 33136
+21 11 69 593953 51 97 25123
+22 33 50 230088 39 47 9065
+23 0 0 0 4 6 1740
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 1083 10929 20513497
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 1
+demo 1083 10853 19699679 20120627161028
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 9
+css 1362 939966 0 0
+png 4089 452340 0 0
+php 815 3740068 0 0
+cur 15 3912 0 0
+html 248 1373520 0 0
+xml 5 13800 0 0
+js 2903 6484873 0 0
+jpg 174 7374759 0 0
+gif 1318 130259 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS 3
+winxp 17
+linux 563
+win7 10349
+END_OS
+
+# Browser ID - Hits
+BEGIN_BROWSER 9
+msie8.0 108
+firefox13.0.1 4
+firefox4.0.1 1927
+firefox10.0.4 6
+chrome6.0.472.53 17
+firefox13.0 265
+firefox12.0 90
+chrome19.0.1084.52 1757
+chrome19.0.1084.56 6755
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 67 73
+From1 0 0
+From2 0 0
+From3 0 15
+From4 1016 10841
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 2
+http://trac.seotm.biz:3000/projects/qwerty 0 11
+http://trac.seotm.biz:3000 0 4
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 4
+401 222 66822
+400 2 452
+301 368 77659
+404 1972 397289
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 27
+/admin/fancybox/fancy_shadow_e.png/ 2 -
+/images/mod_blog/10/ 2 http://seocms.seotm.biz/admin/index.php
+/include/css/browsers/ie.css/ 13 http://seocms.seotm.biz/myaccount/
+/admin/fancybox/fancy_shadow_sw.png/ 2 -
+/include/js/a.js/ 112 http://seocms.seotm.biz/modules/mod_poll/poll.preview.php
+/images/image/photo.png/ 37 http://seocms.seotm.biz/
+/uploads/images/gallery/1/karkas1.jpg/ 1 http://seocms.seotm.biz/gallery/produktsiya/nashi-raboti.html
+/images/design/catalogCaption.gif/ 3 http://seocms.seotm.biz/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/
+/images/design/favicon.ico/ 200 -
+/admin/fancybox/fancy_shadow_ne.png/ 2 -
+/images/design/no-photo3.gif/ 10 http://seocms.seotm.biz/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/holodilnik-siemens-rt-555.html
+/images/design/zakaz.png/ 10 http://seocms.seotm.biz/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/holodilnik-siemens-rt-555.html
+/images/mod_comments/bannersize_1322214279./ 4 http://seocms.seotm.biz/comments/
+/uploads/images/gallery/2/mainpg2.jpg/ 8 http://seocms.seotm.biz/gallery/produktsiya/test.html
+/images/design/icoLeftMenu.png/ 110 http://seocms.seotm.biz/modules/mod_poll/poll.preview.php
+/admin/fancybox/fancy_shadow_n.png/ 2 -
+/images/design/btns.png/ 6 http://seocms.seotm.biz/ask/
+/images/design/no-image.gif/ 3 http://seocms.seotm.biz/news/
+/admin/fancybox/fancy_shadow_w.png/ 2 -
+/admin/fancybox/fancy_shadow_nw.png/ 2 -
+/images/image/photo1.png/ 37 http://seocms.seotm.biz/
+/admin/fancybox/fancy_shadow_se.png/ 2 -
+/admin/fancybox/fancy_shadow_s.png/ 2 -
+/images/design/oblako.png/ 15 http://seocms.seotm.biz/news/company-news/invent-elektro-prinyalo-uchastie-v-vistavke-organizovannoy-v-ramkah-zasedaniya-kollegii-minstroya-rt.html
+/uploads/images/pages/59/11111111111111.jpg/ 2 http://seocms.seotm.biz/istoriya.html
+/favicon.ico/ 1382 -
+/include/js/tinymce/tiny_mce.js/ 1 http://seocms.seotm.biz/registration/
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 16
+178.216.19.6 1083 1083 5131300 20120627161028
+192.168.1.80 0 8998 2509698 
+192.168.1.22 0 15 164654 
+188.163.37.232 0 15 164654 
+192.168.1.100 0 99 6440029 
+95.81.40.53 0 127 1181112 
+95.132.110.9 0 59 584333 
+192.168.1.25 0 110 1119253 
+192.168.1.120 0 1 3788 
+95.81.50.27 0 58 534044 
+192.168.1.225 0 63 608958 
+188.231.149.218 0 17 63825 
+192.168.1.224 0 71 804825 
+192.168.1.50 0 192 1015642 
+213.108.44.130 0 6 22728 
+192.168.1.33 0 15 164654 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 21
+20120601 1 2 5494 1
+20120604 41 117 850666 2
+20120605 35 160 1463884 2
+20120606 187 1951 1115209 1
+20120607 3 3 10394 1
+20120608 22 36 95499 1
+20120611 67 299 3867360 3
+20120612 16 74 112891 1
+20120613 31 135 4920944 2
+20120614 5 6 15837 1
+20120615 2 17 173397 1
+20120616 19 146 1272270 2
+20120617 11 69 593953 1
+20120618 8 11 14787 1
+20120619 1 1 1713 1
+20120620 38 126 241195 1
+20120621 75 189 527928 3
+20120622 191 2045 2465801 4
+20120625 305 5441 2050382 4
+20120626 21 97 694148 4
+20120627 4 4 19745 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 6
+1h+ 9
+5mn-15mn 3
+30s-2mn 9
+15mn-30mn 1
+0s-30s 12
+30mn-1h 4
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 46
+/admin/index.php 599 3665221 8 18
+/admin/modules/sys_comments/sys_comments.php 113 10947 0 2
+/admin/ 84 337741 16 3
+/sys/js/fckeditor/editor/fckeditor.html 42 165672 0 0
+/admin/modules/sys_spr/sys_spr.php 36 21516 0 1
+/add_comments.php 29 4671 0 0
+/ 25 204562 12 2
+/modules/mod_catalog/catalogcontent.backend.php 20 8002 0 0
+/include/js/highslide/graphics/zoomout.cur 13 3260 0 3
+/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/holodilnik-siemens-rt-555.html 10 70458 0 1
+/catalog/ 4 34729 0 0
+/ask/show_form/ 1 5663 0 0
+/video/video-report/opel-astra-2011.html 5 30721 0 0
+/gallery/ 5 26414 0 0
+/news/company-news/invent-elektro-prinyalo-uchastie-v-vistavke-organizovannoy-v-ramkah-zasedaniya-kollegii-minstroya-rt.html 1 7606 0 0
+/myaccount/ 2 11308 0 1
+/modules/mod_poll/poll.result.php 1 1540 0 0
+/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/ 3 21003 0 0
+/modules/mod_poll/poll.preview.php 1 6860 0 0
+/o-nas/ 2 15125 0 0
+/articles/ 3 22877 0 0
+/comments/ 4 23280 0 2
+/news/industry-news/ooo-invent-elektro-prinyalo-uchastie-v-vistavke-promishlennih-predpriyatiy-respubliki-tatarstan.html 1 7951 0 0
+/include/js/highslide/graphics/zoomin.cur 2 652 0 0
+/php.php 4 19745 1 1
+/sys/js/tinymce/plugins/imagemanager/language/index.php 6 924 0 0
+/ru/o-nas/ 2 15132 0 1
+/registration/ 1 8979 0 0
+/login.html 4 21194 0 0
+/gallery/produktsiya/nashi-raboti.html 1 5449 0 0
+/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/ 6 35507 0 1
+/istoriya.html 2 30740 0 0
+/video/ 4 24046 0 0
+/sys/js/fckeditor/fckstyles.xml 5 13800 0 0
+/department/ 1 7624 0 0
+/catalog/krupnaya-bitovaya-tehnika/ 4 23431 0 0
+/ask/ 6 54348 1 1
+/gallery/produktsiya/test.html 9 52553 0 0
+/test.html 1 707 0 1
+/articles/smi-o-nas/premer-ministr-tatarstana-rustam-minnihanov.html 4 29607 0 0
+/articles/smi-o-nas/premer-ministr-tatarstana-rustam-minnihanov42.html 2 11838 0 0
+/news/company-news/tehnicheskie-rukovoditeli-operatsionnih-kompaniy-oao-holding-mrsk-posetili-invent-elektro.html 1 7590 0 0
+/news/industry-news/ooo-invent-elektro-predstavilo-svoe-oborudovanie-na-xxvii-mezhdunarodnoy-spetsializirovannoy-vistavke-energetika-(g-samara).html 1 7484 0 0
+/sys/js/tinymce/plugins/filemanager/language/index.php 6 642 0 0
+/comments/seo/Unior.html 2 14763 0 0
+/news/ 5 37418 0 0
+END_SIDER

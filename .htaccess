@@ -1,0 +1,280 @@
+Options -Indexes +FollowSymLinks
+
+#AuthType Basic
+#AuthName "Private zone. Only for administrator!"
+#AuthUserFile  /usr/home/seocms/data/www/seocms.seotm.biz/.htpasswd
+#require valid-user
+
+AddDefaultCharset utf-8
+
+# compress all text & html:
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css text/x-js
+
+# Or, compress certain file types by extension:
+<Files *.html>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.js>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.css>
+SetOutputFilter DEFLATE
+</Files>
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RewriteRule ^.htaccess$ - [F]
+
+#redirect all pages to 404 !!!(Don't uncomment on working sites. Only If needed quickly throw a site from the search engines index.)!!!
+#RedirectMatch 404 ^/.*$
+
+# Редирект для категорий (чтобы в конце URL был /)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !.html$
+RewriteCond %{REQUEST_URI} !.xml$
+RewriteRule (.+) $1/ [R=301,L]
+
+#RewriteCond %{HTTP_HOST} ^site_name$ [NC]
+#RewriteRule ^(.*)$ http://www.site_name/$1 [R=301,L]
+
+# Редирект для главной (с /index.php,html на /)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
+
+#RewriteCond %{HTTP_HOST} ^seocms.seotm.biz$ [NC]
+#RewriteRule ^ru/(.*)$ http://seocms.seotm.biz/$1 [R=301,L]
+
+
+
+
+
+#======================================== Catalog START =======================================================================
+RewriteRule ^catalog/$                                                                          /modules/mod_catalog/catalog.php [L]
+RewriteRule ^catalog/search/result/([^/]*)/showall/$                                            /modules/mod_catalog/catalog.php?task=quick_search&search_keywords=$1&page=all [L]
+RewriteRule ^catalog/([^/]*).html$                                                              /modules/mod_catalog/catalog.php?str_id=$1 [L]
+RewriteRule ^catalog/([^/]*)/files/([0-9]+)$                                                    /modules/mod_catalog/catalog_files.php?task=show_files&file=$2 [L]
+RewriteRule ^catalog/page([0-9]+)/$                                                             /modules/mod_catalog/catalog.php?page=$1 [L]
+
+
+RewriteRule ^catalog/([^/]*)/$                                                                  /modules/mod_catalog/catalog.php?str_cat[0]=$1 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*).html$                                                      /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_id=$2 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/files/([0-9]+)$                                            /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_id=$2&task=show_files&file=$3 [L]
+RewriteRule ^catalog/([^/]*)/page([0-9]+)/$                                                     /modules/mod_catalog/catalog.php?str_cat[0]=$1&page=$2 [L]
+
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/$                                                          /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*).html$                                              /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_id=$3 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                                    /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_id=$3&task=show_files&file=$4 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/page([0-9]+)/$                                             /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&page=$3 [QSA,L]
+
+#RewriteRule ^catalog/([^/]*)/([^/]*)/fltr([0-9]+)/([^/]*)$                                      /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&page=$3 [QSA,L]
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/$                                                  /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                                      /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_id=$4 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                            /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_id=$4&task=show_files&file=$5 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                                     /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&page=$4 [QSA,L]
+
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                                          /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                              /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_id=$5 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                    /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_id=$5&task=show_files&file=$6 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                             /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&page=$5 [QSA,L]
+
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                                  /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                      /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_id=$6 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$            /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_id=$6&task=show_files&file=$7 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                     /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&page=$6 [QSA,L]
+
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                          /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$              /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_id=$7 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$    /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_id=$7&task=show_files&file=$8 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$             /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&page=$7 [QSA,L]
+
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                  /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_cat[6]=$7 [QSA,L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$      /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_cat[6]=$7&str_id=$8 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$    /modules/mod_catalog/catalog_files.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_cat[6]=$7&str_id=$8&task=show_files&file=$9 [L]
+RewriteRule ^catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$     /modules/mod_catalog/catalog.php?str_cat[0]=$1&str_cat[1]=$2&str_cat[2]=$3&str_cat[3]=$4&str_cat[4]=$5&str_cat[5]=$6&str_cat[6]=$7&page=$8 [QSA,L]
+
+
+
+
+
+
+RewriteRule ^(en|ru|ua)/catalog/$                                                                          /modules/mod_catalog/catalog.php?&lang_st=$1 [L]
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*).html$                                                              /modules/mod_catalog/catalog.php?lang_st=$1&str_id=$2 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/files/([0-9]+)$                                                    /modules/mod_catalog/catalog_files.php?lang_st=$1&task=show_files&file=$3 [L]
+RewriteRule ^(en|ru|ua)/catalog/page([0-9]+)/$                                                             /modules/mod_catalog/catalog.php?lang_st=$1&page=$2 [L]
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/$                                                                  /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*).html$                                                      /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_id=$3 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/make_zoom/([^/]*)_wtm_([^/]*).html$                        /dtlimg.php?lang_st=$1&img=$4&wtm=$5 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/files/([0-9]+)$                                            /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_id=$3&task=show_files&file=$4 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/page([0-9]+)/$                                                     /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&page=$3 [L]
+
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/$                                                          /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*).html$                                              /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_id=$4 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/make_zoom/([^/]*)_wtm_([^/]*).html$                /dtlimg.php?lang_st=$1&img=$5&wtm=$6 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                                    /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_id=$4&task=show_files&file=$5 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/page([0-9]+)/$                                             /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&page=$4 [L]
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/$                                                  /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                                      /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_id=$5 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/make_zoom/([^/]*)_wtm_([^/]*).html$        /dtlimg.php?lang_st=$1&img=$6&wtm=$7 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                            /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_id=$5&task=show_files&file=$6 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                                     /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&page=$4 [L]
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                                          /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                              /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_id=$6 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$                    /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_id=$6&task=show_files&file=$7 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                             /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&page=$6 [L]
+
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                                  /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$                      /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_id=$7 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$            /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_id=$7&task=show_files&file=$8 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$                     /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&page=$7 [L]
+
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                          /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$              /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_id=$8 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$    /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_id=$8&task=show_files&file=$9 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$             /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&page=$8 [L]
+
+
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/$                  /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_cat[6]=$8 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*).html$      /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_cat[6]=$8&str_id=$9 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/files/([0-9]+)$    /modules/mod_catalog/catalog_files.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_cat[6]=$8&str_id=$9&task=show_files&file=$10 [L]
+RewriteRule ^(en|ru|ua)/catalog/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/page([0-9]+)/$     /modules/mod_catalog/catalog.php?lang_st=$1&str_cat[0]=$2&str_cat[1]=$3&str_cat[2]=$4&str_cat[3]=$5&str_cat[4]=$6&str_cat[5]=$7&str_cat[6]=$8&page=$9 [L]
+
+
+
+
+
+
+
+
+
+
+
+#======================================== Catalog END =========================================================================
+
+
+
+
+
+
+#======================================== News START ==========================================================================
+RewriteRule ^o-nas/novosti/$                                                         /modules/mod_news/news.php [L]
+RewriteRule ^o-nas/novosti/page([0-9]+)/$                                            /modules/mod_news/news.php?page=$1 [L]
+
+RewriteRule ^o-nas/novosti/showimg/([0-9]+)/([^/]*)$                                 /img.php?news=$1&item=$2 [L]
+RewriteRule ^o-nas/novosti/([^/]*)/$                                                 /modules/mod_news/news.php?task=showall&str_cat=$1 [L]
+RewriteRule ^o-nas/novosti/([^/]*)/([^/]*).html$                                     /modules/mod_news/news.php?task=showfull&str_cat=$1&str_news=$2 [L]
+RewriteRule ^o-nas/novosti/([^/]*)/page([0-9]+)/$                                    /modules/mod_news/news.php?task=showall&str_cat=$1&page=$2 [L]
+RewriteRule ^o-nas/novosti/([^/]*)/showall/$                                         /modules/mod_news/news.php?task=showall&str_cat=$1&page=all [L]
+
+RewriteRule ^(en|ru|ua)/o-nas/novosti/showimg/([0-9]+)/([^/]*)$                      /img.php?news=$2&item=$3&lang_st=$1 [L]
+RewriteRule ^(en|ru|ua)/o-nas/novosti/$                                              /modules/mod_news/news.php?lang_st=$1 [L]
+RewriteRule ^(en|ru|ua)/o-nas/novosti/page([0-9]+)/$                                 /modules/mod_news/news.php?lang_st=$1&page=$2 [L]
+
+
+RewriteRule ^(en|ru|ua)/o-nas/novosti/([^/]*)/$                                      /modules/mod_news/news.php?task=showall&str_cat=$2&lang_st=$1 [L]
+RewriteRule ^(en|ru|ua)/o-nas/novosti/([^/]*)/([^/]*).html$                          /modules/mod_news/news.php?task=showfull&str_cat=$2&str_news=$3&lang_st=$1 [L]
+RewriteRule ^(en|ru|ua)o-nas/novosti/([^/]*)/page([0-9]+)/$                          /modules/mod_news/news.php?task=showall&str_cat=$2&page=$3&lang_st=$1 [L]
+
+#======================================== News END ============================================================================
+
+
+
+
+
+
+
+#======================================= VIDEO START ==========================================================================
+RewriteRule ^video/$                                                          /modules/mod_video/video.php [L]
+RewriteRule ^video/page([0-9]+)/$                                             /modules/mod_video/video.php?page=$1 [L]
+RewriteRule ^video/([^/]*)/$                                                  /modules/mod_video/video.php?task=cat&cat=$1 [L]
+RewriteRule ^video/([^/]*)/page([0-9]+)/$                                     /modules/mod_video/video.php?task=cat&cat=$1&page=$2 [L]
+RewriteRule ^video/([^/]*)/([^/]*).html$                                      /modules/mod_video/video.php?task=position&cat=$1&position=$2 [L]
+
+RewriteRule ^(en|ru|ua)/video/$                                               /modules/mod_video/video.php?lang_st=$1 [L]
+RewriteRule ^(en|ru|ua)/video/page([0-9]+)/$                                  /modules/mod_video/video.php?lang_st=$1&page=$2 [L]
+RewriteRule ^(en|ru|ua)/video/([^/]*)/$                                       /modules/mod_video/video.php?lang_st=$1&task=cat&cat=$2 [L]
+RewriteRule ^(en|ru|ua)/video/([^/]*)/page([0-9]+)/$                          /modules/mod_video/video.php?lang_st=$1&task=cat&cat=$2&page=$3 [L]
+RewriteRule ^(en|ru|ua)/video/([^/]*)/([^/]*).html$                           /modules/mod_video/video.php?lang_st=$1&task=position&cat=$2&position=$3 [L]
+
+#======================================== VIDEO END ============================================================================
+
+
+
+
+
+
+RewriteRule ^myaccount/$                                 /login.php?task=showprofile                             [QSA,L]
+RewriteRule ^myaccount/edit/$                            /login.php?task=editprofile                             [QSA,L]
+RewriteRule ^myaccount/edit/save/$                       /login.php?task=saveprofile                             [QSA,L]
+RewriteRule ^myaccount/message/$                         /login.php?task=message                                 [QSA,L]
+RewriteRule ^myaccount/message/send/$                    /login.php?task=send                                    [QSA,L]
+RewriteRule ^logout.html$                                /login.php?logout=1                                     [QSA,L]
+
+RewriteRule ^data/$                            /login.php?task=data                             [QSA,L]
+RewriteRule ^map/([^/]*)/$                            /login.php?task=map&map_id=$1                           [QSA,L]
+
+
+RewriteRule ^import/stansion/$                              /login.php?task=station                                      [QSA,L]
+RewriteRule ^import/treker/$                                /login.php?task=treker                                      [QSA,L]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#====================================== General START =========================================================================
+RewriteRule ^index.html$                                       /index.php [NC,L]
+RewriteRule ^contact/$                                        /contacts.php [NC,L]
+RewriteRule ^(en|ru|ua)/contact/$                             /contacts.php?lang_st=$1 [NC,L]
+RewriteRule ^contact/send/$                                   /contacts.php?task=send [NC,L]
+RewriteRule ^feedback_ajax/$                                   /modules/mod_feedback/feedback_ajax.php?task=send [NC,L]
+RewriteRule ^(en|ru|ua)/feedback_ajax/$                        /modules/mod_feedback/feedback_ajax.php?task=send&lang_st=$1 [NC,L]
+RewriteRule ^(en|ru|ua)/contact/send/$                        /contacts.php?task=send&lang_st=$1 [NC,L]
+
+#====================================== General END ===========================================================================
+
+
+
+#==================================== Dynamic Pages START =====================================================================
+RewriteRule ^(en|ru|ua)$  /index.php?lang_st=$1 [QSA,L]
+RewriteRule ^(en|ru|ua)/(.*|.*/)$  /index.php?lang_st=$1&q=$2 [QSA,L]
+RewriteCond %{REQUEST_URI} !(\.(js|ico|jpg|png|gif|css)) [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?q=$1 [NC,L]
+#===================================== Dynamic Pages END ======================================================================
+</IfModule>

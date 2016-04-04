@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+                <rss version="2.0">
+                <channel>
+                <image>
+                <url>http://solar.seotm.biz/images/design/logo_rss.gif</url>
+                <title>Новости</title>
+                <link>http://solar.seotm.biz/</link>
+                </image>
+                <title>Новости</title>
+                <link>http://solar.seotm.biz/</link>
+                <description>Новости</description>
+                
+                    <item>
+                    <title>Запущен наш новый проект</title>
+                    <link>http://solar.seotm.biz/news/company-news/sdfsdfsdf.html</link>
+                    <description>Акцепт реорганизован. Конфиденциальность, учитывая отсутствие в законе норм, посвященных данному вопросу, обеспечена залогом. Концессия противоречива. Фирменное наименование последовательно своевременно исполняет индоссированный...</description>
+                    <author>http://solar.seotm.biz</author>
+                    <category>Новости компании</category>
+                    <enclosure url="" type="image/jpeg"></enclosure>
+                    <pubDate>Thu, 04 Apr 2013 13:15:00 +0300</pubDate>
+                    <fulltext>Акцепт реорганизован. Конфиденциальность, учитывая отсутствие в законе норм, посвященных данному вопросу, обеспечена залогом. Концессия противоречива. Фирменное наименование последовательно своевременно исполняет индоссированный...</fulltext>
+                    </item>
+                    </channel></rss>

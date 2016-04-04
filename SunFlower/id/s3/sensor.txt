@@ -1,0 +1,3 @@
+/idc=111111&ids=3&tracker=&idt=77&statAzim=0&statTilt=0&inst=010215&cs=25
+stansion_php?/idc=111111&ids=3&tracker=&idt=77&statAzim=0&statTilt=0&inst=010215&cs=25
+http://ussolar_com_ua/stansion_php?/idc=111111&ids=3&tracker=&idt=77&statAzim=0&statTilt=0&inst=010215&cs=25

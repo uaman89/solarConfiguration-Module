@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<price>
+	<date>2012-09-21 18:44</date>
+	<firmName>Название магазина</firmName>
+	<firmId>4135</firmId>
+	<rate>8</rate>
+	<categories>
+		<category>
+			<id>25</id>
+			<parentId>0</parentId>
+			<name>Крупная бытовая техника</name>
+		</category>
+		<category>
+			<id>332</id>
+			<parentId>26</parentId>
+			<name>Аэрогриль 1</name>
+		</category>
+		<category>
+			<id>92</id>
+			<parentId>26</parentId>
+			<name>Блендеры 2</name>
+		</category>
+		<category>
+			<id>96</id>
+			<parentId>26</parentId>
+			<name>Бутербродницы</name>
+		</category>
+		<category>
+			<id>231</id>
+			<parentId>26</parentId>
+			<name>Весы кухонные</name>
+		</category>
+		<category>
+			<id>232</id>
+			<parentId>26</parentId>
+			<name>Йогуртницы и мороженицы</name>
+		</category>
+		<category>
+			<id>85</id>
+			<parentId>26</parentId>
+			<name>Кофеварки</name>
+		</category>
+		<category>
+			<id>233</id>
+			<parentId>26</parentId>
+			<name>Кофемолки</name>
+		</category>
+		<category>
+			<id>91</id>
+			<parentId>26</parentId>
+			<name>Кухонные комбайны</name>
+		</category>
+		<category>
+			<id>234</id>
+			<parentId>26</parentId>
+			<name>Ломтерезки</name>
+		</category>
+		<category>
+			<id>194</id>
+			<parentId>26</parentId>
+			<name>Микроволновые печи</name>
+		</category>
+		<category>
+			<id>93</id>
+			<parentId>26</parentId>
+			<name>Миксеры</name>
+		</category>
+		<category>
+			<id>94</id>
+			<parentId>26</parentId>
+			<name>Мясорубки</name>
+		</category>
+		<category>
+			<id>240</id>
+			<parentId>26</parentId>
+			<name>Оверлоки</name>
+		</category>
+		<category>
+			<id>95</id>
+			<parentId>26</parentId>
+			<name>Пароварки и мультиварки</name>
+		</category>
+		<category>
+			<id>83</id>
+			<parentId>26</parentId>
+			<name>Пылесосы</name>
+		</category>
+		<category>
+			<id>89</id>
+			<parentId>26</parentId>
+			<name>Соковыжималки</name>
+		</category>
+		<category>
+			<id>335</id>
+			<parentId>26</parentId>
+			<name>Сушки для овощей и фруктов</name>
+		</category>
+		<category>
+			<id>237</id>
+			<parentId>26</parentId>
+			<name>Тостеры</name>
+		</category>
+		<category>
+			<id>87</id>
+			<parentId>26</parentId>
+			<name>Утюги</name>
+		</category>
+		<category>
+			<id>238</id>
+			<parentId>26</parentId>
+			<name>Фритюрницы</name>
+		</category>
+		<category>
+			<id>86</id>
+			<parentId>26</parentId>
+			<name>Хлебопечки</name>
+		</category>
+		<category>
+			<id>13</id>
+			<parentId>0</parentId>
+			<name>Телевизоры</name>
+		</category>
+		<category>
+			<id>209</id>
+			<parentId>26</parentId>
+			<name>Швейные машины</name>
+		</category>
+		<category>
+			<id>207</id>
+			<parentId>0</parentId>
+			<name>Аудио-видео техника</name>
+		</category>
+		<category>
+			<id>208</id>
+			<parentId>0</parentId>
+			<name>Встраиваемая техника</name>
+		</category>
+		<category>
+			<id>26</id>
+			<parentId>0</parentId>
+			<name>Мелкая бытовая техника</name>
+		</category>
+		<category>
+			<id>200</id>
+			<parentId>0</parentId>
+			<name>Аппаратура Hi-Fi</name>
+		</category>
+		<category>
+			<id>321</id>
+			<parentId>3</parentId>
+			<name>Фотоаппараты</name>
+		</category>
+		<category>
+			<id>210</id>
+			<parentId>0</parentId>
+			<name>Климатическая техника</name>
+		</category>
+		<category>
+			<id>2</id>
+			<parentId>0</parentId>
+			<name>Ноутбуки и оргтехника</name>
+		</category>
+		<category>
+			<id>3</id>
+			<parentId>0</parentId>
+			<name>Фототехника</name>
+		</category>
+		<category>
+			<id>1</id>
+			<parentId>0</parentId>
+			<name>Телефония</name>
+		</category>
+		<category>
+			<id>236</id>
+			<parentId>0</parentId>
+			<name>Красота и здоровье</name>
+		</category>
+		<category>
+			<id>212</id>
+			<parentId>0</parentId>
+			<name>Для ванной</name>
+		</category>
+		<category>
+			<id>211</id>
+			<parentId>0</parentId>
+			<name>Посуда для кухни</name>
+		</category>
+		<category>
+			<id>213</id>
+			<parentId>0</parentId>
+			<name>Мойки BLANCO</name>
+		</category>
+		<category>
+			<id>4</id>
+			<parentId>2</parentId>
+			<name>Ноутбуки</name>
+		</category>
+		<category>
+			<id>5</id>
+			<parentId>2</parentId>
+			<name>КПК и электронные книги</name>
+		</category>
+		<category>
+			<id>7</id>
+			<parentId>1</parentId>
+			<name>Мобильные телефоны</name>
+		</category>
+		<category>
+			<id>11</id>
+			<parentId>1</parentId>
+			<name>GPS-навигаторы</name>
+		</category>
+		<category>
+			<id>9</id>
+			<parentId>1</parentId>
+			<name>Радиотелефоны</name>
+		</category>
+		<category>
+			<id>99</id>
+			<parentId>1</parentId>
+			<name>Проводные телефоны</name>
+		</category>
+		<category>
+			<id>35</id>
+			<parentId>13</parentId>
+			<name>Плазменные телевизоры</name>
+		</category>
+		<category>
+			<id>17</id>
+			<parentId>2</parentId>
+			<name>Мониторы</name>
+		</category>
+		<category>
+			<id>21</id>
+			<parentId>2</parentId>
+			<name>Сканеры</name>
+		</category>
+		<category>
+			<id>38</id>
+			<parentId>207</parentId>
+			<name>Домашние кинотеатры</name>
+		</category>
+		<category>
+			<id>32</id>
+			<parentId>3</parentId>
+			<name>Цифровые фоторамки</name>
+		</category>
+		<category>
+			<id>14</id>
+			<parentId>13</parentId>
+			<name>LCD телевизоры</name>
+		</category>
+		<category>
+			<id>217</id>
+			<parentId>13</parentId>
+			<name>LED телевизоры</name>
+		</category>
+		<category>
+			<id>115</id>
+			<parentId>13</parentId>
+			<name>ЭЛТ телевизоры</name>
+		</category>
+		<category>
+			<id>323</id>
+			<parentId>13</parentId>
+			<name>3D-очки</name>
+		</category>
+		<category>
+			<id>197</id>
+			<parentId>13</parentId>
+			<name>Подставки и крепления для ТВ</name>
+		</category>
+		<category>
+			<id>37</id>
+			<parentId>207</parentId>
+			<name>DVD-плееры и рекордеры</name>
+		</category>
+		<category>
+			<id>39</id>
+			<parentId>207</parentId>
+			<name>Blu-ray плееры</name>
+		</category>
+		<category>
+			<id>324</id>
+			<parentId>207</parentId>
+			<name>Портативные DVD</name>
+		</category>
+		<category>
+			<id>195</id>
+			<parentId>207</parentId>
+			<name>Музыкальные центры</name>
+		</category>
+		<category>
+			<id>221</id>
+			<parentId>207</parentId>
+			<name>Магнитолы CD</name>
+		</category>
+		<category>
+			<id>199</id>
+			<parentId>200</parentId>
+			<name>Акустические системы HI-FI</name>
+		</category>
+		<category>
+			<id>31</id>
+			<parentId>207</parentId>
+			<name>Видеокамеры</name>
+		</category>
+		<category>
+			<id>40</id>
+			<parentId>200</parentId>
+			<name>Ресиверы</name>
+		</category>
+		<category>
+			<id>43</id>
+			<parentId>207</parentId>
+			<name>Мультимедийная акустика</name>
+		</category>
+		<category>
+			<id>46</id>
+			<parentId>207</parentId>
+			<name>Микрофоны</name>
+		</category>
+		<category>
+			<id>48</id>
+			<parentId>207</parentId>
+			<name>Наушники</name>
+		</category>
+		<category>
+			<id>70</id>
+			<parentId>2</parentId>
+			<name>МФУ</name>
+		</category>
+		<category>
+			<id>67</id>
+			<parentId>2</parentId>
+			<name>Принтеры</name>
+		</category>
+		<category>
+			<id>10</id>
+			<parentId>2</parentId>
+			<name>Факсы</name>
+		</category>
+		<category>
+			<id>119</id>
+			<parentId>2</parentId>
+			<name>Копиры</name>
+		</category>
+		<category>
+			<id>88</id>
+			<parentId>236</parentId>
+			<name>Фены</name>
+		</category>
+		<category>
+			<id>244</id>
+			<parentId>236</parentId>
+			<name>Для укладки волос</name>
+		</category>
+		<category>
+			<id>246</id>
+			<parentId>236</parentId>
+			<name>Машинки для стрижки</name>
+		</category>
+		<category>
+			<id>247</id>
+			<parentId>236</parentId>
+			<name>Электробритвы для мужчин</name>
+		</category>
+		<category>
+			<id>248</id>
+			<parentId>236</parentId>
+			<name>Эпиляторы и женские электробритвы</name>
+		</category>
+		<category>
+			<id>243</id>
+			<parentId>236</parentId>
+			<name>Весы напольные</name>
+		</category>
+		<category>
+			<id>90</id>
+			<parentId>26</parentId>
+			<name>Электрочайники</name>
+		</category>
+		<category>
+			<id>122</id>
+			<parentId>1</parentId>
+			<name>Flash-карты</name>
+		</category>
+		<category>
+			<id>101</id>
+			<parentId>1</parentId>
+			<name>Bluetooth-гарнитуры</name>
+		</category>
+		<category>
+			<id>102</id>
+			<parentId>3</parentId>
+			<name>Модули памяти</name>
+		</category>
+		<category>
+			<id>105</id>
+			<parentId>3</parentId>
+			<name>Объективы</name>
+		</category>
+		<category>
+			<id>116</id>
+			<parentId>3</parentId>
+			<name>Вспышки</name>
+		</category>
+		<category>
+			<id>107</id>
+			<parentId>3</parentId>
+			<name>Штативы</name>
+		</category>
+		<category>
+			<id>108</id>
+			<parentId>3</parentId>
+			<name>Сумки для фото/видео</name>
+		</category>
+		<category>
+			<id>216</id>
+			<parentId>13</parentId>
+			<name>Универсальные пульты ДУ</name>
+		</category>
+		<category>
+			<id>109</id>
+			<parentId>3</parentId>
+			<name>Аккумуляторы и ЗУ к фото/видео</name>
+		</category>
+		<category>
+			<id>190</id>
+			<parentId>25</parentId>
+			<name>Стиральные машины</name>
+		</category>
+		<category>
+			<id>192</id>
+			<parentId>25</parentId>
+			<name>Холодильники</name>
+		</category>
+		<category>
+			<id>327</id>
+			<parentId>25</parentId>
+			<name>Сушильные машины</name>
+		</category>
+		<category>
+			<id>191</id>
+			<parentId>25</parentId>
+			<name>Плиты</name>
+		</category>
+		<category>
+			<id>193</id>
+			<parentId>210</parentId>
+			<name>Водонагреватели</name>
+		</category>
+		<category>
+			<id>196</id>
+			<parentId>25</parentId>
+			<name>Посудомоечные машины</name>
+		</category>
+		<category>
+			<id>206</id>
+			<parentId>200</parentId>
+			<name>Проигрыватели</name>
+		</category>
+		<category>
+			<id>202</id>
+			<parentId>200</parentId>
+			<name>Усилители</name>
+		</category>
+		<category>
+			<id>329</id>
+			<parentId>200</parentId>
+			<name>Наушники</name>
+		</category>
+		<category>
+			<id>224</id>
+			<parentId>208</parentId>
+			<name>Варочные поверхности</name>
+		</category>
+		<category>
+			<id>225</id>
+			<parentId>208</parentId>
+			<name>Духовые шкафы</name>
+		</category>
+		<category>
+			<id>226</id>
+			<parentId>208</parentId>
+			<name>Микроволновые печи</name>
+		</category>
+		<category>
+			<id>227</id>
+			<parentId>208</parentId>
+			<name>Посудомоечные машины</name>
+		</category>
+		<category>
+			<id>228</id>
+			<parentId>208</parentId>
+			<name>Стиральные машины</name>
+		</category>
+		<category>
+			<id>229</id>
+			<parentId>208</parentId>
+			<name>Холодильники</name>
+		</category>
+		<category>
+			<id>230</id>
+			<parentId>208</parentId>
+			<name>Вытяжки</name>
+		</category>
+		<category>
+			<id>241</id>
+			<parentId>236</parentId>
+			<name>Ванночки для ног</name>
+		</category>
+		<category>
+			<id>242</id>
+			<parentId>236</parentId>
+			<name>Маникюрные наборы</name>
+		</category>
+		<category>
+			<id>245</id>
+			<parentId>236</parentId>
+			<name>Массажеры</name>
+		</category>
+		<category>
+			<id>249</id>
+			<parentId>210</parentId>
+			<name>Вентиляторы</name>
+		</category>
+		<category>
+			<id>250</id>
+			<parentId>210</parentId>
+			<name>Газовые колонки</name>
+		</category>
+		<category>
+			<id>251</id>
+			<parentId>210</parentId>
+			<name>Кондиционеры</name>
+		</category>
+		<category>
+			<id>252</id>
+			<parentId>210</parentId>
+			<name>Обогреватели</name>
+		</category>
+		<category>
+			<id>257</id>
+			<parentId>211</parentId>
+			<name>Наборы посуды</name>
+		</category>
+		<category>
+			<id>258</id>
+			<parentId>211</parentId>
+			<name>Сковороды</name>
+		</category>
+		<category>
+			<id>263</id>
+			<parentId>212</parentId>
+			<name>Душевые кабины</name>
+		</category>
+		<category>
+			<id>264</id>
+			<parentId>212</parentId>
+			<name>Гидромассажные боксы</name>
+		</category>
+		<category>
+			<id>265</id>
+			<parentId>212</parentId>
+			<name>Ванны</name>
+		</category>
+		<category>
+			<id>266</id>
+			<parentId>212</parentId>
+			<name>Душевые поддоны</name>
+		</category>
+		<category>
+			<id>267</id>
+			<parentId>213</parentId>
+			<name>Мойки</name>
+		</category>
+		<category>
+			<id>268</id>
+			<parentId>213</parentId>
+			<name>Смесители</name>
+		</category>
+		<category>
+			<id>269</id>
+			<parentId>213</parentId>
+			<name>Аксессуары</name>
+		</category>
+		<category>
+			<id>270</id>
+			<parentId>213</parentId>
+			<name>Системы сортировки отходов</name>
+		</category>
+		<category>
+			<id>239</id>
+			<parentId>26</parentId>
+			<name>Электрические печи</name>
+		</category>
+		<category>
+			<id>325</id>
+			<parentId>25</parentId>
+			<name>Морозильные камеры</name>
+		</category>
+		<category>
+			<id>326</id>
+			<parentId>25</parentId>
+			<name>Холодильники для вина</name>
+		</category>
+		<category>
+			<id>204</id>
+			<parentId>200</parentId>
+			<name>Стойки, кронштейны и пр. оборудование для аудиоаппаратуры</name>
+		</category>
+		<category>
+			<id>331</id>
+			<parentId>208</parentId>
+			<name>Кофеварки</name>
+		</category>
+		<category>
+			<id>333</id>
+			<parentId>200</parentId>
+			<name>Сабвуфер</name>
+		</category>
+		<category>
+			<id>339</id>
+			<parentId>211</parentId>
+			<name>Сотейник</name>
+		</category>
+		<category>
+			<id>340</id>
+			<parentId>207</parentId>
+			<name>Автомагнитола</name>
+		</category>
+		<category>
+			<id>341</id>
+			<parentId>207</parentId>
+			<name>Автоакустика</name>
+		</category>
+		<category>
+			<id>348</id>
+			<parentId>13</parentId>
+			<name>Аксессуары</name>
+		</category>
+		<category>
+			<id>372</id>
+			<parentId>25</parentId>
+			<name>Стирально-сушильный автомат 3</name>
+		</category>
+		<category>
+			<id>373</id>
+			<parentId>210</parentId>
+			<name>Увлажнитель воздуха 1</name>
+		</category>
+		<category>
+			<id>377</id>
+			<parentId>190</parentId>
+			<name>siemens</name>
+		</category>
+		<category>
+			<id>378</id>
+			<parentId>190</parentId>
+			<name>bosh</name>
+		</category>
+		<category>
+			<id>379</id>
+			<parentId>190</parentId>
+			<name>лазер</name>
+		</category>
+		<category>
+			<id>383</id>
+			<parentId>381</parentId>
+			<name>bbbbbbbbbbbbbbbb</name>
+		</category>
+		<category>
+			<id>384</id>
+			<parentId>381</parentId>
+			<name>xxxxxxxxxxxxx</name>
+		</category>
+	</categories>
+	<items>
+		<item>
+			<id>24093</id>
+			<categoryId>377</categoryId>
+			<name>Холодильник Siemens RT-555</name>
+			<description></description>
+			<url>адрес сайта/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/holodilnik-siemens-rt-555.html</url>
+			<image>адрес сайта</image>
+			<priceRUAH>4500</priceRUAH>
+			<priceRUSD>562.5</priceRUSD>
+			<priceOUSD></priceOUSD>
+			<stock>На складе</stock>
+		</item>
+		<item>
+			<id>24094</id>
+			<categoryId>379</categoryId>
+			<code>0</code>
+			<name>лазер назв</name>
+			<description></description>
+			<url>адрес сайта/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/lazer/lazer-nazv.html</url>
+			<image>адрес сайта/images/mod_catalog_prod/24094/134312566901.jpg</image>
+			<priceRUAH>7992</priceRUAH>
+			<priceRUSD>999</priceRUSD>
+			<priceOUSD></priceOUSD>
+			<stock>На складе</stock>
+			<guarantee>2</guarantee>
+		</item>
+		<item>
+			<id>24146</id>
+			<categoryId>377</categoryId>
+			<name>asdsd</name>
+			<description></description>
+			<url>адрес сайта/catalog/krupnaya-bitovaya-tehnika/stiralnie-mashini/siemens/asdsd.html</url>
+			<image>адрес сайта/images/mod_catalog_prod/24146/134513092000.jpg</image>
+			<priceRUAH>500</priceRUAH>
+			<priceRUSD>62.5</priceRUSD>
+			<priceOUSD></priceOUSD>
+			<stock>На складе</stock>
+		</item>
+	</items>
+</price>
