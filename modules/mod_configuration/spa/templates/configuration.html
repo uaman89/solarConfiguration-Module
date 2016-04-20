@@ -1,0 +1,109 @@
+
+<div id="configuration{{ configuration.params.configurationId }}" class="row">
+
+    <div class="col-md-6">
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div class="renderer-container">
+                        img must be here...
+                    </div>
+                    <table class="small-table col-md-3">
+                        <tr>
+                            <td>H, мм</td>
+                            <td>{{ configuration.params.H }}</td>
+                        </tr>
+                        <tr>
+                            <td>h, мм</td>
+                            <td>{{ configuration.params.distanceToGround }}</td>
+                        </tr>
+                        <tr>
+                            <td>L, мм</td>
+                            <td>{{ configuration.params.tableWidth }}</td>
+                        </tr>
+                        <tr>
+                            <td>B, мм</td>
+                            <td>{{ configuration.params.B }}</td>
+                        </tr>
+                        <tr>
+                            <td>&alpha;, град</td>
+                            <td>{{ configuration.params.tableAngle }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table-striped table-hover table-condensed">
+            <tr>
+                <td class="col-md-4">Конструкция:</td>
+                <td class="col-md-3">
+                    <select ng-model="configuration.params.designType" ng-change="configuration.update()" class="form-control">
+                        <option ng-repeat="option in configurationParamSet.design" value="{{option.id}}">{{option.label}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Тип системы:</td>
+                <td>
+                    <select ng-model="configuration.params.rows" ng-change="configuration.update()" class="form-control">
+                        <option ng-repeat="option in configurationParamSet.systemType" value="{{option.rows}}">{{option.label}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Расположение модулей:</td>
+                <td>
+                    <select ng-model="configuration.params.moduleOrientation"  ng-change="configuration.update()" class="form-control">
+                        <option ng-repeat="option in configurationParamSet.moduleOrientation" value="{{option.val}}">{{option.label}}</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Модулей в ряду:</td>
+                <td><input ng-model="configuration.params.modulesCount" ng-change="configuration.update()" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Количество модулей, шт.:</td>
+                <td><input type="text" class="form-control" disabled ng-model="configuration.params.totalModulesCount"></td>
+            </tr>
+            <tr>
+                <td>Размеры модуля, мм:</td>
+                <td class="input-group pull-right module-sizes">
+                    <input ng-model="configuration.params.userModuleHeight" ng-change="configuration.update()" min="10" max="10000" type="number" class="form-control module-height"><span>X</span>
+                    <input ng-model="configuration.params.userModuleWidth"  ng-change="configuration.update()" ng-min="10" ng-max="10000" type="number" class="form-control module-width"><span>X</span>
+                    <input ng-model="configuration.params.userModuleDepth"  ng-change="configuration.update()" ng-min="10" ng-max="10000" type="number" class="form-control module-depth">
+                </td>
+            </tr>
+            <tr>
+                <td>Угол наклона:</td>
+                <td><input ng-model="configuration.params.tableAngle" ng-change="configuration.update()" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Расстояние до земной поверхности:</td>
+                <td><input ng-model="configuration.params.distanceToGround" ng-change="configuration.update()" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Количество опор, шт.:</td>
+                <td><input ng-model="configuration.params.supports.count" type="text" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Установленная мощьность модуля, Вт:</td>
+                <td><input ng-model="configuration.params.modulePower" ng-change="configuration.update()" type="text" class="form-control" ></td>
+            </tr>                <tr>
+            <td>Установленная мощьность системы, кВт:</td>
+            <td><input ng-model="configuration.params.totalPower" type="text" class="form-control" disabled ></td>
+        </tr>
+            <tr>
+                <td>Количество систем, шт.:</td>
+                <td><input type="text" class="form-control" ></td>
+            </tr>
+            <tr>
+                <td>Общая установленная мощность, Вт:</td>
+                <td><input type="text" class="form-control" disabled ></td>
+            </tr>
+        </table>
+    </div>
+</div>

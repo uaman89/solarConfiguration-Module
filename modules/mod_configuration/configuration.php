@@ -1,7 +1,7 @@
 <?
 if (!defined("SITE_PATH")) define( "SITE_PATH", $_SERVER['DOCUMENT_ROOT'] );
 
-include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_order/configuration.defines.php' );
+include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_configuration/configuration.defines.php' );
 
 if(!defined("_LANG_ID")) {session_start(); $pg = new PageAdmin();}
 if( !isset($_REQUEST['task']) || empty($_REQUEST['task']) ) $task='show';

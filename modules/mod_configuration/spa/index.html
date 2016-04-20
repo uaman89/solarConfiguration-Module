@@ -1,0 +1,29 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" >-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Solar-SPA</title>-->
+<!--</head>-->
+
+<link rel="stylesheet" href="/modules/mod_configuration/spa/styles/main.min.css">
+<script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>
+
+<div ng-app="solConfigApp" ng-controller="MainCtrl" class="container">
+
+    <h2>{{ message }}</h2>
+
+    <div ng-repeat="configuration in configurations" >
+        <!--{{ configuration.designType }} x {{ configuration.moduleOrientation }}-->
+
+        <configuration params="configuration" class="row"></configuration>
+        <hr>
+        <hr>
+    </div>
+
+    <button ng-click="addNewConfiguration()">ADD NEW CONFIGURATION</button>
+
+</div>
+<script src="/modules/mod_configuration/spa/js/bottom_script.min.js"></script>
+
+<!--</body>-->
+<!--</html>-->

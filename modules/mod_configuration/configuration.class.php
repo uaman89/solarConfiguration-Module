@@ -1,5 +1,5 @@
 <?php
-include_once( SITE_PATH.'/modules/mod_order/order.defines.php' );
+include_once( SITE_PATH.'/modules/mod_configuration/configuration.defines.php' );
 
 class Configuration {
 
@@ -29,15 +29,9 @@ class Configuration {
         $script = $_SERVER['PHP_SELF']."?$script";
 
         AdminHTML::PanelSimpleH();
-        ?>
-        <fieldset style="border: 1px solid #000000; padding:5px; min-width: 300px;">
-            <legend>Конфигуратор для статических систем: </legend>
-            <form id="ExportOrders" name="export_orders" method="post" action="<?=$script;?>">
 
-            </form>
-        </fieldset>
+        include ( SITE_PATH.'/modules/mod_configuration/spa/index.html' );
 
-        <?
         AdminHTML::PanelSimpleF();
     }
 //--- end of function show ------------------------------------------------------------------------------------------------------------
