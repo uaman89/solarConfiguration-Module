@@ -33,19 +33,29 @@ if (!$logon->LoginCheck()) {
 //=============================================================================================
 // END
 //=============================================================================================v
-$Configuration = new Configuration($logon->user_id, $module);
+$Configuration = new ConfigurationOrder($logon->user_id, $module);
 $Configuration->task   = ( isset( $_REQUEST['task']) ) ? $_REQUEST['task'] : null;
 $Configuration->module = ( isset( $_REQUEST['module'] ) ) ? $_REQUEST['module'] : NULL;
+$Configuration->orderId = ( isset( $_REQUEST['order_id'] ) ) ? $_REQUEST['order_id'] : NULL;
+$Configuration->delete = ( isset( $_REQUEST['delete'] ) && is_array( $_REQUEST['delete'])  ) ? $_REQUEST['delete'] : NULL;
 
 
 //echo '<br>task='.$task;
-switch( $Configuration->task )
-{
-
-    default:
-        $Configuration->showFrom();
+switch( $Configuration->task ) {
+    case 'new':
+    case 'edit':
+        $Configuration->showConfigurationOrder();
         break;
-
+    case 'save':
+        $request = file_get_contents("php://input");
+        $postdata = json_decode($request, 1);
+        $Configuration->save($postdata);
+        break;
+    case 'delete':
+        //var_dump($Configuration->delete);
+        $Configuration->deleteOrders();
+        break;
+    default:
+        $Configuration->showConfigurationOrderList();
 }
-
 ?>

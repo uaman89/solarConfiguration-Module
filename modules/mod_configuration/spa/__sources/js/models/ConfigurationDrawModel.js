@@ -16,8 +16,8 @@ var ConfigurationDrawModel =  function( paramsObj ){
     this.init = function(){
         container = $('#configuration' + params.configurationId + ' .renderer-container');
 
-        containerWidth = container.width();
-        containerHeight =  container.width() * 0.75;
+        var containerWidth  = container.width();
+        var containerHeight = containerWidth * 0.75;
 
 
         scene = new THREE.Scene();
@@ -25,8 +25,24 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         camera = new THREE.PerspectiveCamera( 45,containerWidth / containerHeight, 1, 500 );
-        camera.position.z = 5;
+        //camera.position.z = 5;
 
+
+        //update renderer on window resize begin
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        function onWindowResize(){
+
+            containerWidth  = container.width();
+            containerHeight = containerWidth * 0.75;
+
+            camera.aspect = containerWidth / containerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( containerWidth, containerHeight );
+
+        }
+        //end update renderer on window resize begin
 
         // Load a texture, set wrap mode to repeat
         moduleTexture = new THREE.TextureLoader().load("/modules/mod_configuration/spa/textures/solar-cell.png");
@@ -52,6 +68,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
             specular: 0x222222,
             shading: THREE.SmoothShading
         } );
+
         moduleBaseMaterials = [
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
@@ -273,7 +290,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         var supportUnderModuleOffsetY = ( backSupportHeight - frontSupportHeight ) / 2 + distanceToGround - supportBarWidth;
-        var supportUnderModuleOffsetZ = -B / 2;
+        var supportUnderModuleOffsetZ = -B/2;
 
         var supportUnderModule = supportBar.clone(); //sorry for this name. i can't choose good name for it
         supportUnderModule.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, tableHeight);
@@ -314,7 +331,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
                 //"bottom horizontal" support
                 var bottomHSupport = supportBar.clone();
-                bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B);
+                bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B - supportBarWidth/2);
                 bottomHSupport.position.set(0, distanceToGround / 2, supportUnderModuleOffsetZ);
 
                 // back "diagonal" support |\|\|  <--  \ <--
@@ -325,7 +342,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
                 backDiagonalSupport.geometry = new THREE.BoxGeometry(backDiagSuppWidth, supportBarWidth, supportBarWidth);
                 backDiagonalSupport.rotation.z = Math.acos(supportsInterval / backDiagSuppWidth); //angle in radians;
-                backDiagonalSupport.position.set(-supportsInterval / 2, H / 2, -B + supportBarWidth);
+                backDiagonalSupport.position.set(-supportsInterval / 2, H / 2, -B + supportBarWidth/2 );
                 break;
         }//end switch
 

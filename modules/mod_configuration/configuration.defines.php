@@ -13,6 +13,7 @@ include_once( SITE_PATH.'/modules/mod_configuration/configuration.class.php' );
 
 define("MOD_CONFIGURATION", true);
 
-//define( 'TblModOrderStatuses', 'mod_order_statuses_spr' );
+define( 'TblModConfigurationSet', 'mod_configuration_set' );
+define( 'TblModConfigurationOrder', 'mod_configuration_order' );
 
 ?>

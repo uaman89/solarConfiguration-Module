@@ -4152,11 +4152,25 @@ if ( typeof module === 'object' ) {
 
 var solConfigApp = angular.module('solConfigApp', []);
 
-//nothing here
-solConfigApp.controller('MainCtrl', function ($scope) {
+//there is nothing here
 
-    $scope.test = [1,2,3];
-    $scope.message = "under construction!";
+function getCanvasData( selector) {
+    var canvasData;
+    var canvas = $(selector)[0];
+
+    console.log(canvas);
+
+    if ( Detector.webgl){
+        canvasData = canvas.toDataURL();
+    }
+    else{
+        canvasData = canvas.toDataURL("image/png");
+    }
+    return canvasData;
+}
+
+solConfigApp.controller('MainCtrl', function ($scope, $http) {
+
 
     $scope.configurations = new Array();
     $scope.configurations.push( new ConfigurationModel() );
@@ -4185,10 +4199,43 @@ solConfigApp.controller('MainCtrl', function ($scope) {
 
     $scope.addNewConfiguration = function(){
         $scope.configurations.push( new ConfigurationModel() );
+    };
+
+    $scope.saveConfigurationsOrder = function() {
+        var postData = {
+            orderData:{},
+            configurations: []
+        };
+        for (key in $scope.configurations){
+            var conf = $scope.configurations[key];
+
+            postData.configurations.push({
+                configurationId: conf.params.configurationId,
+                designType: conf.params.designType,
+                rows: conf.params.rows,
+                moduleOrientation: conf.params.moduleOrientation,
+                modulesCount: conf.params.modulesCount,
+                userModuleHeight: conf.params.userModuleHeight,
+                userModuleWidth: conf.params.userModuleWidth,
+                userModuleDepth: conf.params.userModuleDepth,
+                tableAngle: conf.params.tableAngle,
+                distanceToGround: conf.params.distanceToGround,
+                modulePower: conf.params.modulePower,
+                configurationsCount: conf.params.configurationsCount,
+                image: getCanvasData('#configuration' + conf.params.configurationId + ' canvas')
+            })
+        }
+
+        $http({
+            method: 'post',
+            url: '/modules/mod_configuration/configuration.php?module=' + moduleID + '&task=save',
+            data: postData,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
     }
 
 });
-//hello
+
 solConfigApp.directive('configuration', function(){
     return{
         restrict: 'E',
@@ -4245,8 +4292,8 @@ var ConfigurationDrawModel =  function( paramsObj ){
     this.init = function(){
         container = $('#configuration' + params.configurationId + ' .renderer-container');
 
-        containerWidth = container.width();
-        containerHeight =  container.width() * 0.75;
+        var containerWidth  = container.width();
+        var containerHeight = containerWidth * 0.75;
 
 
         scene = new THREE.Scene();
@@ -4254,8 +4301,24 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         camera = new THREE.PerspectiveCamera( 45,containerWidth / containerHeight, 1, 500 );
-        camera.position.z = 5;
+        //camera.position.z = 5;
 
+
+        //update renderer on window resize begin
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        function onWindowResize(){
+
+            containerWidth  = container.width();
+            containerHeight = containerWidth * 0.75;
+
+            camera.aspect = containerWidth / containerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( containerWidth, containerHeight );
+
+        }
+        //end update renderer on window resize begin
 
         // Load a texture, set wrap mode to repeat
         moduleTexture = new THREE.TextureLoader().load("/modules/mod_configuration/spa/textures/solar-cell.png");
@@ -4281,6 +4344,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
             specular: 0x222222,
             shading: THREE.SmoothShading
         } );
+
         moduleBaseMaterials = [
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
@@ -4502,7 +4566,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         var supportUnderModuleOffsetY = ( backSupportHeight - frontSupportHeight ) / 2 + distanceToGround - supportBarWidth;
-        var supportUnderModuleOffsetZ = -B / 2;
+        var supportUnderModuleOffsetZ = -B/2;
 
         var supportUnderModule = supportBar.clone(); //sorry for this name. i can't choose good name for it
         supportUnderModule.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, tableHeight);
@@ -4543,7 +4607,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
                 //"bottom horizontal" support
                 var bottomHSupport = supportBar.clone();
-                bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B);
+                bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B - supportBarWidth/2);
                 bottomHSupport.position.set(0, distanceToGround / 2, supportUnderModuleOffsetZ);
 
                 // back "diagonal" support |\|\|  <--  \ <--
@@ -4554,7 +4618,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
                 backDiagonalSupport.geometry = new THREE.BoxGeometry(backDiagSuppWidth, supportBarWidth, supportBarWidth);
                 backDiagonalSupport.rotation.z = Math.acos(supportsInterval / backDiagSuppWidth); //angle in radians;
-                backDiagonalSupport.position.set(-supportsInterval / 2, H / 2, -B + supportBarWidth);
+                backDiagonalSupport.position.set(-supportsInterval / 2, H / 2, -B + supportBarWidth/2 );
                 break;
         }//end switch
 
@@ -4636,8 +4700,10 @@ var ConfigurationDrawModel =  function( paramsObj ){
 };
 
 //end file
-var ConfigurationModel = function(){
+var ConfigurationModel = function(varray){
 
+
+    alert(varray);
     var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length;
 
     this.params = new ConfigurationParamsModel( configurationId );
@@ -4670,7 +4736,7 @@ var ConfigurationParamsModel = function( configurationId ) {
     this.tableAngle   = 30;      //grad
     this.distanceToGround = 500; //mm
     this.modulePower = 250; //кВт
-    this.totalPower = null; //кВт
+    this.singleConfigurationPower = null; //кВт
     this.B = null; //ширина стола, проекция на горизонтальную поверхность
     this.H = 0;    //высота стола, проекция на вертикальную поверхность
     this.L = null; //длина стола
@@ -4680,6 +4746,9 @@ var ConfigurationParamsModel = function( configurationId ) {
         count   : 0,  // количество опор
         interval: 0   // расстояние между опорами
     };
+    
+    this.configurationsCount = 1;
+    this.totalConfigurationsPower = null;
 
     //helpers
     this.tableHeight = null;
@@ -4722,6 +4791,7 @@ var ConfigurationParamsModel = function( configurationId ) {
         var rows = parseInt(_this.rows);
         var modulesCount = parseInt(_this.modulesCount);
         var modulePower = parseInt(_this.modulePower);
+        var configurationsCount = parseInt(_this.configurationsCount);
 
         _this.tableHeight = _this.moduleHeight * _this.rows + ( rows - 1) * _this.r;
         _this.tableWidth = _this.moduleWidth * modulesCount + ( modulesCount - 1 ) * _this.r;
@@ -4741,7 +4811,9 @@ var ConfigurationParamsModel = function( configurationId ) {
 
         _this.totalModulesCount = rows * modulesCount;
 
-        _this.totalPower = _this.totalModulesCount * modulePower;
+        _this.singleConfigurationPower = _this.totalModulesCount * modulePower;
+        
+        _this.totalConfigurationsPower = configurationsCount * _this.singleConfigurationPower;
     };
 
 //--- end calculateData() -----------------------------------------------------------------------------------------

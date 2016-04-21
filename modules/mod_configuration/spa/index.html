@@ -4,25 +4,35 @@
     <!--<meta charset="UTF-8">-->
     <!--<title>Solar-SPA</title>-->
 <!--</head>-->
+<script>
+    var moduleID = <?=$moduleID?>;
+</script>
 
 <link rel="stylesheet" href="/modules/mod_configuration/spa/styles/main.min.css">
 <script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>
 
 <div ng-app="solConfigApp" ng-controller="MainCtrl" class="container">
+    <form ng-submit="saveConfigurationsOrder()">
 
-    <h2>{{ message }}</h2>
+        <p>
+            <button type="submit" class="btn btn-success">Сохранить заявку</button>
+            <a href="<?=$script?>" class="btn btn-danger pull-right">Закрыть</a>
+        </p>
 
-    <div ng-repeat="configuration in configurations" >
-        <!--{{ configuration.designType }} x {{ configuration.moduleOrientation }}-->
+        <h2><?=$header?></h2>
 
-        <configuration params="configuration" class="row"></configuration>
-        <hr>
-        <hr>
-    </div>
+        <div ng-repeat="configuration in configurations" >
+            <!--{{ configuration.designType }} x {{ configuration.moduleOrientation }}-->
 
-    <button ng-click="addNewConfiguration()">ADD NEW CONFIGURATION</button>
+            <configuration params="configuration" class="row"></configuration>
+            <hr>
+            <hr>
+        </div>
 
+        <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
+    </form>
 </div>
+
 <script src="/modules/mod_configuration/spa/js/bottom_script.min.js"></script>
 
 <!--</body>-->

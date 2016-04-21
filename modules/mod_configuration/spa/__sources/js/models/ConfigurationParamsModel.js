@@ -15,7 +15,7 @@ var ConfigurationParamsModel = function( configurationId ) {
     this.tableAngle   = 30;      //grad
     this.distanceToGround = 500; //mm
     this.modulePower = 250; //кВт
-    this.totalPower = null; //кВт
+    this.singleConfigurationPower = null; //кВт
     this.B = null; //ширина стола, проекция на горизонтальную поверхность
     this.H = 0;    //высота стола, проекция на вертикальную поверхность
     this.L = null; //длина стола
@@ -25,6 +25,9 @@ var ConfigurationParamsModel = function( configurationId ) {
         count   : 0,  // количество опор
         interval: 0   // расстояние между опорами
     };
+    
+    this.configurationsCount = 1;
+    this.totalConfigurationsPower = null;
 
     //helpers
     this.tableHeight = null;
@@ -67,6 +70,7 @@ var ConfigurationParamsModel = function( configurationId ) {
         var rows = parseInt(_this.rows);
         var modulesCount = parseInt(_this.modulesCount);
         var modulePower = parseInt(_this.modulePower);
+        var configurationsCount = parseInt(_this.configurationsCount);
 
         _this.tableHeight = _this.moduleHeight * _this.rows + ( rows - 1) * _this.r;
         _this.tableWidth = _this.moduleWidth * modulesCount + ( modulesCount - 1 ) * _this.r;
@@ -86,7 +90,9 @@ var ConfigurationParamsModel = function( configurationId ) {
 
         _this.totalModulesCount = rows * modulesCount;
 
-        _this.totalPower = _this.totalModulesCount * modulePower;
+        _this.singleConfigurationPower = _this.totalModulesCount * modulePower;
+        
+        _this.totalConfigurationsPower = configurationsCount * _this.singleConfigurationPower;
     };
 
 //--- end calculateData() -----------------------------------------------------------------------------------------

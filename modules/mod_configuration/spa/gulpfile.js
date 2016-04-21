@@ -4,12 +4,22 @@ var gulp = require('gulp'),
     gp_uglify     = require('gulp-uglify'),
     gp_sourcemaps = require('gulp-sourcemaps'),
     minifyCSS     = require('gulp-minify-css'),
-    browserSync = require('browser-sync').create()
+    browserSync = require('browser-sync').create(),
+    sass = require('gulp-sass');
     //gulpFilter    = require('gulp-filter'),
     //mainBowerFiles   = require('main-bower-files')
     ;
 
+//SASS
+gulp.task('sass', function () {
+    return gulp.src('__sources/styles/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('__sources/styles/'));
+});
 
+gulp.task('sass:watch', function () {
+    gulp.watch('./sass/**/*.scss', ['sass']);
+});
 
 // JS-HEADER
 gulp.task('js-to-header', function(){
@@ -77,11 +87,22 @@ gulp.task('browser-sync', function() {
         //}
     });
 
-    gulp.watch( '__sources/js/**/*.js', ['js-to-bottom'] ).on('change', browserSync.reload);
-    gulp.watch( '__sources/styles/*.css', ['build-css'] ).on('change', browserSync.reload);
-    gulp.watch("index.html").on('change', browserSync.reload);
-    gulp.watch("templates/*.html").on('change', browserSync.reload);
+    gulp.watch( '__sources/js/**/*.js', ['js-to-bottom'] );
+    gulp.watch( 'js/*.min.js' ).on('change', browserSync.reload);
 
+    gulp.watch( '__sources/styles/**/*.scss', ['sass']);
+    gulp.watch( '__sources/styles/*.css', ['build-css'] ).on('change', browserSync.reload);
+
+    gulp.watch( 'index.html' ).on('change', browserSync.reload);
+    gulp.watch( 'templates/*.html' ).on('change', browserSync.reload);
+});
+
+
+//autobuild without reload page
+gulp.task( 'watch-only', function(){
+    gulp.watch( '__sources/js/**/*.js', ['js-to-bottom'] );
+    gulp.watch( '__sources/styles/**/*.scss', ['sass']);
+    gulp.watch( '__sources/styles/*.css', ['build-css'] );
 });
 
 gulp.task('default', ['js-to-header', 'js-to-bottom', 'build-css'], function(){});

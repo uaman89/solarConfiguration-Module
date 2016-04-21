@@ -1,5 +1,7 @@
-var ConfigurationModel = function(){
+var ConfigurationModel = function(varray){
 
+
+    alert(varray);
     var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length;
 
     this.params = new ConfigurationParamsModel( configurationId );

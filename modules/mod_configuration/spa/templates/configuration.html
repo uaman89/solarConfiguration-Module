@@ -8,7 +8,7 @@
                     <div class="renderer-container">
                         img must be here...
                     </div>
-                    <table class="small-table col-md-3">
+                    <table class="small-table">
                         <tr>
                             <td>H, мм</td>
                             <td>{{ configuration.params.H }}</td>
@@ -27,7 +27,7 @@
                         </tr>
                         <tr>
                             <td>&alpha;, град</td>
-                            <td>{{ configuration.params.tableAngle }}</td>
+                            <td>{{ configuration.params.tableAngle }}&deg;</td>
                         </tr>
                     </table>
                 </div>
@@ -72,9 +72,9 @@
             <tr>
                 <td>Размеры модуля, мм:</td>
                 <td class="input-group pull-right module-sizes">
-                    <input ng-model="configuration.params.userModuleHeight" ng-change="configuration.update()" min="10" max="10000" type="number" class="form-control module-height"><span>X</span>
-                    <input ng-model="configuration.params.userModuleWidth"  ng-change="configuration.update()" ng-min="10" ng-max="10000" type="number" class="form-control module-width"><span>X</span>
-                    <input ng-model="configuration.params.userModuleDepth"  ng-change="configuration.update()" ng-min="10" ng-max="10000" type="number" class="form-control module-depth">
+                    <input ng-model="configuration.params.userModuleHeight" ng-change="configuration.update()" min="10" max="10000" type="text" class="form-control module-height"><span>X</span>
+                    <input ng-model="configuration.params.userModuleWidth"  ng-change="configuration.update()" min="10" max="10000" type="text" class="form-control module-width"><span>X</span>
+                    <input ng-model="configuration.params.userModuleDepth"  ng-change="configuration.update()" min="10" max="10000" type="text" class="form-control module-depth">
                 </td>
             </tr>
             <tr>
@@ -91,18 +91,18 @@
             </tr>
             <tr>
                 <td>Установленная мощьность модуля, Вт:</td>
-                <td><input ng-model="configuration.params.modulePower" ng-change="configuration.update()" type="text" class="form-control" ></td>
+                <td><input ng-model="configuration.params.modulePower" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
             </tr>                <tr>
             <td>Установленная мощьность системы, кВт:</td>
-            <td><input ng-model="configuration.params.totalPower" type="text" class="form-control" disabled ></td>
+            <td><input ng-model="configuration.params.singleConfigurationPower" type="text" class="form-control" disabled ></td>
         </tr>
             <tr>
                 <td>Количество систем, шт.:</td>
-                <td><input type="text" class="form-control" ></td>
+                <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="number" class="form-control" ></td>
             </tr>
             <tr>
                 <td>Общая установленная мощность, Вт:</td>
-                <td><input type="text" class="form-control" disabled ></td>
+                <td><input ng-model="configuration.params.totalConfigurationsPower" type="text" class="form-control" disabled ></td>
             </tr>
         </table>
     </div>
