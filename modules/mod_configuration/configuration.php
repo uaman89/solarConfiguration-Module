@@ -4,11 +4,9 @@ if (!defined("SITE_PATH")) define( "SITE_PATH", $_SERVER['DOCUMENT_ROOT'] );
 include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_configuration/configuration.defines.php' );
 
 if(!defined("_LANG_ID")) {session_start(); $pg = new PageAdmin();}
-if( !isset($_REQUEST['task']) || empty($_REQUEST['task']) ) $task='show';
-else $task=$_REQUEST['task'];
 
-if( !isset( $_REQUEST['module'] ) ) $module = NULL;
-else $module = $_REQUEST['module'];
+$module = ( !isset( $_REQUEST['module'] ) ) ? NULL : $_REQUEST['module'];
+
 //var_dump($_REQUEST);
 //die();
 //============================================================================================
@@ -39,13 +37,16 @@ $Configuration->module = ( isset( $_REQUEST['module'] ) ) ? $_REQUEST['module'] 
 $Configuration->orderId = ( isset( $_REQUEST['order_id'] ) ) ? $_REQUEST['order_id'] : NULL;
 $Configuration->delete = ( isset( $_REQUEST['delete'] ) && is_array( $_REQUEST['delete'])  ) ? $_REQUEST['delete'] : NULL;
 
-
-//echo '<br>task='.$task;
+//var_dump($_REQUEST);
+//echo '<br>$Configuration->task:'.$Configuration->task;
 switch( $Configuration->task ) {
     case 'new':
     case 'edit':
         $Configuration->showConfigurationOrder();
         break;
+    case 'getOrderData':
+        exit ( $Configuration->getJsonOrderDataById() );
+
     case 'save':
         $request = file_get_contents("php://input");
         $postdata = json_decode($request, 1);

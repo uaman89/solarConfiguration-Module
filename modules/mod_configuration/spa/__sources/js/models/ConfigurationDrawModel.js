@@ -138,6 +138,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //mouse control in 3 lines :) awesome!
         controls = new THREE.OrbitControls( camera, container[0] );
         controls.addEventListener( 'change', this.drawModel );
+        controls.maxPolarAngle = Math.PI/2;
 
 
         container.html(renderer.domElement);

@@ -1,8 +1,25 @@
-solConfigApp.controller('MainCtrl', function ($scope, $http) {
+/*
+*   moduleID assigned in /modules/mod_configuration/spa/index.html
+*/
+
+solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
 
 
     $scope.configurations = new Array();
-    $scope.configurations.push( new ConfigurationModel() );
+
+    var idOrder = $location.search().order_id;
+
+    if ( idOrder == undefined ){
+        $scope.header = "Новая заявка";
+        $scope.configurations.push( new ConfigurationModel() );
+    }
+    else   {
+        //$log.info( 'id_order: ', idOrder );
+
+        $scope.header = 'Заявка №' + idOrder;
+        loadConfigurationByOrderId(idOrder);
+    }
+
 
     $scope.configurationParamSet = {
 
@@ -32,7 +49,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http) {
 
     $scope.saveConfigurationsOrder = function() {
         var postData = {
-            orderData:{},
+            idOrder: idOrder,
             configurations: []
         };
         for (key in $scope.configurations){
@@ -62,5 +79,29 @@ solConfigApp.controller('MainCtrl', function ($scope, $http) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
+
+    function loadConfigurationByOrderId( orderId ){
+        $http({
+            method: 'GET',
+            url: '/modules/mod_configuration/configuration.php?module='+moduleID+'&task=getOrderData'+'&order_id='+orderId,
+        }).then(
+            function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                for ( key in response.data ){
+                    var configuration = new ConfigurationModel( response.data[key] );
+                    $scope.configurations.push( configuration );
+                }
+            },
+            function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $scope.header = "Не удалось загрузить заявку № " + orderId
+            }
+        );
+    }
+    //--- end loadConfigurationByOrderId -------------------------------------------------
 
 });

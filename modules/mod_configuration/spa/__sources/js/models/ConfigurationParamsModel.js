@@ -1,4 +1,4 @@
-var ConfigurationParamsModel = function( configurationId ) {
+var ConfigurationParamsModel = function( configurationId, initData ) {
 
     //var id = ( angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations ) ?
     //    ( angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations + 1 ) : 0;
@@ -38,6 +38,15 @@ var ConfigurationParamsModel = function( configurationId ) {
     this.moduleDepth  = null; //mm
 
     var _this = this;
+//--- end init vars -----------------------------------------------------------------------------------------
+
+    if ( initData != undefined ){
+        for( key in initData ){
+            _this[key] = initData[key];
+            console.log('_this.key', _this[key]);
+        }
+    }
+
 //--- end init vars -----------------------------------------------------------------------------------------
 
 

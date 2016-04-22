@@ -1,6 +1,6 @@
 
 <div id="configuration{{ configuration.params.configurationId }}" class="row">
-
+    <p>Кофигурация {{ configuration.params.configurationId }}</p>
     <div class="col-md-6">
         <div class="panel-group">
             <div class="panel panel-info">
@@ -98,7 +98,7 @@
         </tr>
             <tr>
                 <td>Количество систем, шт.:</td>
-                <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="number" class="form-control" ></td>
+                <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
             </tr>
             <tr>
                 <td>Общая установленная мощность, Вт:</td>

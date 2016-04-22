@@ -28,6 +28,27 @@ class ConfigurationOrder {
 //--- End Configuration Constructor -------------------------------------------------------------------------------
 
 
+    public function getJsonOrderDataById( $orderId=null ){
+        $orderId =  ( empty($orderId) ) ? $this->orderId : $orderId;
+
+        $q = " SELECT * FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$orderId}' ";
+        $res = self::$db->db_Query($q);
+
+        if (!$res){
+            echo 'can\'t load order data';
+            return false;
+        }
+
+        while ( $row = self::$db->db_FetchAssoc() ){
+            $arrData[] = $row;
+        }
+        header('Content-Type: application/json');
+        return json_encode($arrData);
+    }
+
+//--- End Configuration Constructor -------------------------------------------------------------------------------
+
+
     public static function showConfigurationOrderList(){
 
         $res = self::$db->db_Query( "SELECT * FROM `".TblModConfigurationOrder."` WHERE 1" );
@@ -51,7 +72,7 @@ class ConfigurationOrder {
                 <td class="THead">дата</td>
             </tr>
         <?
-
+        //где-то здесь мне стало уже не интересно...
         $i=1;
         while ( $row = self::$db->db_FetchAssoc() ){
 
@@ -59,7 +80,7 @@ class ConfigurationOrder {
            <tr class="TR<?=$i?>">
                <td><input type="checkbox" name="delete[]" value="<?=$row['id_configuration_order']?>"></td>
                <td>
-                   <a href="<?=self::$script?>&task=edit&order_id=<?=$row['id_configuration_order']?>"><?=$row['id_configuration_order']?></a>
+                   <a href="<?=self::$script?>&task=edit#/?order_id=<?=$row['id_configuration_order']?>"><?=$row['id_configuration_order']?></a>
                </td>
                <td><?=$row['date']?></td>
             </tr>
@@ -80,14 +101,11 @@ class ConfigurationOrder {
     {
         $header = ($this->task == 'new') ? 'Новая заявка' : 'Заявка № '.$this->orderId;
 
-        AdminHTML::PanelSimpleH();
-
         echo View::factory( '/modules/mod_configuration/spa/index.html' )
             ->bind('moduleID', $this->module)
             ->bind('script', self::$script)
             ->bind('header', $header);
 
-        AdminHTML::PanelSimpleF();
     }
 
 //--- end showConfigurationOrder() ------------------------------------------------------------------------------------------------------------
@@ -99,24 +117,44 @@ class ConfigurationOrder {
             return false;
         }
 
-        $idConfigurationOrder = $data['orderData']['id_configuration_order'];
+        $isNewOrder = $isNewConfiguration = false;
+
+        $idConfigurationOrder = $data['idOrder'];
+
         if ( !isset($idConfigurationOrder) || empty($idConfigurationOrder) ){
-            $idConfigurationOrder= self::createNewConfigurationOrder();
+
+            $idConfigurationOrder = self::createNewConfigurationOrder();
 
             if (!$idConfigurationOrder){
                 echo 'can\'t create new configuration order!';
                 return false;
+            }
+
+            $isNewOrder = true;
+
+        }
+
+        if ( !$isNewOrder ){
+            //check exist order configurations
+            $q = "SELECT `configurationId` FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$idConfigurationOrder}' ";
+            if ( !($res = self::$db->db_Query($q)) ){
+                echo 'can\'t get exist configurations';
+                return false;
+            }
+
+            while( $row = self::$db->db_Query($q) ){
+                $arrOrderConfigurations[ $row['configurationId'] ] = 1;
             }
         }
 
 
         foreach ($data['configurations'] as $configuration ) {
 
-            $q = "
-              INSERT INTO ".TblModConfigurationSet."
-              SET
-                `id_configuration_order` = '{$idConfigurationOrder}',
-                `configurationId` = '{$configuration['configurationId']}',
+            $configurationId = $configuration['configurationId'];
+
+            $set = "
+                `".TblModConfigurationSet."`
+                SET
                 `designType` = '{$configuration['designType']}',
                 `rows` = '{$configuration['rows']}',
                 `moduleOrientation` = '{$configuration['moduleOrientation']}',
@@ -130,8 +168,31 @@ class ConfigurationOrder {
                 `configurationsCount` = '{$configuration['configurationsCount']}',
                 `image` = '{$configuration['image']}'
             ";
-//            echo $q;
-            $res = self::$db->db_Query($q);
+
+            $ids = "
+                ,
+                `id_configuration_order` = '{$idConfigurationOrder}',
+                `configurationId` = '{$configurationId}',
+            ";
+
+            if  ( !isset( $arrOrderConfigurations[ $configurationId ] ) ){
+                $q = "
+                    INSERT INTO
+                        ".$set."
+                        `id_configuration_order` = '{$idConfigurationOrder}',
+                        `configurationId` = '{$configuration['configurationId']}',
+                ";
+            }
+            else{
+                $q = "
+                    UPDATE ".$set."
+                    WHERE
+                        `id_configuration_order` = '{$idConfigurationOrder}' AND
+                        `configurationId` = '{$configuration['configurationId']}'
+                ";
+            }
+            echo $q;
+            $res = self::$db->db_Query( $q );
 //            var_dump($res);
 
             if (!$res){

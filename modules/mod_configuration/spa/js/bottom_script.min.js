@@ -4169,11 +4169,28 @@ function getCanvasData( selector) {
     return canvasData;
 }
 
-solConfigApp.controller('MainCtrl', function ($scope, $http) {
+/*
+*   moduleID assigned in /modules/mod_configuration/spa/index.html
+*/
+
+solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
 
 
     $scope.configurations = new Array();
-    $scope.configurations.push( new ConfigurationModel() );
+
+    var idOrder = $location.search().order_id;
+
+    if ( idOrder == undefined ){
+        $scope.header = "Новая заявка";
+        $scope.configurations.push( new ConfigurationModel() );
+    }
+    else   {
+        //$log.info( 'id_order: ', idOrder );
+
+        $scope.header = 'Заявка №' + idOrder;
+        loadConfigurationByOrderId(idOrder);
+    }
+
 
     $scope.configurationParamSet = {
 
@@ -4203,7 +4220,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http) {
 
     $scope.saveConfigurationsOrder = function() {
         var postData = {
-            orderData:{},
+            idOrder: idOrder,
             configurations: []
         };
         for (key in $scope.configurations){
@@ -4233,6 +4250,30 @@ solConfigApp.controller('MainCtrl', function ($scope, $http) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
+
+    function loadConfigurationByOrderId( orderId ){
+        $http({
+            method: 'GET',
+            url: '/modules/mod_configuration/configuration.php?module='+moduleID+'&task=getOrderData'+'&order_id='+orderId,
+        }).then(
+            function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                for ( key in response.data ){
+                    var configuration = new ConfigurationModel( response.data[key] );
+                    $scope.configurations.push( configuration );
+                }
+            },
+            function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $scope.header = "Не удалось загрузить заявку № " + orderId
+            }
+        );
+    }
+    //--- end loadConfigurationByOrderId -------------------------------------------------
 
 });
 
@@ -4414,6 +4455,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //mouse control in 3 lines :) awesome!
         controls = new THREE.OrbitControls( camera, container[0] );
         controls.addEventListener( 'change', this.drawModel );
+        controls.maxPolarAngle = Math.PI/2;
 
 
         container.html(renderer.domElement);
@@ -4700,13 +4742,11 @@ var ConfigurationDrawModel =  function( paramsObj ){
 };
 
 //end file
-var ConfigurationModel = function(varray){
+var ConfigurationModel = function( paramsData ){
 
+    var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length + 1;
 
-    alert(varray);
-    var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length;
-
-    this.params = new ConfigurationParamsModel( configurationId );
+    this.params = new ConfigurationParamsModel( configurationId, paramsData );
     this.painter = new ConfigurationDrawModel( this.params );
 
     this.update = function(){
@@ -4719,7 +4759,7 @@ var ConfigurationModel = function(varray){
 
 };
 
-var ConfigurationParamsModel = function( configurationId ) {
+var ConfigurationParamsModel = function( configurationId, initData ) {
 
     //var id = ( angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations ) ?
     //    ( angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations + 1 ) : 0;
@@ -4759,6 +4799,15 @@ var ConfigurationParamsModel = function( configurationId ) {
     this.moduleDepth  = null; //mm
 
     var _this = this;
+//--- end init vars -----------------------------------------------------------------------------------------
+
+    if ( initData != undefined ){
+        for( key in initData ){
+            _this[key] = initData[key];
+            console.log('_this.key', _this[key]);
+        }
+    }
+
 //--- end init vars -----------------------------------------------------------------------------------------
 
 

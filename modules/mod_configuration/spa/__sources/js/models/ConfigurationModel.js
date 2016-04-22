@@ -1,10 +1,8 @@
-var ConfigurationModel = function(varray){
+var ConfigurationModel = function( paramsData ){
 
+    var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length + 1;
 
-    alert(varray);
-    var configurationId = angular.element(document.querySelector("[ng-app=solConfigApp]")).scope().configurations.length;
-
-    this.params = new ConfigurationParamsModel( configurationId );
+    this.params = new ConfigurationParamsModel( configurationId, paramsData );
     this.painter = new ConfigurationDrawModel( this.params );
 
     this.update = function(){
