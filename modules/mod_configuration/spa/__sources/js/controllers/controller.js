@@ -4,6 +4,9 @@
 
 solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
 
+    $scope.clientName = "";
+    $scope.Location = "";
+    $scope.date = "";
 
     $scope.configurations = new Array();
 
@@ -16,7 +19,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
     else   {
         //$log.info( 'id_order: ', idOrder );
 
-        $scope.header = 'Заявка №' + idOrder;
+        $scope.header = 'Заявка № ' + idOrder;
         loadConfigurationByOrderId(idOrder);
     }
 
@@ -48,8 +51,14 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
     };
 
     $scope.saveConfigurationsOrder = function() {
+
+        $('#preloader').html('<img src="/admin/images/progress_bar1.gif">');
+
         var postData = {
             idOrder: idOrder,
+            clientName: $scope.clientName,
+            location: $scope.location,
+            date: $scope.date,
             configurations: []
         };
         for (key in $scope.configurations){
@@ -77,8 +86,24 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
             url: '/modules/mod_configuration/configuration.php?module=' + moduleID + '&task=save',
             data: postData,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        });
+        }).then(
+            function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                $scope.saveMsgReport = 'сохранено!';
+                $scope.header = response;
+                $('#preloader').html('');
+            },
+            function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $scope.saveMsgReport = 'Не удалось сохранить!';
+                $('#preloader').html('');
+            }
+        );
     }
+
+    $scope.saveMsgReport = '';
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -40,7 +40,7 @@ gulp.task('js-to-header', function(){
 gulp.task('js-to-bottom', function(){
     return gulp.src([
         'bower_components/bootstrap/dist/js/bootstrap.min.js',
-        'bower_components/three.js/build/three.min.js',
+        'bower_components/three.js/build/three.js',
         'bower_components/three.js/examples/js/renderers/CanvasRenderer.js',
         'bower_components/three.js/examples/js/renderers/Projector.js',
         'bower_components/three.js/examples/js/controls/OrbitControls.js',

@@ -43,7 +43,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
     if ( initData != undefined ){
         for( key in initData ){
             _this[key] = initData[key];
-            console.log('_this.key', _this[key]);
+            //console.log('_this.key', _this[key]);
         }
     }
 
@@ -150,6 +150,11 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
         }
 
         supports.count++; //+1 at the end
+
+        if ( supports.count < 2 ){
+            supports.count = 2;
+            supports.interval = (_this.tableWidth - _this._supportWidth) / 2;
+        }
 
         //берем то тот интервал которого меньше остаток от деления, т.е. который ближе подходит по условию
 

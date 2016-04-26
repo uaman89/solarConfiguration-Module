@@ -19758,7 +19758,8 @@ THREE.TextureLoader.prototype = {
 			}
 
 		}, onProgress, onError );
-
+;
+		console.log('texture', texture)
 		return texture;
 
 	},

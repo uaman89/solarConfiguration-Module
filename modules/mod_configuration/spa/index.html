@@ -4,6 +4,7 @@
     <!--<meta charset="UTF-8">-->
     <!--<title>Solar-SPA</title>-->
 <!--</head>-->
+
 <script>
     var moduleID = <?=$moduleID?>;
 </script>
@@ -12,14 +13,45 @@
 <script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>
 
 <div ng-app="solConfigApp" ng-controller="MainCtrl" class="container">
+
     <form ng-submit="saveConfigurationsOrder()">
 
-        <p>
-            <button type="submit" class="btn btn-success">Сохранить заявку</button>
-            <a href="<?=$script?>" class="btn btn-danger pull-right">Закрыть</a>
-        </p>
+        <div class="block-header">
+            <span>{{ header }}</span>
 
-        <h2>{{ header }}</h2>
+            <button type="submit" class="btn btn-success">Сохранить заявку</button>
+
+            <a href="<?=$script?>" class="btn btn-danger pull-right">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </a>
+        </div>
+
+        <br>
+
+
+        <div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="fioLabel">ФИО</span>
+                        <input ng-model="clientName" id="fio" type="text" class="form-control" aria-describedby="fioLabel">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="dateLabel">Дата</span>
+                        <input ng-model="date" id="date" type="text" class="form-control" aria-describedby="dateLabel">
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="locationLabel">Местоположение</span>
+                        <input ng-model="location" id="location" type="text" class="form-control" aria-describedby="locationLabel">
+                    </div>
+                    <br>
+                </div>
+        </div>
+
 
         <div ng-repeat="configuration in configurations" >
             <!--{{ configuration.designType }} x {{ configuration.moduleOrientation }}-->
@@ -29,11 +61,35 @@
             <hr>
         </div>
 
-        <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
+
+
     </form>
+
+    <div>
+        <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
+
+        <span id="preloader"></span>
+        <span>{{ saveMsgReport }}</span>
+
+    </div>
 </div>
 
 <script src="/modules/mod_configuration/spa/js/bottom_script.min.js"></script>
+
+
+<!--<script src="/modules/mod_configuration/spa/__sources/js/controllers/controller.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/directives/configuration.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationModel.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationDrawModel.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationParamsModel.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/app.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/__sources/js/index.js"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/bootstrap/dist/js/bootstrap.min.js'"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/build/three.js'"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/CanvasRenderer.js'"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/Projector.js'"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/controls/OrbitControls.js'"></script>-->
+<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/Detector.js'"></script>-->
 
 <!--</body>-->
 <!--</html>-->

@@ -51,7 +51,18 @@ class ConfigurationOrder {
 
     public static function showConfigurationOrderList(){
 
-        $res = self::$db->db_Query( "SELECT * FROM `".TblModConfigurationOrder."` WHERE 1" );
+        $q = "
+          SELECT
+              `o`.*,
+              `s`.`image`
+          FROM
+            `".TblModConfigurationOrder."` o
+            INNER JOIN `".TblModConfigurationSet."` s ON ( `s`.`id_configuration_order` = `o`.`id_configuration_order` )
+          WHERE 1 ORDER BY `date` DESC
+        ";
+        //echo '<br>$q:'.$q;
+        
+        $res = self::$db->db_Query( $q );
 
         if ( !$res ) {
             echo 'can\'t load order list!';
@@ -67,8 +78,9 @@ class ConfigurationOrder {
         AdminHTML::TablePartH();
         ?>
             <tr>
-                <td class="THead">*</td>
-                <td class="THead">ID</td>
+                <td class="THead" width="25">*</td>
+                <td class="THead" width="60"></td>
+                <td class="THead">№ заявки</td>
                 <td class="THead">дата</td>
             </tr>
         <?
@@ -77,8 +89,9 @@ class ConfigurationOrder {
         while ( $row = self::$db->db_FetchAssoc() ){
 
             ?>
-           <tr class="TR<?=$i?>">
+           <tr class="TR<?=$i?>" align="center">
                <td><input type="checkbox" name="delete[]" value="<?=$row['id_configuration_order']?>"></td>
+               <td><img src="<?=$row['image']?>" alt="" title="" width="50" height="40"></td>
                <td>
                    <a href="<?=self::$script?>&task=edit#/?order_id=<?=$row['id_configuration_order']?>"><?=$row['id_configuration_order']?></a>
                </td>
@@ -121,7 +134,7 @@ class ConfigurationOrder {
 
         $idConfigurationOrder = $data['idOrder'];
 
-        if ( !isset($idConfigurationOrder) || empty($idConfigurationOrder) ){
+        if ( empty($idConfigurationOrder) ){
 
             $idConfigurationOrder = self::createNewConfigurationOrder();
 
@@ -131,8 +144,8 @@ class ConfigurationOrder {
             }
 
             $isNewOrder = true;
-
         }
+
 
         if ( !$isNewOrder ){
             //check exist order configurations
@@ -169,18 +182,14 @@ class ConfigurationOrder {
                 `image` = '{$configuration['image']}'
             ";
 
-            $ids = "
-                ,
-                `id_configuration_order` = '{$idConfigurationOrder}',
-                `configurationId` = '{$configurationId}',
-            ";
 
             if  ( !isset( $arrOrderConfigurations[ $configurationId ] ) ){
                 $q = "
                     INSERT INTO
                         ".$set."
+                        ,
                         `id_configuration_order` = '{$idConfigurationOrder}',
-                        `configurationId` = '{$configuration['configurationId']}',
+                        `configurationId` = '{$configuration['configurationId']}'
                 ";
             }
             else{
@@ -199,17 +208,35 @@ class ConfigurationOrder {
                 echo 'can\'t save configuration set params!';
                 return false;
             }
-
-            self::updateConfigurationOrder( $idConfigurationOrder );
         }//endforeach
 
+        $orderData = array(
+            'id_configuration_order' => $idConfigurationOrder,
+            'clientName' => $data['ClientName'],
+            'location' => $data['location'],
+            'date' => $data['date'],
+        );
+
+        self::updateConfigurationOrder( $orderData );
+
+        echo $idConfigurationOrder;
+        return;
     }
 
 //--- end of save() ------------------------------------------------------------------------------------------------------------------------------------
 
     public function deleteOrders(){
         if ( !empty($this->delete) ){
-            $q = "DELETE FROM `".TblModConfigurationOrder."` WHERE `id_configuration_order` IN ('".implode("','", $this->delete)."') ";
+            $q = "
+                DELETE o, s
+                FROM
+                  `".TblModConfigurationOrder."` o
+                   INNER JOIN `".TblModConfigurationSet."` s
+                WHERE
+                    `o`.`id_configuration_order` IN ('".implode("','", $this->delete)."')
+                    AND
+                    `o`.`id_configuration_order` = `s`.`id_configuration_order`
+            ";
             $res = self::$db->db_Query( $q );
             //echo '<br>$q:'.$q;
             $msg =  (!$res) ? 'Не удалось удалить записи!' : 'Записи успешно удалены.';
@@ -226,12 +253,18 @@ class ConfigurationOrder {
 //--- end deleteOrders() ------------------------------------------------------------------------------------------------------------------------------------
 
 
-    protected static function updateConfigurationOrder( $idConfigurationOrder ){
+    protected static function updateConfigurationOrder( $orderData ){
         $q = "
-            UPDATE `".TblModConfigurationOrder."`
-            SET `date` = NOW()
-            WHERE `id_configuration_order` = '{$idConfigurationOrder}'
+            UPDATE
+                `".TblModConfigurationOrder."`
+            SET
+                `clientName` = '{$orderData['clientName']}'
+                `location` = '{$orderData['location']}'
+                `date` = '{$orderData['date']}'
+            WHERE
+                `id_configuration_order` = '{$orderData['id_configuration_order']}'
         ";
+        echo '<br>$q:'.$q;
         $res = self::$db->db_Query($q);
 
         if (!$res){

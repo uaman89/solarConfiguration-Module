@@ -9,7 +9,12 @@
 
 .small-table td {
   padding: 2px 15px;
-  border: 1px solid rgba(128, 128, 128, 0.31); }
+  border: 1px solid rgba(128, 128, 128, 0.31);
+  text-align: right; }
 
 .renderer-container {
   margin-bottom: 15px; }
+
+.block-header span {
+  font-size: 20px;
+  font-weight: bold; }

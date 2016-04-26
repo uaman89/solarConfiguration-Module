@@ -3,13 +3,15 @@ var ConfigurationDrawModel =  function( paramsObj ){
     var params = paramsObj;
 
     var container, camera,
-        moduleTexture, moduleMaterial, moduleBaseMaterials, supportMaterial,
+        moduleTexture, groundTexture, moduleMaterial, moduleBaseMaterials, supportMaterial,
         controls,
         light, renderer,  scene;
 
-    var configurationContainer, supportBar, supportBarWidth;
+    var ground, configurationContainer, supportBar, supportBarWidth;
 
     var _this = this;
+
+
 
 // InitDrawModel begin:
 
@@ -21,7 +23,11 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         scene = new THREE.Scene();
-        scene.fog = new THREE.Fog( 0xffffff, 0.01, 70 ); // blue: 0x66B9FC
+        //scene.fog = new THREE.Fog( 0xffffff, 0.01, 70 ); // blue: 0x66B9FC
+
+        //ambient light
+        var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+        scene.add( light );
 
 
         camera = new THREE.PerspectiveCamera( 45,containerWidth / containerHeight, 1, 500 );
@@ -44,30 +50,43 @@ var ConfigurationDrawModel =  function( paramsObj ){
         }
         //end update renderer on window resize begin
 
+
+
         // Load a texture, set wrap mode to repeat
-        moduleTexture = new THREE.TextureLoader().load("/modules/mod_configuration/spa/textures/solar-cell.png");
+        moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
         moduleTexture.wrapS = THREE.RepeatWrapping;
         moduleTexture.wrapT = THREE.RepeatWrapping;
         moduleTexture.repeat.set(5, 10);
 
-
-        // Load a texture, set wrap mode to repeat
-        groundTexture = new THREE.TextureLoader().load("/modules/mod_configuration/spa/textures/grass.jpg");
-        groundTexture.wrapS = THREE.RepeatWrapping;
-        groundTexture.wrapT = THREE.RepeatWrapping;
-        groundTexture.repeat.set(100, 100);
-
-
-        // module materials begin:
-        //moduleMaterial = new THREE.MeshBasicMaterial( {map: moduleTexture,  overdraw: true} );
         moduleMaterial = new THREE.MeshPhongMaterial( {
             map: moduleTexture,
+            //color: 0x001D62,
             //overdraw: true,
             transparent: true,
             shininess: 50,
             specular: 0x222222,
             shading: THREE.SmoothShading
         } );
+
+
+        // Load a texture, set wrap mode to repeat
+/*
+        groundTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/grass.jpg" );
+        groundTexture.wrapS = THREE.RepeatWrapping;
+        groundTexture.wrapT = THREE.RepeatWrapping;
+        groundTexture.repeat.set(100, 100);
+*/
+
+        //var groundMaterial = new THREE.MeshPhongMaterial( {
+        var groundMaterial = new THREE.MeshLambertMaterial( {
+            //map: groundTexture,
+            color: 0xC1C4BE,
+            shading: THREE.SmoothShading
+        } );
+
+
+        // module materials begin:
+        //moduleMaterial = new THREE.MeshBasicMaterial( {map: moduleTexture,  overdraw: true} );
 
         moduleBaseMaterials = [
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
@@ -90,33 +109,30 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         //ground
-        var groundMaterial = new THREE.MeshPhongMaterial( {
-            map: groundTexture,
-            shininess: 10,
-            specular: 0x222222,
-            shading: THREE.SmoothShading
-        } );
 
-        var ground = new THREE.Mesh( new THREE.PlaneGeometry( 150, 150, 1, 1), groundMaterial );
-        ground.rotation.x = -90 * Math.PI/180;
+
+        //var ground = new THREE.Mesh( new THREE.PlaneGeometry( 150, 150, 1, 1), groundMaterial );
+
+        ground = new THREE.Mesh( new THREE.BoxGeometry(), groundMaterial );
         ground.position.y = 0;
-        //ground.receiveShadow = true;
+        ground.receiveShadow = true;
         scene.add( ground );
         //end ground
 
         configurationContainer = new THREE.Object3D();
-        configurationContainer.castShadow = true;
+        //configurationContainer.castShadow = true;
 
         //"base" for supports
         supportBar = new THREE.Mesh(
             new THREE.BoxGeometry(),
             supportMaterial
         );
+        //supportBar.castShadow = true;
 
         scene.add( configurationContainer );
 
 
-        renderer = Detector.webgl ? new THREE.WebGLRenderer({'antialias':true}) : new THREE.CanvasRenderer();
+        renderer = Detector.webgl ? new THREE.WebGLRenderer({'antialias':true, preserveDrawingBuffer: true }) : new THREE.CanvasRenderer();
         renderer.setSize( containerWidth, containerHeight);
         renderer.setClearColor(0xffffff, 1); //fill bg with color
 
@@ -130,6 +146,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         light.castShadow = true;
 
         scene.add(light);
+
 
         //scene.add( new THREE.CameraHelper( light.shadow.camera ) );// some help object
         //end light
@@ -156,6 +173,21 @@ var ConfigurationDrawModel =  function( paramsObj ){
         };
 
         render();
+        
+        //check if textures loaded
+
+        checkTextures();
+        
+        function checkTextures(){
+            console.log('moduleTexture',moduleTexture);    
+
+            if ( moduleTexture.image == undefined ){
+                moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
+                setTimeout( checkTextures, 1000);
+            }
+
+        }
+        
     };
 
 //--- end Init ----------------------------------------------------------------------------------------------------------------------------
@@ -163,6 +195,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
     this.drawModel = function(){
+
 
         // ! ВСЕ РАЗМЕРЫ ВВЕДЕННЫЕ ПОЛЬЗОВАТЕЛЕМ ДЕЛИМ НА 1000.
 
@@ -173,6 +206,17 @@ var ConfigurationDrawModel =  function( paramsObj ){
         var H = params.H/1000;
         var angleRad = parseInt(params.tableAngle) * Math.PI / 180;
         var supportsInterval = params.supports.interval/1000;
+
+
+        //ground
+        var groundDepth = B + 5;
+        var groundWidth = params.L/1000 + 5;
+        var groundHeight = 0.05;
+        ground.geometry = new  THREE.BoxGeometry( groundWidth, groundHeight, groundDepth);
+        ground.position.z = -B/2;
+        ground.position.y = -groundHeight;
+
+
 
         // clear old configuration model:
         configurationContainer.children = [];
@@ -203,6 +247,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
             new THREE.MeshFaceMaterial( moduleBaseMaterials )
             //new THREE.MeshBasicMaterial({ color: 0xE0E0E0 })
         );
+        moduleBase.castShadow = true;
         //moduleBase.geometry.mergeVertices();
         //moduleBase.geometry.computeVertexNormals();
 
@@ -320,6 +365,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
                 var frontSupport = supportBar.clone();
                 frontSupport.geometry = new THREE.BoxGeometry(supportBarWidth, frontSupportHeight, supportBarWidth);
                 frontSupport.position.set(0, frontSupportOffsetY, -supportBarWidth);
+                frontSupport.castShadow = true;
 
                 //back vertical support prototype
                 var backSupportOffsetY = backSupportHeight / 2;
@@ -334,16 +380,19 @@ var ConfigurationDrawModel =  function( paramsObj ){
                 var bottomHSupport = supportBar.clone();
                 bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B - supportBarWidth/2);
                 bottomHSupport.position.set(0, distanceToGround / 2, supportUnderModuleOffsetZ);
+                bottomHSupport.reciveShadows = true;
+                bottomHSupport.castShadows = true;
 
+/*
                 // back "diagonal" support |\|\|  <--  \ <--
                 var backDiagonalSupport = supportBar.clone();
-
                 var backDiagSmallerCathetus = H - (distanceToGround);
                 var backDiagSuppWidth = Math.sqrt(Math.pow(supportsInterval, 2) + Math.pow(backDiagSmallerCathetus, 2));
 
                 backDiagonalSupport.geometry = new THREE.BoxGeometry(backDiagSuppWidth, supportBarWidth, supportBarWidth);
                 backDiagonalSupport.rotation.z = Math.acos(supportsInterval / backDiagSuppWidth); //angle in radians;
                 backDiagonalSupport.position.set(-supportsInterval / 2, H / 2, -B + supportBarWidth/2 );
+*/
                 break;
         }//end switch
 
@@ -384,12 +433,14 @@ var ConfigurationDrawModel =  function( paramsObj ){
                     bottomHSupportClone
                 );
 
+/*
                 // "diagonal" supports
                 if ( i > 0 ) {  // skip first
                     var backDiagonalSupportClone = backDiagonalSupport.clone();
                     backDiagonalSupportClone.position.x += xPos;
                     supportsContainer.add(backDiagonalSupportClone);
                 }
+*/
             }
 
 
