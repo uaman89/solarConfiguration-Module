@@ -7,7 +7,9 @@ var ConfigurationDrawModel =  function( paramsObj ){
         controls,
         light, renderer,  scene;
 
-    var ground, configurationContainer, supportBar, supportBarWidth;
+    var configurationContainer, linesContainer;
+
+    var ground, supportBar, supportBarWidth;
 
     var _this = this;
 
@@ -26,8 +28,8 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //scene.fog = new THREE.Fog( 0xffffff, 0.01, 70 ); // blue: 0x66B9FC
 
         //ambient light
-        var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-        scene.add( light );
+        var amlight = new THREE.AmbientLight( 0x404040 ); // soft white light
+        scene.add( amlight );
 
 
         camera = new THREE.PerspectiveCamera( 45,containerWidth / containerHeight, 1, 500 );
@@ -80,8 +82,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //var groundMaterial = new THREE.MeshPhongMaterial( {
         var groundMaterial = new THREE.MeshLambertMaterial( {
             //map: groundTexture,
-            color: 0xC1C4BE,
-            shading: THREE.SmoothShading
+            color: 0xC1C4BE
         } );
 
 
@@ -100,7 +101,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         //support material
-        supportMaterial = new THREE.MeshPhongMaterial( {
+        supportMaterial = new THREE.MeshBasicMaterial( {
             color: 0x979797,
             shininess: 200,
             specular: 0xffffff,
@@ -109,10 +110,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         //ground
-
-
-        //var ground = new THREE.Mesh( new THREE.PlaneGeometry( 150, 150, 1, 1), groundMaterial );
-
         ground = new THREE.Mesh( new THREE.BoxGeometry(), groundMaterial );
         ground.position.y = 0;
         ground.receiveShadow = true;
@@ -120,14 +117,13 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //end ground
 
         configurationContainer = new THREE.Object3D();
-        //configurationContainer.castShadow = true;
+        linesContainer = new THREE.Object3D();
 
         //"base" for supports
         supportBar = new THREE.Mesh(
             new THREE.BoxGeometry(),
             supportMaterial
         );
-        //supportBar.castShadow = true;
 
         scene.add( configurationContainer );
 
@@ -135,18 +131,37 @@ var ConfigurationDrawModel =  function( paramsObj ){
         renderer = Detector.webgl ? new THREE.WebGLRenderer({'antialias':true, preserveDrawingBuffer: true }) : new THREE.CanvasRenderer();
         renderer.setSize( containerWidth, containerHeight);
         renderer.setClearColor(0xffffff, 1); //fill bg with color
+        //renderer.shadowMap.enabled = true;
 
 
         //light begin:
-        light = new THREE.DirectionalLight(0xFFFFFF);
+        /*light = new THREE.DirectionalLight(0xFFFFFF);
         light.position.set(0, 1, 1);
         light.target.position.set(0, 1, -1);
+        light.castShadow = true;
 
+        scene.add(light);*/
+
+        light = new THREE.DirectionalLight(0xdfebff, 1);
+        light.position.set(0, 100, 60);
+        light.position.multiplyScalar(1);
 
         light.castShadow = true;
 
-        scene.add(light);
+        light.shadow.mapSize.width = 512;
+        light.shadow.mapSize.height = 512;
 
+        var d = 100;
+
+        light.shadow.camera.left = -d;
+        light.shadow.camera.right = d;
+        light.shadow.camera.top = d;
+        light.shadow.camera.bottom = -d;
+
+        light.shadow.camera.far = 1000;
+        //light.shadow.darkness = 0.2;
+
+        scene.add(light);
 
         //scene.add( new THREE.CameraHelper( light.shadow.camera ) );// some help object
         //end light
@@ -156,7 +171,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
         controls = new THREE.OrbitControls( camera, container[0] );
         controls.addEventListener( 'change', this.drawModel );
         controls.maxPolarAngle = Math.PI/2;
-
 
         container.html(renderer.domElement);
 
@@ -173,21 +187,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         };
 
         render();
-        
-        //check if textures loaded
 
-        checkTextures();
-        
-        function checkTextures(){
-            console.log('moduleTexture',moduleTexture);    
-
-            if ( moduleTexture.image == undefined ){
-                moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
-                setTimeout( checkTextures, 1000);
-            }
-
-        }
-        
     };
 
 //--- end Init ----------------------------------------------------------------------------------------------------------------------------
@@ -208,6 +208,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         var supportsInterval = params.supports.interval/1000;
 
 
+
         //ground
         var groundDepth = B + 5;
         var groundWidth = params.L/1000 + 5;
@@ -221,8 +222,13 @@ var ConfigurationDrawModel =  function( paramsObj ){
         // clear old configuration model:
         configurationContainer.children = [];
 
+        // clear old lines:
+        linesContainer.children = [];
+
         var modulesContainer = new THREE.Object3D();
         var supportsContainer = new THREE.Object3D();
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------
 
 
         // module begin:
@@ -241,6 +247,8 @@ var ConfigurationDrawModel =  function( paramsObj ){
         else{
             moduleTexture.repeat.set(5, 10);
         }
+        moduleMaterial.map = moduleTexture;
+
 
         var moduleBase = new THREE.Mesh(
             new THREE.BoxGeometry( moduleSize.width, moduleSize.depth, moduleSize.height, 1,1,1 ),
@@ -248,24 +256,20 @@ var ConfigurationDrawModel =  function( paramsObj ){
             //new THREE.MeshBasicMaterial({ color: 0xE0E0E0 })
         );
         moduleBase.castShadow = true;
-        //moduleBase.geometry.mergeVertices();
-        //moduleBase.geometry.computeVertexNormals();
 
         var moduleTopFace = new THREE.Mesh(
                 new THREE.PlaneGeometry( moduleSize.width-0.05, moduleSize.height-0.05, 1, 1),
                 moduleMaterial
-                //new THREE.MeshBasicMaterial({ map: moduleTexture, transparent: true })
         );
         moduleTopFace.position.y += moduleSize.depth - moduleSize.depth/2 + 0.001; // + 0.001 - чтобы панель с ячейками была чуть-чуть выше "основы"
         moduleTopFace.rotation.x = -90 * Math.PI / 180;
         module.add(moduleBase, moduleTopFace);
 
-        // end module
+        // end module --------------------------------------------------------------------------------------------------------------------------------
 
 
         //рельса, на которой лежит ряд модулей
         supportBarWidth = params.supports.width/1000;
-
         var tableFrameBarPositionOffset = moduleSize.height*0.3; //30% of height from center  [ 20% | < 30% * 30% > | 20% ]
         //end: рельса, на которой лежит ряд модулей
 
@@ -320,7 +324,140 @@ var ConfigurationDrawModel =  function( paramsObj ){
         modulesContainer.rotation.x = angleRad;
 
         configurationContainer.add(modulesContainer);
-        // end generate the "table"
+
+        // end generate the "table" -----------------------------------------------------------------------------------------------------------------
+
+
+        //LINES begin:
+
+        if ( params.isShowLines ){
+
+            var material = new THREE.LineBasicMaterial({
+                color: 0x000055
+            });
+
+            //length L line
+
+            var linePos = {
+                x: tableWidth/2,
+                y: H + 1,
+                z: -B
+            };
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+                new THREE.Vector3( -linePos.x, linePos.y+0.25, linePos.z ),
+                new THREE.Vector3( -linePos.x, linePos.y-0.75, linePos.z ),
+
+                new THREE.Vector3( -linePos.x, linePos.y, linePos.z ),
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+
+                new THREE.Vector3( linePos.x, linePos.y+0.25, linePos.z ),
+                new THREE.Vector3( linePos.x, linePos.y-0.75, linePos.z )
+            );
+            linesContainer.add( new THREE.Line( geometry, material ) );
+
+            var sprite = makeTextSprite('L');
+            sprite.position.set( 0.5 , linePos.y + 0.25, linePos.z );
+            linesContainer.add( sprite );
+
+            //end L Line
+
+
+            //height H line
+            var hLine = new THREE.Object3D();
+
+            var linePos = {
+                x: 0,
+                y: H + 0.05,
+                z: 0
+            };
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+
+                new THREE.Vector3( linePos.x + 0.25, linePos.y, linePos.z ),
+                new THREE.Vector3( linePos.x - 0.5, linePos.y, linePos.z ),
+
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+                new THREE.Vector3( linePos.x, 0.05, linePos.z ),
+
+                new THREE.Vector3( linePos.x + 0.25, 0.05, linePos.z ),
+                new THREE.Vector3( linePos.x - 0.5, 0.05, linePos.z )
+
+            );
+            var line = new THREE.Line( geometry, material );
+            line.rotation.y = 45 * Math.PI/180;
+            hLine.add( line );
+            hLine.position.set( tableWidth/2 + 0.75, 0, -B - 0.5 );
+
+            var sprite = makeTextSprite('H');
+            sprite.position.set( linePos.x, linePos.y/2, linePos.z );
+            hLine.add( sprite );
+
+            linesContainer.add( hLine );
+
+            //end H Line
+
+
+            // B line
+
+            var linePos = {
+                x: tableWidth/2 +1,
+                y: 0.05,
+                z: -B
+            };
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+
+                new THREE.Vector3( linePos.x - 0.5,  linePos.y, 0 ),
+                new THREE.Vector3( linePos.x + 0.25, linePos.y, 0 ),
+
+                new THREE.Vector3( linePos.x, linePos.y, 0 ),
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+
+                new THREE.Vector3( linePos.x - 0.5, linePos.y, linePos.z ),
+                new THREE.Vector3( linePos.x + 0.25, linePos.y, linePos.z )
+
+            );
+            linesContainer.add( new THREE.Line( geometry, material ) );
+
+            var sprite = makeTextSprite('B');
+            sprite.position.set( linePos.x + 0.05, linePos.y+0.05, linePos.z/2  );
+            linesContainer.add( sprite );
+
+            //end  B Line
+
+            // h line
+
+            var linePos = {
+                x: -tableWidth/2,
+                y: distanceToGround,
+                z: 0.75
+            };
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+                new THREE.Vector3( linePos.x, 0.05, linePos.z + 0.25 ),
+                new THREE.Vector3( linePos.x, 0.05, linePos.z - 0.5 ),
+
+                new THREE.Vector3( linePos.x, 0.05, linePos.z ),
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z + 0.25 ),
+                new THREE.Vector3( linePos.x, linePos.y, linePos.z - 0.5 )
+            );
+            linesContainer.add( new THREE.Line( geometry, material ) );
+
+            var sprite = makeTextSprite('h', 48);
+            sprite.position.set( linePos.x, linePos.y/2, linePos.z + 0.25 );
+            linesContainer.add( sprite );
+            //end h Line
+
+            scene.add(linesContainer);
+        }
+        //end LINES-------------------------------------------------------------------------------------------------------------------------
 
 
         //draw supports begin:
@@ -333,7 +470,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
         var frontSupportHeight = distanceToGround;
         var backSupportHeight = H - supportBarWidth/2;
-
 
         var supportUnderModuleOffsetY = ( backSupportHeight - frontSupportHeight ) / 2 + distanceToGround - supportBarWidth;
         var supportUnderModuleOffsetZ = -B/2;
@@ -472,6 +608,32 @@ var ConfigurationDrawModel =  function( paramsObj ){
     }
 //--- end centerCamera() --------------------------------------------------------------------------------------------------------------------------------------------
 
+
+    function makeTextSprite(message, fontsize) {
+        if ( fontsize == undefined ) fontsize = 42;
+        var ctx, texture, sprite, spriteMaterial;
+        var canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        ctx.font = fontsize + "px Arial";
+
+        // setting canvas width/height before ctx draw, else canvas is empty
+        canvas.width = ctx.measureText(message).width *3;
+        canvas.height = fontsize * 2;
+
+        // after setting the canvas width/height we have to re-set font to apply!?! looks like ctx reset
+        ctx.font = fontsize + "px Arial";
+        ctx.fillStyle = "0x000055";
+        ctx.fillText(message, 0, fontsize);
+
+        texture = new THREE.Texture(canvas);
+        texture.repeat.set( 1, 1 );
+        texture.minFilter = THREE.LinearFilter; // NearestFilter;
+        texture.needsUpdate = true;
+
+        spriteMaterial = new THREE.SpriteMaterial({map : texture});
+        sprite = new THREE.Sprite(spriteMaterial);
+        return sprite;
+    }
 
 };
 

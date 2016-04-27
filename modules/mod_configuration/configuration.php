@@ -35,6 +35,7 @@ $Configuration = new ConfigurationOrder($logon->user_id, $module);
 $Configuration->task   = ( isset( $_REQUEST['task']) ) ? $_REQUEST['task'] : null;
 $Configuration->module = ( isset( $_REQUEST['module'] ) ) ? $_REQUEST['module'] : NULL;
 $Configuration->orderId = ( isset( $_REQUEST['order_id'] ) ) ? $_REQUEST['order_id'] : NULL;
+$Configuration->configurationId = ( isset( $_REQUEST['configurationId'] ) ) ? $_REQUEST['configurationId'] : NULL;
 $Configuration->delete = ( isset( $_REQUEST['delete'] ) && is_array( $_REQUEST['delete'])  ) ? $_REQUEST['delete'] : NULL;
 
 //var_dump($_REQUEST);
@@ -51,6 +52,10 @@ switch( $Configuration->task ) {
         $request = file_get_contents("php://input");
         $postdata = json_decode($request, 1);
         $Configuration->save($postdata);
+        break;
+    case 'delConfiguration':
+        var_dump($_REQUEST);
+        $Configuration->deleteConfigurationInOrder( $Configuration->configurationId, $Configuration->orderId);
         break;
     case 'delete':
         //var_dump($Configuration->delete);

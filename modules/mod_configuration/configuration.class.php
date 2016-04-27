@@ -31,7 +31,18 @@ class ConfigurationOrder {
     public function getJsonOrderDataById( $orderId=null ){
         $orderId =  ( empty($orderId) ) ? $this->orderId : $orderId;
 
-        $q = " SELECT * FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$orderId}' ";
+        $q = "
+            SELECT
+                `clientName`,
+                `location`,
+                `date`
+            FROM
+                `".TblModConfigurationOrder."`
+            WHERE
+                `id_configuration_order` = '{$orderId}'
+            LIMIT 1
+        ";
+
         $res = self::$db->db_Query($q);
 
         if (!$res){
@@ -40,8 +51,40 @@ class ConfigurationOrder {
         }
 
         while ( $row = self::$db->db_FetchAssoc() ){
-            $arrData[] = $row;
+            $arrData['orderInfo'] = $row;
         }
+
+
+        $q = "
+            SELECT
+                `configurationId`,
+                `designType`,
+                `rows`,
+                `moduleOrientation`,
+                `modulesCount`,
+                `userModuleHeight`,
+                `userModuleWidth`,
+                `userModuleDepth`,
+                `tableAngle`,
+                `distanceToGround`,
+                `modulePower`,
+                `configurationsCount`
+            FROM
+                `".TblModConfigurationSet."`
+            WHERE
+                `id_configuration_order` = '{$orderId}'
+        ";
+        $res = self::$db->db_Query($q);
+
+        if (!$res){
+            echo 'can\'t load order data';
+            return false;
+        }
+
+        while ( $row = self::$db->db_FetchAssoc() ){
+            $arrData['configurations'][] = $row;
+        }
+
         header('Content-Type: application/json');
         return json_encode($arrData);
     }
@@ -58,7 +101,9 @@ class ConfigurationOrder {
           FROM
             `".TblModConfigurationOrder."` o
             INNER JOIN `".TblModConfigurationSet."` s ON ( `s`.`id_configuration_order` = `o`.`id_configuration_order` )
-          WHERE 1 ORDER BY `date` DESC
+          WHERE 1
+          GROUP BY `id_configuration_order`
+          ORDER BY `date` DESC
         ";
         //echo '<br>$q:'.$q;
         
@@ -118,7 +163,6 @@ class ConfigurationOrder {
             ->bind('moduleID', $this->module)
             ->bind('script', self::$script)
             ->bind('header', $header);
-
     }
 
 //--- end showConfigurationOrder() ------------------------------------------------------------------------------------------------------------
@@ -146,61 +190,39 @@ class ConfigurationOrder {
             $isNewOrder = true;
         }
 
-
+        //save configurations
         if ( !$isNewOrder ){
-            //check exist order configurations
-            $q = "SELECT `configurationId` FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$idConfigurationOrder}' ";
+            //delete old data
+            $q = "DELETE FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$idConfigurationOrder}' ";
             if ( !($res = self::$db->db_Query($q)) ){
-                echo 'can\'t get exist configurations';
+                echo 'can\'t delete exist configurations';
                 return false;
-            }
-
-            while( $row = self::$db->db_Query($q) ){
-                $arrOrderConfigurations[ $row['configurationId'] ] = 1;
             }
         }
 
-
         foreach ($data['configurations'] as $configuration ) {
 
-            $configurationId = $configuration['configurationId'];
-
-            $set = "
-                `".TblModConfigurationSet."`
+            $q = "
+                INSERT INTO
+                    `".TblModConfigurationSet."`
                 SET
-                `designType` = '{$configuration['designType']}',
-                `rows` = '{$configuration['rows']}',
-                `moduleOrientation` = '{$configuration['moduleOrientation']}',
-                `modulesCount` = '{$configuration['modulesCount']}',
-                `userModuleHeight` = '{$configuration['userModuleHeight']}',
-                `userModuleWidth` = '{$configuration['userModuleWidth']}',
-                `userModuleDepth` = '{$configuration['userModuleDepth']}',
-                `tableAngle` = '{$configuration['tableAngle']}',
-                `distanceToGround` = '{$configuration['distanceToGround']}',
-                `modulePower` = '{$configuration['modulePower']}',
-                `configurationsCount` = '{$configuration['configurationsCount']}',
-                `image` = '{$configuration['image']}'
+                    `designType` = '{$configuration['designType']}',
+                    `rows` = '{$configuration['rows']}',
+                    `moduleOrientation` = '{$configuration['moduleOrientation']}',
+                    `modulesCount` = '{$configuration['modulesCount']}',
+                    `userModuleHeight` = '{$configuration['userModuleHeight']}',
+                    `userModuleWidth` = '{$configuration['userModuleWidth']}',
+                    `userModuleDepth` = '{$configuration['userModuleDepth']}',
+                    `tableAngle` = '{$configuration['tableAngle']}',
+                    `distanceToGround` = '{$configuration['distanceToGround']}',
+                    `modulePower` = '{$configuration['modulePower']}',
+                    `configurationsCount` = '{$configuration['configurationsCount']}',
+                    `image` = '{$configuration['image']}',
+                    `id_configuration_order` = '{$idConfigurationOrder}',
+                    `configurationId` = '{$configuration['configurationId']}'
             ";
 
-
-            if  ( !isset( $arrOrderConfigurations[ $configurationId ] ) ){
-                $q = "
-                    INSERT INTO
-                        ".$set."
-                        ,
-                        `id_configuration_order` = '{$idConfigurationOrder}',
-                        `configurationId` = '{$configuration['configurationId']}'
-                ";
-            }
-            else{
-                $q = "
-                    UPDATE ".$set."
-                    WHERE
-                        `id_configuration_order` = '{$idConfigurationOrder}' AND
-                        `configurationId` = '{$configuration['configurationId']}'
-                ";
-            }
-            echo $q;
+//            echo $q;
             $res = self::$db->db_Query( $q );
 //            var_dump($res);
 
@@ -212,11 +234,10 @@ class ConfigurationOrder {
 
         $orderData = array(
             'id_configuration_order' => $idConfigurationOrder,
-            'clientName' => $data['ClientName'],
+            'clientName' => $data['clientName'],
             'location' => $data['location'],
             'date' => $data['date'],
         );
-
         self::updateConfigurationOrder( $orderData );
 
         echo $idConfigurationOrder;
@@ -252,19 +273,45 @@ class ConfigurationOrder {
 
 //--- end deleteOrders() ------------------------------------------------------------------------------------------------------------------------------------
 
+    function deleteConfigurationInOrder( $confId, $orderId ){
+
+        if ( empty($confId) || empty( $orderId) ){
+            echo 'wrong params!';
+            echo '<br/>'.__FILE__.' line: '.__LINE__;
+            return false;
+        }
+
+        $q = " DELETE FROM `".TblModConfigurationSet."` WHERE `configurationId` = '{$confId}' AND `id_configuration_order` = '{$orderId}' ";
+        var_dump($q);
+        $res = self::$db->db_Query($q);
+
+        if ( !$res ){
+            echo 'не удалось удалить!';
+            return false;
+        }
+        else {
+            echo 'удалено!';
+        }
+
+    }
+
+//--- end deleteConfigurationInOrder() ------------------------------------------------------------------------------------------------------------------------------------
+
 
     protected static function updateConfigurationOrder( $orderData ){
+
+        $date_expression = empty($orderData['date']) ? 'NOW()' : "'{$orderData['date']}'";
         $q = "
             UPDATE
                 `".TblModConfigurationOrder."`
             SET
-                `clientName` = '{$orderData['clientName']}'
-                `location` = '{$orderData['location']}'
-                `date` = '{$orderData['date']}'
+                `clientName` = '{$orderData['clientName']}',
+                `location` = '{$orderData['location']}',
+                `date` = {$date_expression}
             WHERE
                 `id_configuration_order` = '{$orderData['id_configuration_order']}'
         ";
-        echo '<br>$q:'.$q;
+//        echo '<br>$q:'.$q;
         $res = self::$db->db_Query($q);
 
         if (!$res){
@@ -291,12 +338,6 @@ class ConfigurationOrder {
 
 //--- end of createNewConfigurationOrder() ------------------------------------------------------------------------------------------------------------
 
-
-    /*protected static function dbQuery( $query ){
-        $res = self::$db->db_Query($query);
-        if ( !$res ) echo 'can\'t execute query: <pre>'.$query.'</pre>';
-        return $res;
-    }*/
 
 // ================================================================================================
 // Function : GetNewOrderId()
@@ -334,4 +375,111 @@ class ConfigurationOrder {
 
 }
 // end of class OrderImpExp
+
+
+
+
+
+
+/*    public static function saveOld( $data ){
+        if (empty($data)){
+            echo ('empty data');
+            return false;
+        }
+
+        $isNewOrder = $isNewConfiguration = false;
+
+        $idConfigurationOrder = $data['idOrder'];
+
+        if ( empty($idConfigurationOrder) ){
+
+            $idConfigurationOrder = self::createNewConfigurationOrder();
+
+            if (!$idConfigurationOrder){
+                echo 'can\'t create new configuration order!';
+                return false;
+            }
+
+            $isNewOrder = true;
+        }
+
+        //save configurations
+        if ( !$isNewOrder ){
+            //check exist order configurations
+            //configurationId
+            $q = "SELECT `configurationId` FROM `".TblModConfigurationSet."` WHERE `id_configuration_order` = '{$idConfigurationOrder}' ";
+            if ( !($res = self::$db->db_Query($q)) ){
+                echo 'can\'t get exist configurations';
+                return false;
+            }
+
+            while( $row = self::$db->db_FetchAssoc($q) ){
+                $arrOrderConfigurations[ $row['configurationId'] ] = 1;
+            }
+        }
+
+        foreach ($data['configurations'] as $configuration ) {
+
+            $configurationId = $configuration['configurationId'];
+
+            $set = "
+                    `".TblModConfigurationSet."`
+                SET
+                    `designType` = '{$configuration['designType']}',
+                    `rows` = '{$configuration['rows']}',
+                    `moduleOrientation` = '{$configuration['moduleOrientation']}',
+                    `modulesCount` = '{$configuration['modulesCount']}',
+                    `userModuleHeight` = '{$configuration['userModuleHeight']}',
+                    `userModuleWidth` = '{$configuration['userModuleWidth']}',
+                    `userModuleDepth` = '{$configuration['userModuleDepth']}',
+                    `tableAngle` = '{$configuration['tableAngle']}',
+                    `distanceToGround` = '{$configuration['distanceToGround']}',
+                    `modulePower` = '{$configuration['modulePower']}',
+                    `configurationsCount` = '{$configuration['configurationsCount']}',
+                    `image` = '{$configuration['image']}'
+            ";
+
+
+            if  ( !isset( $arrOrderConfigurations[ $configurationId ] ) ){
+                $q = "
+                    INSERT INTO
+                        ".$set."
+                        ,
+                        `id_configuration_order` = '{$idConfigurationOrder}',
+                        `configurationId` = '{$configuration['configurationId']}'
+                ";
+            }
+            else{
+                $q = "
+                    UPDATE ".$set."
+                    WHERE
+                        `id_configuration_order` = '{$idConfigurationOrder}' AND
+                        `configurationId` = '{$configuration['configurationId']}'
+                ";
+            }
+//            echo $q;
+            $res = self::$db->db_Query( $q );
+//            var_dump($res);
+
+            if (!$res){
+                echo 'can\'t save configuration set params!';
+                return false;
+            }
+        }//endforeach
+
+        $orderData = array(
+            'id_configuration_order' => $idConfigurationOrder,
+            'clientName' => $data['clientName'],
+            'location' => $data['location'],
+            'date' => $data['date'],
+        );
+        self::updateConfigurationOrder( $orderData );
+
+        echo $idConfigurationOrder;
+        return;
+    }
+
+//--- end of save() ------------------------------------------------------------------------------------------------------------------------------------*/
+
+
 ?>

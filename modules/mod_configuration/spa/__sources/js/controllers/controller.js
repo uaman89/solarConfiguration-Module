@@ -2,7 +2,7 @@
 *   moduleID assigned in /modules/mod_configuration/spa/index.html
 */
 
-solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
+solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $timeout) {
 
     $scope.clientName = "";
     $scope.Location = "";
@@ -46,9 +46,16 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
 
     };
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
+
     $scope.addNewConfiguration = function(){
         $scope.configurations.push( new ConfigurationModel() );
     };
+
+    //---  end addNewConfiguration() ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    $scope.saveMsgReport = '';
+
 
     $scope.saveConfigurationsOrder = function() {
 
@@ -90,22 +97,41 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
             function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
-                $scope.saveMsgReport = 'сохранено!';
-                $scope.header = response;
-                $('#preloader').html('');
+                //$log.info(response);
+                $scope.header = 'Заявка № ' + response.data;
+
+                showMsgReport('сохранено!');
             },
             function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
-                $scope.saveMsgReport = 'Не удалось сохранить!';
-                $('#preloader').html('');
+                showMsgReport('Не удалось сохранить!');
             }
         );
     }
 
-    $scope.saveMsgReport = '';
 
-    //---------------------------------------------------------------------------------------------------------------------------------------------------
+    //---  end saveConfigurationsOrder ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    $scope.delConfiguration = function ( configurationId ){
+        //$log.warn('delete ' + configurationId );
+        //$log.info( $scope.configurations );
+
+        var newId = 1;
+        for ( index in $scope.configurations ){
+            if ( $scope.configurations[index].params.configurationId == configurationId ) {
+                $log.info('index', index);
+                $scope.configurations.splice(index, 1);
+            }
+
+            //reset confId
+            $scope.configurations[index].params.configurationId = newId++;
+
+        }
+
+    }
+
+    //--- end delConfiguration ------------------------------------------------------------------------------------------------------------------------------------------------
 
     function loadConfigurationByOrderId( orderId ){
         $http({
@@ -115,8 +141,13 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
             function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
-                for ( key in response.data ){
-                    var configuration = new ConfigurationModel( response.data[key] );
+                $scope.clientName = response.data.orderInfo.clientName;
+                $scope.location = response.data.orderInfo.location;
+                $scope.date = response.data.orderInfo.date;
+
+                for ( key in response.data.configurations ){
+                    //$log.info(response.data);
+                    var configuration = new ConfigurationModel( response.data.configurations[key] );
                     $scope.configurations.push( configuration );
                 }
             },
@@ -127,6 +158,20 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log) {
             }
         );
     }
+
     //--- end loadConfigurationByOrderId -------------------------------------------------
+
+    function showMsgReport( text ){
+        $scope.saveMsgReport = text;
+            $('#preloader').html('');
+            $timeout(
+                function(){
+                    $scope.saveMsgReport = '';
+                },
+                2000
+            );
+    }
+    //--- end showMsgReport -------------------------------------------------
+
 
 });

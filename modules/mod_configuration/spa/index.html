@@ -10,24 +10,41 @@
 </script>
 
 <link rel="stylesheet" href="/modules/mod_configuration/spa/styles/main.min.css">
-<script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>
+<!--<script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>-->
 
 <div ng-app="solConfigApp" ng-controller="MainCtrl" class="container">
 
-    <form ng-submit="saveConfigurationsOrder()">
 
         <div class="block-header">
             <span>{{ header }}</span>
-
-            <button type="submit" class="btn btn-success">Сохранить заявку</button>
-
-            <a href="<?=$script?>" class="btn btn-danger pull-right">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </a>
+            <span id="preloader"></span>
+            <span class="service-message">{{ saveMsgReport }}</span>
         </div>
 
         <br>
 
+        <div class="!navbar-fixed-bottom bottom-panel">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+
+                        <button ng-click="saveConfigurationsOrder()" class="btn btn-success">Сохранить заявку</button>
+
+                        <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
+
+                        <button ng-click="downloadPdf()" class="btn btn-warning">скачать PDF</button>
+
+                        <a href="<?=$script?>" class="btn btn-danger pull-right">
+                            <span class="close">&times;</span>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
 
         <div>
             <div class="row">
@@ -39,7 +56,7 @@
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon" id="dateLabel">Дата</span>
-                        <input ng-model="date" id="date" type="text" class="form-control" aria-describedby="dateLabel">
+                        <input ng-model="date" id="date" type="text" class="form-control" aria-describedby="dateLabel" value="{{ date | date }}">
                     </div>
                     <br>
                 </div>
@@ -61,35 +78,33 @@
             <hr>
         </div>
 
-
-
-    </form>
-
-    <div>
-        <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
-
-        <span id="preloader"></span>
-        <span>{{ saveMsgReport }}</span>
-
-    </div>
 </div>
 
-<script src="/modules/mod_configuration/spa/js/bottom_script.min.js"></script>
+<!--<script src="/modules/mod_configuration/spa/js/bottom_script.min.js"></script>-->
 
 
-<!--<script src="/modules/mod_configuration/spa/__sources/js/controllers/controller.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/directives/configuration.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationModel.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationDrawModel.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationParamsModel.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/app.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/__sources/js/index.js"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/bootstrap/dist/js/bootstrap.min.js'"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/build/three.js'"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/CanvasRenderer.js'"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/Projector.js'"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/controls/OrbitControls.js'"></script>-->
-<!--<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/Detector.js'"></script>-->
+
+<script src="/modules/mod_configuration/spa/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/angular/angular.min.js"></script>
+
+<script src="/modules/mod_configuration/spa/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/three.js/build/three.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/CanvasRenderer.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/renderers/Projector.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/controls/OrbitControls.js"></script>
+<script src="/modules/mod_configuration/spa/bower_components/three.js/examples/js/Detector.js"></script>
+
+<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationModel.js"></script>
+<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationDrawModel.js"></script>
+<script src="/modules/mod_configuration/spa/__sources/js/models/ConfigurationParamsModel.js"></script>
+
+<script src="/modules/mod_configuration/spa/__sources/js/app.js"></script>
+<script src="/modules/mod_configuration/spa/__sources/js/controllers/controller.js"></script>
+<script src="/modules/mod_configuration/spa/__sources/js/directives/configuration.js"></script>
+
+<script src="/modules/mod_configuration/spa/__sources/js/index.js"></script>
+
+
 
 <!--</body>-->
 <!--</html>-->

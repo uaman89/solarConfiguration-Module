@@ -29,6 +29,8 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
     this.configurationsCount = 1;
     this.totalConfigurationsPower = null;
 
+    this.isShowLines = true;
+
     //helpers
     this.tableHeight = null;
     this.tableWidth = null;
@@ -83,25 +85,25 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
 
         _this.tableHeight = _this.moduleHeight * _this.rows + ( rows - 1) * _this.r;
         _this.tableWidth = _this.moduleWidth * modulesCount + ( modulesCount - 1 ) * _this.r;
-        console.log('_this.tableHeight',_this.tableHeight);
-        console.log('_this.tableWidth',_this.tableWidth);
+        //console.log('_this.tableHeight',_this.tableHeight);
+        //console.log('_this.tableWidth',_this.tableWidth);
 
         var angle = _this.tableAngle * Math.PI / 180;
 
         _this.B =  Math.round( _this.tableHeight * Math.abs( Math.cos( angle ) ) );
-        console.log('_this.B',_this.B);
+        //console.log('_this.B',_this.B);
 
         _this.H = Math.round( _this.tableHeight * Math.abs( Math.sin( angle ) ) + parseInt(_this.distanceToGround) );
-        console.log('_this.H',_this.H);
+        //console.log('_this.H',_this.H);
 
         _this.L = _this.tableWidth; //cause 'tableWidth' much easier to understand than 'L'
         _this.supports = _getSupportsParams();
 
         _this.totalModulesCount = rows * modulesCount;
 
-        _this.singleConfigurationPower = _this.totalModulesCount * modulePower;
+        _this.singleConfigurationPower = _this.totalModulesCount * modulePower/ 1000 ;// 1kWt = 1000Wt
         
-        _this.totalConfigurationsPower = configurationsCount * _this.singleConfigurationPower;
+        _this.totalConfigurationsPower = configurationsCount * _this.singleConfigurationPower; //kWt
     };
 
 //--- end calculateData() -----------------------------------------------------------------------------------------

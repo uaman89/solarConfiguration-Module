@@ -6,7 +6,7 @@
             <b>Кофигурация {{ configuration.params.configurationId }}</b>
             &nbsp;
             <button type="button" class="btn btn-warning">
-                <span ng-click="delConfiguration({{ configuration.params.configurationId }})" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <span ng-click="delConfiguration( configuration.params.configurationId )" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
         </div>
         <br>
@@ -20,6 +20,14 @@
                         <div class="renderer-container">
                             img must be here...
                         </div>
+
+                        <div class="checkbox pull-right">
+                            <label for="isShowLines{{ configurationId }}">
+                                <input type="checkbox" ng-model="configuration.params.isShowLines" ng-change="configuration.painter.drawModel()" id="isShowLines{{ configurationId }}">
+                                показывать размерные линии
+                            </label>
+                        </div>
+
                         <table class="small-table">
                             <tr>
                                 <td>H, мм</td>
@@ -42,12 +50,13 @@
                                 <td>{{ configuration.params.tableAngle }}&deg;</td>
                             </tr>
                         </table>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <table class="table-striped table-hover table-condensed">
+            <table class="table-striped table-hover table-condensed params-table">
                 <tr>
                     <td class="col-md-4">Конструкция:</td>
                     <td class="col-md-3">
@@ -94,7 +103,7 @@
                     <td><input ng-model="configuration.params.tableAngle" ng-change="configuration.update()" type="text" class="form-control"></td>
                 </tr>
                 <tr>
-                    <td>Расстояние до земной поверхности:</td>
+                    <td>Расстояние до земной поверхности, мм:</td>
                     <td><input ng-model="configuration.params.distanceToGround" ng-change="configuration.update()" type="text" class="form-control"></td>
                 </tr>
                 <tr>
@@ -102,10 +111,10 @@
                     <td><input ng-model="configuration.params.supports.count" type="text" class="form-control" disabled></td>
                 </tr>
                 <tr>
-                    <td>Установленная мощьность модуля, Вт:</td>
+                    <td>Установленная мощность модуля, Вт:</td>
                     <td><input ng-model="configuration.params.modulePower" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
                 </tr>                <tr>
-                <td>Установленная мощьность системы, кВт:</td>
+                <td>Установленная мощность системы, кВт:</td>
                 <td><input ng-model="configuration.params.singleConfigurationPower" type="text" class="form-control" disabled ></td>
             </tr>
                 <tr>
@@ -113,7 +122,7 @@
                     <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
                 </tr>
                 <tr>
-                    <td>Общая установленная мощность, Вт:</td>
+                    <td>Общая установленная мощность, кВт:</td>
                     <td><input ng-model="configuration.params.totalConfigurationsPower" type="text" class="form-control" disabled ></td>
                 </tr>
             </table>

@@ -46,3 +46,16 @@ ng\:form {
 .block-header span {
   font-size: 20px;
   font-weight: bold; }
+
+.service-message {
+  text-transform: uppercase;
+  color: grey; }
+
+.params-table input {
+  text-align: right; }
+
+.renderer-container {
+  border: 1px solid rgba(128, 128, 128, 0.31);
+  overflow: hidden; }
+  .renderer-container, .renderer-container canvas {
+    border-radius: 8px; }
