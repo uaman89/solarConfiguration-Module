@@ -2,7 +2,7 @@
 *   moduleID assigned in /modules/mod_configuration/spa/index.html
 */
 
-solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $timeout) {
+solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $timeout, $rootScope) {
 
     $scope.clientName = "";
     $scope.Location = "";
@@ -90,7 +90,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
 
         $http({
             method: 'post',
-            url: '/modules/mod_configuration/configuration.php?module=' + moduleID + '&task=save',
+            url: moduleUrl + '&task=save',
             data: postData,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(
@@ -101,11 +101,13 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
                 $scope.header = 'Заявка № ' + response.data;
 
                 showMsgReport('сохранено!');
+                $rootScope.$broadcast('orderSaveSuccess');
             },
             function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 showMsgReport('Не удалось сохранить!');
+                $rootScope.$broadcast('orderSaveFail');
             }
         );
     }
@@ -136,7 +138,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
     function loadConfigurationByOrderId( orderId ){
         $http({
             method: 'GET',
-            url: '/modules/mod_configuration/configuration.php?module='+moduleID+'&task=getOrderData'+'&order_id='+orderId,
+            url: moduleUrl +'&task=getOrderData'+'&order_id='+orderId,
         }).then(
             function successCallback(response) {
                 // this callback will be called asynchronously
@@ -159,17 +161,40 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
         );
     }
 
-    //--- end loadConfigurationByOrderId -------------------------------------------------
+    //--- end loadConfigurationByOrderId ------------------------------------------------------------------------------
+
+
+
+    $scope.downloadPdf = function(){
+        $log.info('download!');
+        $scope.saveConfigurationsOrder();
+
+        $rootScope.$on('orderSaveSuccess', function () {
+            $log.info('success');
+            $.fancybox({
+                href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
+                type: 'iframe'
+            });
+        });
+
+        $rootScope.$on('orderSaveFail', function () {
+            $log.info('fail');
+            showMsgReport('не удалось сгенерировать документ!');
+        });
+    }
+
+    //--- end downloadPdf --------------------------------------------------------------------------------------------
+
 
     function showMsgReport( text ){
         $scope.saveMsgReport = text;
-            $('#preloader').html('');
-            $timeout(
-                function(){
-                    $scope.saveMsgReport = '';
-                },
-                2000
-            );
+        $('#preloader').html('');
+        $timeout(
+            function(){
+                $scope.saveMsgReport = '';
+            },
+            2000
+        );
     }
     //--- end showMsgReport -------------------------------------------------
 

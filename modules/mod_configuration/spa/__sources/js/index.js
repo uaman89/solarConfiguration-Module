@@ -1,10 +1,12 @@
-//there is nothing here
+
+var moduleUrl = '/modules/mod_configuration/configuration.php?module='+moduleID;
+
 
 function getCanvasData( selector ) {
     var canvasData;
     var canvas = $(selector)[0];
 
-    console.log(canvas);
+    //console.log(canvas);
 
     if ( Detector.webgl){
         canvasData = canvas.toDataURL();

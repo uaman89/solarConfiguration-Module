@@ -44671,13 +44671,15 @@ if ( typeof module === 'object' ) {
 
 var solConfigApp = angular.module('solConfigApp', []);
 
-//there is nothing here
+
+var moduleUrl = '/modules/mod_configuration/configuration.php?module='+moduleID;
+
 
 function getCanvasData( selector ) {
     var canvasData;
     var canvas = $(selector)[0];
 
-    console.log(canvas);
+    //console.log(canvas);
 
     if ( Detector.webgl){
         canvasData = canvas.toDataURL();
@@ -44697,7 +44699,7 @@ function getCanvasData( selector ) {
 *   moduleID assigned in /modules/mod_configuration/spa/index.html
 */
 
-solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $timeout) {
+solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $timeout, $rootScope) {
 
     $scope.clientName = "";
     $scope.Location = "";
@@ -44785,7 +44787,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
 
         $http({
             method: 'post',
-            url: '/modules/mod_configuration/configuration.php?module=' + moduleID + '&task=save',
+            url: moduleUrl + '&task=save',
             data: postData,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(
@@ -44796,11 +44798,13 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
                 $scope.header = 'Заявка № ' + response.data;
 
                 showMsgReport('сохранено!');
+                $rootScope.$broadcast('orderSaveSuccess');
             },
             function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 showMsgReport('Не удалось сохранить!');
+                $rootScope.$broadcast('orderSaveFail');
             }
         );
     }
@@ -44831,7 +44835,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
     function loadConfigurationByOrderId( orderId ){
         $http({
             method: 'GET',
-            url: '/modules/mod_configuration/configuration.php?module='+moduleID+'&task=getOrderData'+'&order_id='+orderId,
+            url: moduleUrl +'&task=getOrderData'+'&order_id='+orderId,
         }).then(
             function successCallback(response) {
                 // this callback will be called asynchronously
@@ -44854,17 +44858,40 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
         );
     }
 
-    //--- end loadConfigurationByOrderId -------------------------------------------------
+    //--- end loadConfigurationByOrderId ------------------------------------------------------------------------------
+
+
+
+    $scope.downloadPdf = function(){
+        $log.info('download!');
+        $scope.saveConfigurationsOrder();
+
+        $rootScope.$on('orderSaveSuccess', function () {
+            $log.info('success');
+            $.fancybox({
+                href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
+                type: 'iframe'
+            });
+        });
+
+        $rootScope.$on('orderSaveFail', function () {
+            $log.info('fail');
+            showMsgReport('не удалось сгенерировать документ!');
+        });
+    }
+
+    //--- end downloadPdf --------------------------------------------------------------------------------------------
+
 
     function showMsgReport( text ){
         $scope.saveMsgReport = text;
-            $('#preloader').html('');
-            $timeout(
-                function(){
-                    $scope.saveMsgReport = '';
-                },
-                2000
-            );
+        $('#preloader').html('');
+        $timeout(
+            function(){
+                $scope.saveMsgReport = '';
+            },
+            2000
+        );
     }
     //--- end showMsgReport -------------------------------------------------
 
@@ -44914,7 +44941,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
     var params = paramsObj;
 
     var container, camera,
-        moduleTexture, groundTexture, moduleMaterial, moduleBaseMaterials, supportMaterial,
+        moduleTexture, moduleMaterial, moduleBaseMaterials, supportMaterial, //groundTexture
         controls,
         light, renderer,  scene;
 
@@ -44946,6 +44973,11 @@ var ConfigurationDrawModel =  function( paramsObj ){
         camera = new THREE.PerspectiveCamera( 45,containerWidth / containerHeight, 1, 500 );
         //camera.position.z = 5;
 
+        //isometric view
+        //var aspect = containerWidth / containerHeight;
+        //var d = 15;
+        //camera = new THREE.OrthographicCamera( -d * aspect, d * aspect, d-1, - d+1, 1, 500 );
+-
 
         //update renderer on window resize begin
         window.addEventListener( 'resize', onWindowResize, false );
@@ -44966,10 +44998,11 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         // Load a texture, set wrap mode to repeat
-        moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
+        //moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
+        moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/newcell.jpg" );
         moduleTexture.wrapS = THREE.RepeatWrapping;
         moduleTexture.wrapT = THREE.RepeatWrapping;
-        moduleTexture.repeat.set(5, 10);
+        //moduleTexture.repeat.set(5, 8);
 
         moduleMaterial = new THREE.MeshPhongMaterial( {
             map: moduleTexture,
@@ -44998,8 +45031,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         // module materials begin:
-        //moduleMaterial = new THREE.MeshBasicMaterial( {map: moduleTexture,  overdraw: true} );
-
         moduleBaseMaterials = [
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
             new THREE.MeshBasicMaterial({ color: 0xE0E0E0 }),
@@ -45014,8 +45045,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //support material
         supportMaterial = new THREE.MeshBasicMaterial( {
             color: 0x979797,
-            shininess: 200,
-            specular: 0xffffff,
             shading: THREE.SmoothShading
         } );
 
@@ -45080,8 +45109,9 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
         //mouse control in 3 lines :) awesome!
         controls = new THREE.OrbitControls( camera, container[0] );
-        controls.addEventListener( 'change', this.drawModel );
+        controls.addEventListener( 'change', function(){ renderer.render(scene, camera) } );
         controls.maxPolarAngle = Math.PI/2;
+        controls.enableKeys = false;
 
         container.html(renderer.domElement);
 
@@ -45089,10 +45119,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         var render = function () {
             //requestAnimationFrame( render );
             setTimeout(render,125);
-
             controls.update();
-            //module.rotation.x += 0.1;
-            //module.rotation.y += 0.1;
 
             renderer.render(scene, camera);
         };
@@ -45153,10 +45180,10 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
         //change module orientation
         if (params.moduleOrientation == 'horizontal'){
-            moduleTexture.repeat.set(10, 5);
+            moduleTexture.repeat.set(4, 6);
         }
         else{
-            moduleTexture.repeat.set(5, 10);
+            moduleTexture.repeat.set(3, 9);
         }
         moduleMaterial.map = moduleTexture;
 
@@ -45509,9 +45536,25 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
     this.centerCamera = function(){
+
+        
+
+        //calc camera Z position
+        var smallCathetus = ground.geometry.parameters.width/2;
+        var angle = camera.fov;
+        var angleTan = Math.atan(camera.fov);
+        var zPos = angleTan * smallCathetus;
+        console.log('zPos',zPos);
+
+        camera.position.copy( configurationContainer.position );
+        camera.position.z = zPos;
+        camera.position.y += params.H * 2 / 1000;
+
+        return;
+
         controls.target = new THREE.Vector3(
             configurationContainer.position.x,
-            configurationContainer.position.y + params.H/2/1000,
+            configurationContainer.position.y + params.H/1000,
             configurationContainer.position.z
         );
         camera.position.y = params.H/2/1000 + 1;
@@ -45597,7 +45640,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
     this.configurationsCount = 1;
     this.totalConfigurationsPower = null;
 
-    this.isShowLines = true;
+    this.isShowLines = false;
 
     //helpers
     this.tableHeight = null;

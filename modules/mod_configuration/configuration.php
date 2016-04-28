@@ -54,12 +54,15 @@ switch( $Configuration->task ) {
         $Configuration->save($postdata);
         break;
     case 'delConfiguration':
-        var_dump($_REQUEST);
+        //var_dump($_REQUEST);
         $Configuration->deleteConfigurationInOrder( $Configuration->configurationId, $Configuration->orderId);
         break;
     case 'delete':
         //var_dump($Configuration->delete);
         $Configuration->deleteOrders();
+        break;
+    case 'downloadPdf':
+        $Configuration->downloadPdf();
         break;
     default:
         $Configuration->showConfigurationOrderList();

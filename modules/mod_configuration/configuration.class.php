@@ -27,9 +27,60 @@ class ConfigurationOrder {
 
 //--- End Configuration Constructor -------------------------------------------------------------------------------
 
+    public function downloadPdf( $idOrder ){
+
+        $data = $this->getOrderDataById( $idOrder );
+        
+        var_dump($data);exit;
+
+        include("mpdf60/mpdf.php");
+        include_once( SITE_PATH.'/includes/mpdf60/mpdf.php' );
+
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title></title>
+        </head>
+        <body>
+        <img src="'.$img.'">
+        <table>
+            <tr><td>Angle</td><td>'.$angle.'</td></tr>
+            <tr><td>Random</td><td>'.rand(0,100500).'</td></tr>
+        </table>
+        </body>
+        </html>
+        <?
+
+
+        $filename = 'ConfigurationOrder#'.$idOrder;
+        header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+        //header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($path)) . ' GMT');
+        header('Accept-Ranges: bytes');  // Allow support for download resume
+        //header('Content-Length: ' . filesize($path));  // File size
+        header('Content-Encoding: none');
+        header('Content-Type: application/pdf');  // Change the mime type if the file is not PDF
+        header('Content-Disposition: attachment; filename=' . $filename);  // Make the browser display the Save As dialog
+
+    }
+
+//--- end downloadPdf -------------------------------------------------------------------------------
 
     public function getJsonOrderDataById( $orderId=null ){
-        $orderId =  ( empty($orderId) ) ? $this->orderId : $orderId;
+
+        header('Content-Type: application/json');
+        return json_encode( $this->getOrderDataById( $orderId));
+    }
+
+//--- End getJsonOrderDataById -------------------------------------------------------------------------------
+
+
+    public function getOrderDataById( $orderId ){
+
+        $orderId = ( empty($orderId) ) ? $this->orderId : $orderId;
+
+        if ( empty($orderId) ) return false;
 
         $q = "
             SELECT
@@ -73,6 +124,7 @@ class ConfigurationOrder {
                 `".TblModConfigurationSet."`
             WHERE
                 `id_configuration_order` = '{$orderId}'
+            ORDER BY `configurationId` ASC
         ";
         $res = self::$db->db_Query($q);
 
@@ -85,11 +137,10 @@ class ConfigurationOrder {
             $arrData['configurations'][] = $row;
         }
 
-        header('Content-Type: application/json');
-        return json_encode($arrData);
+        return $arrData;
     }
 
-//--- End Configuration Constructor -------------------------------------------------------------------------------
+//--- End getOrderDataById -------------------------------------------------------------------------------
 
 
     public static function showConfigurationOrderList(){

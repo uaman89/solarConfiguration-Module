@@ -29,7 +29,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
     this.configurationsCount = 1;
     this.totalConfigurationsPower = null;
 
-    this.isShowLines = true;
+    this.isShowLines = false;
 
     //helpers
     this.tableHeight = null;
