@@ -12,6 +12,10 @@
 
 <link rel="stylesheet" href="/modules/mod_configuration/spa/styles/main.min.css">
 <!--<script src="/modules/mod_configuration/spa/js/header_script.min.js"></script>-->
+<link rel="stylesheet" href="/include/js/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/modules/mod_configuration/spa/bower_components/angular/angular-csp.css">
+<link rel="stylesheet" href="/modules/mod_configuration/spa/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/include/js/fancybox/jquery.fancybox.css">
 
 <div ng-app="solConfigApp" ng-controller="MainCtrl" class="container">
 
@@ -34,6 +38,7 @@
                         <button ng-click="addNewConfiguration()" class="btn btn-info">добавить новую кофигурацию</button>
 
                         <button ng-click="downloadPdf()" class="btn btn-warning">скачать PDF</button>
+                        <a id="downloadPdfLink" download style="display:none"></a><!--hidden link for auto download feature-->
 
                         <a href="<?=$script?>" class="btn btn-danger pull-right">
                             <span class="close">&times;</span>

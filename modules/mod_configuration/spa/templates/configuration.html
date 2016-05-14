@@ -60,7 +60,7 @@
                 <tr>
                     <td class="col-md-4">Конструкция:</td>
                     <td class="col-md-3">
-                        <select ng-model="configuration.params.designType" ng-change="configuration.update()" class="form-control">
+                        <select ng-model="configuration.params.designType" ng-change="configuration.update()" class="form-control design-type">
                             <option ng-repeat="option in configurationParamSet.design" value="{{option.id}}">{{option.label}}</option>
                         </select>
                     </td>
@@ -68,7 +68,7 @@
                 <tr>
                     <td>Тип системы:</td>
                     <td>
-                        <select ng-model="configuration.params.rows" ng-change="configuration.update()" class="form-control">
+                        <select ng-model="configuration.params.rows" ng-change="configuration.update()" class="form-control system-type">
                             <option ng-repeat="option in configurationParamSet.systemType" value="{{option.rows}}">{{option.label}}</option>
                         </select>
                     </td>
@@ -76,7 +76,7 @@
                 <tr>
                     <td>Расположение модулей:</td>
                     <td>
-                        <select ng-model="configuration.params.moduleOrientation"  ng-change="configuration.update()" class="form-control">
+                        <select ng-model="configuration.params.moduleOrientation"  ng-change="configuration.update()" class="form-control module-orientation">
                             <option ng-repeat="option in configurationParamSet.moduleOrientation" value="{{option.val}}">{{option.label}}</option>
                         </select>
 
@@ -84,11 +84,11 @@
                 </tr>
                 <tr>
                     <td>Модулей в ряду:</td>
-                    <td><input ng-model="configuration.params.modulesCount" ng-change="configuration.update()" type="text" class="form-control"></td>
+                    <td><input ng-model="configuration.params.modulesCount" ng-change="configuration.update()" type="text" class="form-control modules-in-row"></td>
                 </tr>
                 <tr>
                     <td>Количество модулей, шт.:</td>
-                    <td><input type="text" class="form-control" disabled ng-model="configuration.params.totalModulesCount"></td>
+                    <td><input type="text" class="form-control" disabled ng-model="configuration.params.totalModulesCount" class="form-control modules-total-count"></td>
                 </tr>
                 <tr>
                     <td>Размеры модуля, мм:</td>
@@ -100,30 +100,30 @@
                 </tr>
                 <tr>
                     <td>Угол наклона:</td>
-                    <td><input ng-model="configuration.params.tableAngle" ng-change="configuration.update()" type="text" class="form-control"></td>
+                    <td><input ng-model="configuration.params.tableAngle" ng-change="configuration.update()" type="text" class="form-control table-angle"></td>
                 </tr>
                 <tr>
                     <td>Расстояние до земной поверхности, мм:</td>
-                    <td><input ng-model="configuration.params.distanceToGround" ng-change="configuration.update()" type="text" class="form-control"></td>
+                    <td><input ng-model="configuration.params.distanceToGround" ng-change="configuration.update()" type="text" class="form-control h"></td>
                 </tr>
                 <tr>
                     <td>Количество опор, шт.:</td>
-                    <td><input ng-model="configuration.params.supports.count" type="text" class="form-control" disabled></td>
+                    <td><input ng-model="configuration.params.supports.count" type="text" class="form-control support-count" disabled></td>
                 </tr>
                 <tr>
                     <td>Установленная мощность модуля, Вт:</td>
-                    <td><input ng-model="configuration.params.modulePower" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
+                    <td><input ng-model="configuration.params.modulePower" ng-change="configuration.params.calculateData()" type="text" class="form-control module-power" ></td>
                 </tr>                <tr>
                 <td>Установленная мощность системы, кВт:</td>
-                <td><input ng-model="configuration.params.singleConfigurationPower" type="text" class="form-control" disabled ></td>
+                <td><input ng-model="configuration.params.singleConfigurationPower" type="text" class="form-control system-power" disabled ></td>
             </tr>
                 <tr>
                     <td>Количество систем, шт.:</td>
-                    <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="text" class="form-control" ></td>
+                    <td><input ng-model="configuration.params.configurationsCount" ng-change="configuration.params.calculateData()" type="text" class="form-control system-count" ></td>
                 </tr>
                 <tr>
                     <td>Общая установленная мощность, кВт:</td>
-                    <td><input ng-model="configuration.params.totalConfigurationsPower" type="text" class="form-control" disabled ></td>
+                    <td><input ng-model="configuration.params.totalConfigurationsPower" type="text" class="form-control total-power" disabled ></td>
                 </tr>
             </table>
         </div>

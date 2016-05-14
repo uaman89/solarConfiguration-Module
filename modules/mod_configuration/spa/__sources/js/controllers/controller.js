@@ -98,7 +98,9 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
                 // this callback will be called asynchronously
                 // when the response is available
                 //$log.info(response);
-                $scope.header = 'Заявка № ' + response.data;
+                idOrder = response.data;
+                $location.search('order_id', idOrder);
+                $scope.header = 'Заявка № ' + idOrder;
 
                 showMsgReport('сохранено!');
                 $rootScope.$broadcast('orderSaveSuccess');
@@ -165,7 +167,99 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
 
 
 
-    $scope.downloadPdf = function(){
+
+
+    $scope.downloadPdf = function() {
+        //$('#preloader').html('<img src="/admin/images/progress_bar1.gif">');
+
+        var postData = {
+            idOrder: idOrder,
+            clientName: $scope.clientName,
+            location: $scope.location,
+            date: $scope.date,
+            configurations: []
+        };
+        for (key in $scope.configurations) {
+            var conf = $scope.configurations[key];
+
+            confId = conf.params.configurationId;
+            paramsTable = $('#configuration' + confId + ' .params-table');
+
+            if (paramsTable.length == 0) continue;
+
+            $log.info('id:', '#configuration' + confId + ' .params-table');
+
+            //conf.painter.saveImgForA4();
+
+            var obj = {
+                configurationId: confId,
+                designType: paramsTable.find('.design-type option:selected').text(),
+                systemType: paramsTable.find('.system-type option:selected').text(),
+                moduleOrientation: paramsTable.find('.module-orientation option:selected').text(),
+                modulesCount: paramsTable.find('.modules-in-row').val(),
+                modulesTotalCount: paramsTable.find('.modules-total-count').val(),
+                moduleWidth: paramsTable.find('.module-width').val(),
+                moduleHeight: paramsTable.find('.module-height').val(),
+                moduleDepth: paramsTable.find('.module-depth').val(),
+                tableAngle: paramsTable.find('.table-angle').val(),
+                distanceToGround: paramsTable.find('.h').val(),
+                supportCount: paramsTable.find('.support-count').val(),
+                modulePower: paramsTable.find('.module-power').val(),
+                systemPower: paramsTable.find('.system-power').val(),
+                systemCount: paramsTable.find('.system-count').val(),
+                totalPower: paramsTable.find('.total-power').val(),
+                //image: getCanvasData('#configuration' + conf.params.configurationId + ' canvas')
+                image: conf.painter.getBigImg()
+            };
+
+            if ( conf.params.isShowLines ){
+                obj.showLegend = true;
+                obj.H = conf.params.H;
+                obj.h = conf.params.distanceToGround;
+                obj.B = conf.params.B;
+                obj.L = conf.params.L;
+            }
+
+            postData.configurations.push(obj);
+        }//endfor
+
+
+        $log.info('postData', postData);
+
+        //$.fancybox({
+        //    href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
+        //    type: 'iframe',
+        //    data: postData
+        //});
+
+        $.fancybox( $('<div class="please-wait">Загрузка...<img src="/admin/images/progress_bar1.gif"></div>') );
+
+        $http({
+            method: 'post',
+            url: moduleUrl + '&task=downloadPdf',
+            data: postData,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(
+            function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                //$log.info(response);
+                //$scope.header = 'Result:' + idOrder;
+                $log.info(response.data);
+
+                $('#downloadPdfLink').attr('href', response.data)[0].click();
+                $.fancybox.close();
+
+            },
+            function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $.fancybox( $('<br><h2>Не удалось загрузить!</h2><br/>') );
+            }
+        );
+    }
+
+    /*$scope.downloadPdf = function(){
         $log.info('download!');
         $scope.saveConfigurationsOrder();
 
@@ -173,7 +267,8 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
             $log.info('success');
             $.fancybox({
                 href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
-                type: 'iframe'
+                type: 'iframe',
+                data: postData.serialize()
             });
         });
 
@@ -182,7 +277,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
             showMsgReport('не удалось сгенерировать документ!');
         });
     }
-
+*/
     //--- end downloadPdf --------------------------------------------------------------------------------------------
 
 

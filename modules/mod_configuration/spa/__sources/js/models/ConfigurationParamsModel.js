@@ -66,15 +66,10 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
             var temp = _this.moduleHeight;
             _this.moduleHeight = _this.moduleWidth;
             _this.moduleWidth = temp;
-            console.log('*_this.moduleWidth',_this.moduleWidth);
-            console.log('*_this.moduleHeight',_this.moduleHeight);///
-
         }
         else{
             _this.moduleHeight =  $('#configuration' + _this.configurationId).find('.module-height').val();
             _this.moduleWidth =  $('#configuration' + _this.configurationId).find('.module-width').val();
-            console.log('**_this.moduleWidth',_this.moduleWidth);
-            console.log('**_this.moduleHeight',_this.moduleHeight);///
         }
 
         //convert string data to Int:

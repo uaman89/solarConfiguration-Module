@@ -58,6 +58,25 @@ var ConfigurationDrawModel =  function( paramsObj ){
         //end update renderer on window resize begin
 
 
+        this.getBigImg = function(){
+
+            oldWidth =  container.width();
+            container.css('width', '21cm');
+
+            onWindowResize();
+            renderer.render(scene, camera);
+            var imgData = renderer.domElement.toDataURL();
+
+            window.open( renderer.domElement.toDataURL(), 'screenshot' );
+            container.css('width', oldWidth + 'px');
+            onWindowResize();
+
+            //return container.find('canvas').toDataURL();
+            return imgData;
+
+        }
+        //end update renderer on window resize begin
+
 
         // Load a texture, set wrap mode to repeat
         //moduleTexture = new THREE.TextureLoader().load( "/modules/mod_configuration/spa/textures/solar-cell.png" );
@@ -599,28 +618,22 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
     this.centerCamera = function(){
 
-        
-
         //calc camera Z position
         var smallCathetus = ground.geometry.parameters.width/2;
         var angle = camera.fov;
         var angleTan = Math.atan(camera.fov);
         var zPos = angleTan * smallCathetus;
-        console.log('zPos',zPos);
+        //console.log('zPos',zPos);
 
         camera.position.copy( configurationContainer.position );
-        camera.position.z = zPos;
+        camera.position.z = zPos + params.B / 2 / 1000;
         camera.position.y += params.H * 2 / 1000;
-
-        return;
 
         controls.target = new THREE.Vector3(
             configurationContainer.position.x,
             configurationContainer.position.y + params.H/1000,
             configurationContainer.position.z
         );
-        camera.position.y = params.H/2/1000 + 1;
-        camera.position.z = configurationContainer.position.z + 10;
     }
 //--- end centerCamera() --------------------------------------------------------------------------------------------------------------------------------------------
 

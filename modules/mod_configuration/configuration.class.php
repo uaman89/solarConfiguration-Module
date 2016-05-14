@@ -6,6 +6,25 @@ class ConfigurationOrder {
     protected static $db;
     protected static $script;
     protected static $form;
+    public static $arrTextLabel = [
+        'designType' => [
+            1 => 'одноопорная' ,
+            2 => 'двухопорная',
+        ],
+
+        'moduleOrientation'=> [
+            'vertical' => 'вертикально',
+            'horizontal' => 'горизонтально',
+        ],
+
+        'systemType' => [
+            1 => 'однорядная',
+            2 => 'двухрядная',
+            3 => 'трехрядная',
+            4 => 'четырехрядная',
+            5 => 'пятирядная',
+        ]
+    ];
 
     function __construct ($user_id=NULL, $module=NULL) {
 
@@ -27,14 +46,25 @@ class ConfigurationOrder {
 
 //--- End Configuration Constructor -------------------------------------------------------------------------------
 
-    public function downloadPdf( $idOrder ){
+    public function downloadPdf( $data ){
 
-        $data = $this->getOrderDataById( $idOrder );
+//        $filename = 'ConfigurationOrder#'.$idOrder;
+//        header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+//        //header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($path)) . ' GMT');
+//        header('Accept-Ranges: bytes');  // Allow support for download resume
+//        //header('Content-Length: ' . filesize($path));  // File size
+//        header('Content-Encoding: none');
+//        header('Content-Type: application/pdf');  // Change the mime type if the file is not PDF
+//        header('Content-Disposition: attachment; filename=' . $filename);  // Make the browser display the Save As dialog
+
+        //$data = $this->getOrderDataById( $idOrder );
         
-        var_dump($data);exit;
+        //var_dump($data);
 
-        include("mpdf60/mpdf.php");
-        include_once( SITE_PATH.'/includes/mpdf60/mpdf.php' );
+
+        //ini_set('display_errors', 0);
+
+        ob_start();
 
         ?>
         <!DOCTYPE html>
@@ -44,24 +74,106 @@ class ConfigurationOrder {
             <title></title>
         </head>
         <body>
-        <img src="'.$img.'">
-        <table>
-            <tr><td>Angle</td><td>'.$angle.'</td></tr>
-            <tr><td>Random</td><td>'.rand(0,100500).'</td></tr>
-        </table>
+        <p style="font-weight: bold; font-size:24px;">Заявка № <?=$data['idOrder']?></p>
+
+        <hr>
+
+        <p style="font-weight: bold; font-size:18px;">
+            <? if ( !empty( $data['clientName']) ) : ?>
+                Ф.И.О.: <?=$data['clientName']?><br>
+            <? endif ?>
+            <? if ( !empty( $data['clientName']) ) : ?>
+                Местоположение: <?=$data['location']?><br>
+            <? endif ?>
+            <? if ( !empty( $data['clientName']) ) : ?>
+                Дата: <?=$data['date']?>
+            <? endif ?>
+        </p>
+
+        <br>
+
+        <?
+        foreach ( $data['configurations'] as $configuration ){
+            ?>
+            <p style="font-weight: bold; font-size:18px;">Конфигурация <?=$configuration['configurationId']?></p>
+            <p align="center"><img src="<?=$configuration['image']?>'" width="100%"></p>
+            <br>
+            <br>
+
+            <? if ($configuration['showLegend']): ?>
+            <table cellpadding="5" border="1" cellspacing="0">
+                <tbody><tr>
+                    <td>H, мм</td>
+                    <td class="ng-binding"><?=$configuration['H']?></td>
+                </tr>
+                <tr>
+                    <td>h, мм</td>
+                    <td class="ng-binding"><?=$configuration['h']?></td>
+                </tr>
+                <tr>
+                    <td>L, мм</td>
+                    <td class="ng-binding"><?=$configuration['L']?></td>
+                </tr>
+                <tr>
+                    <td>B, мм</td>
+                    <td class="ng-binding"><?=$configuration['B']?></td>
+                </tr>
+                <?/*<tr>
+                    <td>α, град</td>
+                    <td class="ng-binding"><?=$configuration['image']?>°</td>
+                </tr>
+                */?>
+                </tbody></table>
+            <? endif; ?>
+
+            <hr>
+            <table cellpadding="5" border="1" cellspacing="0" width="100%">
+                <tr><td>Конструкция:</td><td><?=$configuration['designType']?></td></tr>
+                <tr><td>Тип системы:</td><td><?=$configuration['systemType']?></td></tr>
+                <tr><td>Расположение модулей:</td><td><?=$configuration['moduleOrientation']?></td></tr>
+                <tr><td>Модулей в ряду:</td><td><?=$configuration['modulesCount']?></td></tr>
+                <tr><td>Количество модулей, шт.:</td><td><?=$configuration['modulesCount']?></td></tr>
+                <tr><td>Размеры модуля, мм:</td>
+                    <td>
+                        <?=$configuration['moduleHeight']?> X <?=$configuration['moduleWidth']?> X <?=$configuration['moduleDepth']?>
+                    </td>
+                </tr>
+                <tr><td>Угол наклона:</td><td><?=$configuration['tableAngle']?>°</td></tr>
+                <tr><td>Расстояние до земной поверхности, мм:</td><td><?=$configuration['distanceToGround']?></td></tr>
+                <tr><td>Количество опор, шт.:</td><td><?=$configuration['supportCount']?></td></tr>
+                <tr><td>Установленная мощность модуля, Вт:</td><td><?=$configuration['modulePower']?></td></tr>
+                <tr><td>Установленная мощность системы, кВт:</td><td><?=$configuration['systemPower']?></td></tr>
+                <tr><td>Количество систем, шт.:</td><td><?=$configuration['systemCount']?></td></tr>
+                <tr><td>Общая установленная мощность, кВт:</td><td><?=$configuration['totalPower']?></td></tr>
+            </table>
+            <?
+        }
+
+        ?>
         </body>
         </html>
         <?
+        $html = ob_get_clean();
+
+        $res = include_once( SITE_PATH.'/include/mpdf60/mpdf.php' );
+
+        $mpdf = new mPDF('utf-8', 'A4', '8', '', 10, 10, 7, 7, 10, 10); /*задаем формат, отступы и.т.д.*/
+//        $mpdf->charset_in = 'cp1251'; /*не забываем про русский*/
+        $mpdf->charset_in = 'utf8'; /*не забываем про русский*/
 
 
-        $filename = 'ConfigurationOrder#'.$idOrder;
-        header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
-        //header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($path)) . ' GMT');
-        header('Accept-Ranges: bytes');  // Allow support for download resume
-        //header('Content-Length: ' . filesize($path));  // File size
-        header('Content-Encoding: none');
-        header('Content-Type: application/pdf');  // Change the mime type if the file is not PDF
-        header('Content-Disposition: attachment; filename=' . $filename);  // Make the browser display the Save As dialog
+        $mpdf->list_indent_first_level = 0;
+        $mpdf->WriteHTML($html, 2); /*формируем pdf*/
+
+        $file_name = 'document_configuration_'.$data['idOrder'].'.pdf';
+
+        ob_start();
+        $mpdf->Output($file_name, 'I');
+        $content = ob_get_clean();
+        file_put_contents($file_name, $content);
+
+        //exit( '<a href="/modules/mod_configuration/'.$file_name.'">'.$file_name.'</a>');
+        exit( '/modules/mod_configuration/'.$file_name);
 
     }
 

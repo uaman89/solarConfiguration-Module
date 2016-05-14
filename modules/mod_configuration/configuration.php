@@ -62,7 +62,9 @@ switch( $Configuration->task ) {
         $Configuration->deleteOrders();
         break;
     case 'downloadPdf':
-        $Configuration->downloadPdf();
+        $request = file_get_contents("php://input");
+        $postdata = json_decode($request, 1);
+        $Configuration->downloadPdf( $postdata );
         break;
     default:
         $Configuration->showConfigurationOrderList();

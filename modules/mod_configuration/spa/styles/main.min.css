@@ -59,3 +59,7 @@ ng\:form {
   overflow: hidden; }
   .renderer-container, .renderer-container canvas {
     border-radius: 8px; }
+
+.please-wait {
+  text-align: center;
+  font-size: 14px; }

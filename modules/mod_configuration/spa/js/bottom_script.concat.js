@@ -44795,7 +44795,9 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
                 // this callback will be called asynchronously
                 // when the response is available
                 //$log.info(response);
-                $scope.header = 'Заявка № ' + response.data;
+                idOrder = response.data;
+                $location.search('order_id', idOrder);
+                $scope.header = 'Заявка № ' + idOrder;
 
                 showMsgReport('сохранено!');
                 $rootScope.$broadcast('orderSaveSuccess');
@@ -44862,7 +44864,96 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
 
 
 
-    $scope.downloadPdf = function(){
+
+
+    $scope.downloadPdf = function() {
+        //$('#preloader').html('<img src="/admin/images/progress_bar1.gif">');
+
+        var postData = {
+            idOrder: idOrder,
+            clientName: $scope.clientName,
+            location: $scope.location,
+            date: $scope.date,
+            configurations: []
+        };
+        for (key in $scope.configurations) {
+            var conf = $scope.configurations[key];
+
+            confId = conf.params.configurationId;
+            paramsTable = $('#configuration' + confId + ' .params-table');
+
+            if (paramsTable.length == 0) continue;
+
+            $log.info('id:', '#configuration' + confId + ' .params-table');
+
+            var obj = {
+                configurationId: confId,
+                designType: paramsTable.find('.design-type option:selected').text(),
+                systemType: paramsTable.find('.system-type option:selected').text(),
+                moduleOrientation: paramsTable.find('.module-orientation option:selected').text(),
+                modulesCount: paramsTable.find('.modules-in-row').val(),
+                modulesTotalCount: paramsTable.find('.modules-total-count').val(),
+                moduleWidth: paramsTable.find('.module-width').val(),
+                moduleHeight: paramsTable.find('.module-height').val(),
+                moduleDepth: paramsTable.find('.module-depth').val(),
+                tableAngle: paramsTable.find('.table-angle').val(),
+                distanceToGround: paramsTable.find('.h').val(),
+                supportCount: paramsTable.find('.support-count').val(),
+                modulePower: paramsTable.find('.module-power').val(),
+                systemPower: paramsTable.find('.system-power').val(),
+                systemCount: paramsTable.find('.system-count').val(),
+                totalPower: paramsTable.find('.total-power').val(),
+                image: getCanvasData('#configuration' + conf.params.configurationId + ' canvas')
+            };
+
+            if ( conf.params.isShowLines ){
+                obj.showLegend = true;
+                obj.H = conf.params.H;
+                obj.h = conf.params.distanceToGround;
+                obj.B = conf.params.B;
+                obj.L = conf.params.L;
+            }
+
+            postData.configurations.push(obj);
+        }//endfor
+
+
+        $log.info('postData', postData);
+
+        //$.fancybox({
+        //    href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
+        //    type: 'iframe',
+        //    data: postData
+        //});
+
+        $.fancybox( $('<div class="please-wait">Загрузка...<img src="/admin/images/progress_bar1.gif"></div>') );
+
+        $http({
+            method: 'post',
+            url: moduleUrl + '&task=downloadPdf',
+            data: postData,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(
+            function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                //$log.info(response);
+                $scope.header = 'Result:' + idOrder;
+                $log.info(response.data);
+
+                $('#downloadPdfLink').attr('href', response.data)[0].click();
+                $.fancybox.close();
+
+            },
+            function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $.fancybox( $('<br><h2>Не удалось загрузить!</h2><br/>') );
+            }
+        );
+    }
+
+    /*$scope.downloadPdf = function(){
         $log.info('download!');
         $scope.saveConfigurationsOrder();
 
@@ -44870,7 +44961,8 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
             $log.info('success');
             $.fancybox({
                 href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
-                type: 'iframe'
+                type: 'iframe',
+                data: postData.serialize()
             });
         });
 
@@ -44879,7 +44971,7 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
             showMsgReport('не удалось сгенерировать документ!');
         });
     }
-
+*/
     //--- end downloadPdf --------------------------------------------------------------------------------------------
 
 
@@ -45537,28 +45629,22 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
     this.centerCamera = function(){
 
-        
-
         //calc camera Z position
         var smallCathetus = ground.geometry.parameters.width/2;
         var angle = camera.fov;
         var angleTan = Math.atan(camera.fov);
         var zPos = angleTan * smallCathetus;
-        console.log('zPos',zPos);
+        //console.log('zPos',zPos);
 
         camera.position.copy( configurationContainer.position );
-        camera.position.z = zPos;
+        camera.position.z = zPos + params.B / 2 / 1000;
         camera.position.y += params.H * 2 / 1000;
-
-        return;
 
         controls.target = new THREE.Vector3(
             configurationContainer.position.x,
             configurationContainer.position.y + params.H/1000,
             configurationContainer.position.z
         );
-        camera.position.y = params.H/2/1000 + 1;
-        camera.position.z = configurationContainer.position.z + 10;
     }
 //--- end centerCamera() --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -45677,15 +45763,10 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
             var temp = _this.moduleHeight;
             _this.moduleHeight = _this.moduleWidth;
             _this.moduleWidth = temp;
-            console.log('*_this.moduleWidth',_this.moduleWidth);
-            console.log('*_this.moduleHeight',_this.moduleHeight);///
-
         }
         else{
             _this.moduleHeight =  $('#configuration' + _this.configurationId).find('.module-height').val();
             _this.moduleWidth =  $('#configuration' + _this.configurationId).find('.module-width').val();
-            console.log('**_this.moduleWidth',_this.moduleWidth);
-            console.log('**_this.moduleHeight',_this.moduleHeight);///
         }
 
         //convert string data to Int:
