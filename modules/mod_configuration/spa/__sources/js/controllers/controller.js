@@ -226,12 +226,6 @@ solConfigApp.controller('MainCtrl', function ($scope, $http, $location, $log, $t
 
         $log.info('postData', postData);
 
-        //$.fancybox({
-        //    href: moduleUrl + '&task=downloadPdf&order_id=' + idOrder,
-        //    type: 'iframe',
-        //    data: postData
-        //});
-
         $.fancybox( $('<div class="please-wait">Загрузка...<img src="/admin/images/progress_bar1.gif"></div>') );
 
         $http({

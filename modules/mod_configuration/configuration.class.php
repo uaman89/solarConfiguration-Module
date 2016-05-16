@@ -74,6 +74,7 @@ class ConfigurationOrder {
             <title></title>
         </head>
         <body>
+        <div class="first-page" height="29cm">
         <p style="font-weight: bold; font-size:24px;">Заявка № <?=$data['idOrder']?></p>
 
         <hr>
@@ -96,7 +97,7 @@ class ConfigurationOrder {
         foreach ( $data['configurations'] as $configuration ){
             ?>
             <p style="font-weight: bold; font-size:18px;">Конфигурация <?=$configuration['configurationId']?></p>
-            <p align="center"><img src="<?=$configuration['image']?>'" width="100%"></p>
+            <p align="center"><img src="<?=$configuration['image']?>'" ></p>
             <br>
             <br>
 
@@ -125,8 +126,9 @@ class ConfigurationOrder {
                 */?>
                 </tbody></table>
             <? endif; ?>
+            </div>
 
-            <hr>
+
             <table cellpadding="5" border="1" cellspacing="0" width="100%">
                 <tr><td>Конструкция:</td><td><?=$configuration['designType']?></td></tr>
                 <tr><td>Тип системы:</td><td><?=$configuration['systemType']?></td></tr>
@@ -165,7 +167,7 @@ class ConfigurationOrder {
         $mpdf->list_indent_first_level = 0;
         $mpdf->WriteHTML($html, 2); /*формируем pdf*/
 
-        $file_name = 'document_configuration_'.$data['idOrder'].'.pdf';
+        $file_name = 'generated_docs/document_configuration_'.$data['idOrder'].'.pdf';
 
         ob_start();
         $mpdf->Output($file_name, 'I');

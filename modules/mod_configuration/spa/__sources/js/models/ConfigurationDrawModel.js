@@ -59,7 +59,6 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
 
         this.getBigImg = function(){
-
             oldWidth =  container.width();
             container.css('width', '21cm');
 
@@ -67,13 +66,11 @@ var ConfigurationDrawModel =  function( paramsObj ){
             renderer.render(scene, camera);
             var imgData = renderer.domElement.toDataURL();
 
-            window.open( renderer.domElement.toDataURL(), 'screenshot' );
+            //window.open( renderer.domElement.toDataURL(), 'screenshot' ); //just for test
             container.css('width', oldWidth + 'px');
             onWindowResize();
 
-            //return container.find('canvas').toDataURL();
             return imgData;
-
         }
         //end update renderer on window resize begin
 
@@ -357,7 +354,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
             //length L line
 
-            var linePos = {
+            var lineStartPos = {
                 x: tableWidth/2,
                 y: H + 1,
                 z: -B
@@ -365,19 +362,19 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
             var geometry = new THREE.Geometry();
             geometry.vertices.push(
-                new THREE.Vector3( -linePos.x, linePos.y+0.25, linePos.z ),
-                new THREE.Vector3( -linePos.x, linePos.y-0.75, linePos.z ),
+                new THREE.Vector3( -lineStartPos.x, lineStartPos.y+0.25, lineStartPos.z ),
+                new THREE.Vector3( -lineStartPos.x, lineStartPos.y-0.75, lineStartPos.z ),
 
-                new THREE.Vector3( -linePos.x, linePos.y, linePos.z ),
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+                new THREE.Vector3( -lineStartPos.x, lineStartPos.y, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z ),
 
-                new THREE.Vector3( linePos.x, linePos.y+0.25, linePos.z ),
-                new THREE.Vector3( linePos.x, linePos.y-0.75, linePos.z )
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y+0.25, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y-0.75, lineStartPos.z )
             );
             linesContainer.add( new THREE.Line( geometry, material ) );
 
             var sprite = makeTextSprite('L');
-            sprite.position.set( 0.5 , linePos.y + 0.25, linePos.z );
+            sprite.position.set( 0.5 , lineStartPos.y + 0.25, lineStartPos.z );
             linesContainer.add( sprite );
 
             //end L Line
@@ -386,7 +383,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
             //height H line
             var hLine = new THREE.Object3D();
 
-            var linePos = {
+            var lineStartPos = {
                 x: 0,
                 y: H + 0.05,
                 z: 0
@@ -395,14 +392,14 @@ var ConfigurationDrawModel =  function( paramsObj ){
             var geometry = new THREE.Geometry();
             geometry.vertices.push(
 
-                new THREE.Vector3( linePos.x + 0.25, linePos.y, linePos.z ),
-                new THREE.Vector3( linePos.x - 0.5, linePos.y, linePos.z ),
+                new THREE.Vector3( lineStartPos.x + 0.25, lineStartPos.y, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x - 0.5, lineStartPos.y, lineStartPos.z ),
 
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
-                new THREE.Vector3( linePos.x, 0.05, linePos.z ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x, 0.05, lineStartPos.z ),
 
-                new THREE.Vector3( linePos.x + 0.25, 0.05, linePos.z ),
-                new THREE.Vector3( linePos.x - 0.5, 0.05, linePos.z )
+                new THREE.Vector3( lineStartPos.x + 0.25, 0.05, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x - 0.5, 0.05, lineStartPos.z )
 
             );
             var line = new THREE.Line( geometry, material );
@@ -411,7 +408,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
             hLine.position.set( tableWidth/2 + 0.75, 0, -B - 0.5 );
 
             var sprite = makeTextSprite('H');
-            sprite.position.set( linePos.x, linePos.y/2, linePos.z );
+            sprite.position.set( lineStartPos.x, lineStartPos.y/2, lineStartPos.z );
             hLine.add( sprite );
 
             linesContainer.add( hLine );
@@ -421,7 +418,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
             // B line
 
-            var linePos = {
+            var lineStartPos = {
                 x: tableWidth/2 +1,
                 y: 0.05,
                 z: -B
@@ -430,27 +427,27 @@ var ConfigurationDrawModel =  function( paramsObj ){
             var geometry = new THREE.Geometry();
             geometry.vertices.push(
 
-                new THREE.Vector3( linePos.x - 0.5,  linePos.y, 0 ),
-                new THREE.Vector3( linePos.x + 0.25, linePos.y, 0 ),
+                new THREE.Vector3( lineStartPos.x - 0.5,  lineStartPos.y, 0 ),
+                new THREE.Vector3( lineStartPos.x + 0.25, lineStartPos.y, 0 ),
 
-                new THREE.Vector3( linePos.x, linePos.y, 0 ),
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, 0 ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z ),
 
-                new THREE.Vector3( linePos.x - 0.5, linePos.y, linePos.z ),
-                new THREE.Vector3( linePos.x + 0.25, linePos.y, linePos.z )
+                new THREE.Vector3( lineStartPos.x - 0.5, lineStartPos.y, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x + 0.25, lineStartPos.y, lineStartPos.z )
 
             );
             linesContainer.add( new THREE.Line( geometry, material ) );
 
             var sprite = makeTextSprite('B');
-            sprite.position.set( linePos.x + 0.05, linePos.y+0.05, linePos.z/2  );
+            sprite.position.set( lineStartPos.x + 0.05, lineStartPos.y+0.05, lineStartPos.z/2  );
             linesContainer.add( sprite );
 
             //end  B Line
 
             // h line
 
-            var linePos = {
+            var lineStartPos = {
                 x: -tableWidth/2,
                 y: distanceToGround,
                 z: 0.75
@@ -458,21 +455,84 @@ var ConfigurationDrawModel =  function( paramsObj ){
 
             var geometry = new THREE.Geometry();
             geometry.vertices.push(
-                new THREE.Vector3( linePos.x, 0.05, linePos.z + 0.25 ),
-                new THREE.Vector3( linePos.x, 0.05, linePos.z - 0.5 ),
+                new THREE.Vector3( lineStartPos.x, 0.05, lineStartPos.z + 0.25 ),
+                new THREE.Vector3( lineStartPos.x, 0.05, lineStartPos.z - 0.5 ),
 
-                new THREE.Vector3( linePos.x, 0.05, linePos.z ),
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z ),
+                new THREE.Vector3( lineStartPos.x, 0.05, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z ),
 
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z + 0.25 ),
-                new THREE.Vector3( linePos.x, linePos.y, linePos.z - 0.5 )
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z + 0.25 ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z - 0.5 )
             );
             linesContainer.add( new THREE.Line( geometry, material ) );
 
-            var sprite = makeTextSprite('h', 48);
-            sprite.position.set( linePos.x, linePos.y/2, linePos.z + 0.25 );
+            var sprite = makeTextSprite('C', 48);
+            sprite.position.set( lineStartPos.x, lineStartPos.y/4, lineStartPos.z + 0.25 );
             linesContainer.add( sprite );
             //end h Line
+
+
+
+            //angle arc
+
+            var curve = new THREE.EllipseCurve(
+                0, 0,             // ax, aY
+                1, 1,            // xRadius, yRadius
+                -10 * Math.PI/180, 40 * Math.PI/180, // aStartAngle, aEndAngle
+                false             // aClockwise
+            );
+
+            var points = curve.getSpacedPoints( 80 );
+            var path = new THREE.Path();
+            geometry = path.createGeometry( points );
+
+            var arc = new THREE.Line( geometry, material );
+            arc.position.set( tableWidth/2, distanceToGround, 0);
+            arc.rotation.y = 90 * Math.PI/180;
+            //console.log('arc:', arc);
+            linesContainer.add( arc );
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+                new THREE.Vector3( arc.position.x, arc.position.y, arc.position.z ),
+                new THREE.Vector3( arc.position.x, arc.position.y, arc.position.z - 1.3 )
+            );
+            linesContainer.add( new THREE.Line( geometry, material ) );
+
+
+            var sprite = makeTextSprite('α');
+            sprite.position.copy( arc.position );
+            sprite.position.z = -1.75;
+            sprite.position.y += 0.2;
+            sprite.position.x += 0.35;
+            linesContainer.add( sprite );
+            // end angle arc
+
+            // I line
+            var lineStartPos = {
+                x: tableWidth/2,
+                y: 0.1,
+                z: 1
+            };
+
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z - 0.5 ),
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z + 0.25 ),
+
+                new THREE.Vector3( lineStartPos.x, lineStartPos.y, lineStartPos.z ),
+                new THREE.Vector3( lineStartPos.x - supportsInterval, lineStartPos.y, lineStartPos.z ),
+
+                new THREE.Vector3( lineStartPos.x - supportsInterval, lineStartPos.y, lineStartPos.z - 0.5 ),
+                new THREE.Vector3( lineStartPos.x - supportsInterval, lineStartPos.y, lineStartPos.z + 0.25 )
+            );
+            linesContainer.add( new THREE.Line( geometry, material ) );
+
+            var sprite = makeTextSprite(' i');
+            sprite.position.set( lineStartPos.x - supportsInterval/2 + 0.2, lineStartPos.y, lineStartPos.z - 0.35 );
+            linesContainer.add( sprite );
+            //end I Line
+
 
             scene.add(linesContainer);
         }
@@ -534,7 +594,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
                 //"bottom horizontal" support
                 var bottomHSupport = supportBar.clone();
                 bottomHSupport.geometry = new THREE.BoxGeometry(supportBarWidth, supportBarWidth, B - supportBarWidth/2);
-                bottomHSupport.position.set(0, distanceToGround / 2, supportUnderModuleOffsetZ);
+                bottomHSupport.position.set(0, distanceToGround/2, supportUnderModuleOffsetZ);
                 bottomHSupport.reciveShadows = true;
                 bottomHSupport.castShadows = true;
 
@@ -609,7 +669,7 @@ var ConfigurationDrawModel =  function( paramsObj ){
         configurationContainer.add( supportsContainer );
         //end draw supports
 
-        console.log('drawModel');
+        //console.log('drawModel');
 
         
     };

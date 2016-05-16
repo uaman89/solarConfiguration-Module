@@ -31,23 +31,27 @@
                         <table class="small-table">
                             <tr>
                                 <td>H, мм</td>
-                                <td>{{ configuration.params.H }}</td>
+                                <td>{{ configuration.params.H | number}}</td>
                             </tr>
                             <tr>
-                                <td>h, мм</td>
+                                <td>c, мм</td>
                                 <td>{{ configuration.params.distanceToGround }}</td>
                             </tr>
                             <tr>
                                 <td>L, мм</td>
-                                <td>{{ configuration.params.tableWidth }}</td>
+                                <td>{{ configuration.params.tableWidth | number}}</td>
                             </tr>
                             <tr>
                                 <td>B, мм</td>
-                                <td>{{ configuration.params.B }}</td>
+                                <td>{{ configuration.params.B | number}}</td>
                             </tr>
                             <tr>
                                 <td>&alpha;, град</td>
                                 <td>{{ configuration.params.tableAngle }}&deg;</td>
+                            </tr>
+                            <tr>
+                                <td>i, мм</td>
+                                <td>{{ configuration.params.supports.interval | number }}</td>
                             </tr>
                         </table>
 

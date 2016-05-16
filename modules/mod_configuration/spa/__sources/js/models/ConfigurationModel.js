@@ -6,7 +6,7 @@ var ConfigurationModel = function( paramsData ){
     this.painter = new ConfigurationDrawModel( this.params );
 
     this.update = function(){
-        console.log('update');
+        //console.log('update');
         this.params.calculateData();
         this.painter.drawModel();
         this.painter.centerCamera();

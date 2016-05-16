@@ -53,7 +53,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
 
 
     this.calculateData = function () {
-        console.log('calculateData()');
+        //console.log('calculateData()');
 
         //for internal logic
         _this.moduleHeight = _this.userModuleHeight;
@@ -105,7 +105,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
 
 
     function _getSupportsParams(){
-        console.log('_getSupportsCount()');
+        //console.log('_getSupportsCount()');
 
         var supports = {
             width: _this._supportWidth,
@@ -163,7 +163,7 @@ var ConfigurationParamsModel = function( configurationId, initData ) {
         supports.interval = width / supports.count;
 */
 
-        console.log('supports',supports);
+        //console.log('supports',supports);
         return supports;
     }
 
